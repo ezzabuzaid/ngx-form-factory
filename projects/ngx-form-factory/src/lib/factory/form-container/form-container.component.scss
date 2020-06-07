@@ -1,0 +1,33 @@
+$zIndex: 99;
+:host {
+  display: block;
+  position: relative;
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &.loading {
+    &::before {
+      background-color: rgba(255, 255, 255, 0.5);
+      z-index: $zIndex;
+    }
+  }
+  app-field-factory {
+    min-width: calc(100% / 3);
+    flex-grow: 1;
+    flex-basis: 25%;
+  }
+}
+mat-progress-bar {
+  position: absolute;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  z-index: $zIndex + 1;
+}

@@ -1,0 +1,6 @@
+<mat-form-field floatLabel="always">
+    <mat-label>Phonenumber</mat-label>
+    <input matInput autocomplete="mobile" [formControl]="formControl" #phoneField [id]="formControl.id"
+        (input)="updateModel()">
+    <mat-error *ngIf="formControl.hasError('not_associated')">The number is not valid</mat-error>
+</mat-form-field>
