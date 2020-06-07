@@ -1,6 +1,4 @@
 {
-  "name": "ngx-form-factory",
-  "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^9.0.7",
     "@angular/core": "^9.0.7",
@@ -10,5 +8,29 @@
   },
   "dependencies": {
     "tslib": "^1.10.0"
-  }
+  },
+  "name": "@ezzabuzaid/ngx-form-factory",
+  "version": "0.0.1",
+  "bugs": {
+    "email": "ezzabuzaid@hotmail.com",
+    "url": "https://github.com/ezzabuzaid/ngx-form-factory/issues"
+  },
+  "description": "Allows to pass custom options to http interceptors",
+  "keywords": [
+    "Angular",
+    "http",
+    "interceptor",
+    "interceptors",
+    "module augmentation",
+    "angular interceptors",
+    "angular interceptor"
+  ],
+  "author": {
+    "name": "ezzabuzaid",
+    "email": "ezzabuzaid@hotmail.com",
+    "url": "https://github.com/ezzabuzaid/"
+  },
+  "repository": "github:ezzabuzaid/ngx-form-factory",
+  "private": false,
+  "license": "MIT"
 }
