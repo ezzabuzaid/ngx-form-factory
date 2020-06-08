@@ -1,19 +1,19 @@
 import { Component, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
-import { share, takeUntil } from 'rxjs/operators';
-import { FormFactoryManager } from '../form-factory.manager';
+import { takeUntil } from 'rxjs/operators';
 import { Form } from '../../fields/base';
+import { FormFactoryManager } from '../form-factory.manager';
 export interface SubmitEvent<T = any> {
   value: T;
   valid: boolean;
 }
 @Component({
   selector: 'ngx-form-container',
-  templateUrl: './form-container.component.html',
-  styleUrls: ['./form-container.component.scss']
+  templateUrl: './form-factory.component.html',
+  styleUrls: ['./form-factory.component.scss']
 })
-export class FormContainerComponent implements OnInit, OnDestroy {
-  public readonly progressListener = this.formWidgetManager.asObservable().pipe(share());
+export class FormFactoryComponent implements OnInit, OnDestroy {
+  public readonly progressListener = this.formWidgetManager.watch();
   private readonly subscription = new Subject();
   @Output() public readonly onSubmit = new EventEmitter<SubmitEvent>();
   @Input() public title: string = null;
