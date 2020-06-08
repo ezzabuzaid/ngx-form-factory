@@ -11,7 +11,7 @@
     "sync-readme": "cp ./README.md ./projects/ngx-form-factory",
     "prepublish": "npm run build"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~9.0.2",
     "@angular/cdk": "^9.2.4",
