@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IField } from '../../fields';
 
@@ -25,7 +25,7 @@ export class CountryControlComponent implements OnInit, ControlValueAccessor {
   }
 
   private _value: string;
-  @Input() public formControl: IField<string, any> = null;
+  @Input() public formControl: IField<string> = null;
   public countries = [];
   public currentCountry = null;
 

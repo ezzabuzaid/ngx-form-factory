@@ -1,5 +1,10 @@
-import { IBaseField, BaseField, EFieldType, Options } from './base';
-import { Validators } from '@angular/forms';
+import { BaseField, EFieldType, IBaseField, IBaseFieldOptions } from './base';
+
+
+interface IFieldOptions<T> extends IBaseFieldOptions<T> {
+    label?: string;
+    hint?: string;
+}
 
 export interface IField<T> extends IBaseField<T> {
     label?: string;
@@ -7,13 +12,13 @@ export interface IField<T> extends IBaseField<T> {
 }
 
 export class Field<T> extends BaseField<T> implements IField<T> {
-    public label?: string = null;
+    public label?: string;
     public hint?: string;
-    constructor(options: Options<IField<T>> = {}) {
+    constructor(options: IFieldOptions<T>) {
         super(options);
-        this.type = options.type ?? EFieldType.TEXT;
-        this.label = options.label;
-        this.hint = options.hint;
+        this.type = options?.type ?? EFieldType.TEXT;
+        this.label = options?.label;
+        this.hint = options?.hint;
     }
 
 }

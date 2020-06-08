@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Options, EFieldType } from './base';
+import { EFieldType, IBaseFieldOptions } from './base';
 import { Field } from './field';
 
 export class SelectOption {
@@ -9,13 +9,18 @@ export class SelectOption {
     ) { }
 }
 
+interface ISelectFieldOptions<T> extends IBaseFieldOptions<T> {
+    options: Observable<SelectOption[]>;
+    multiple: boolean;
+}
+
 export class SelectField<T> extends Field<T>   {
     public options: Observable<SelectOption[]> = null;
     public multiple = false;
-    constructor(options: Options<SelectField<T>> = {}) {
+    constructor(options: ISelectFieldOptions<T>) {
         super(options);
         this.type = EFieldType.SELECT;
-        this.options = options.options;
-        this.multiple = options.multiple;
+        this.options = options?.options;
+        this.multiple = options?.multiple;
     }
 }

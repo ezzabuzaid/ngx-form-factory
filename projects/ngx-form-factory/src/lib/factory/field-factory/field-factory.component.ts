@@ -1,6 +1,6 @@
 import {
-  ApplicationRef, Component, ComponentFactoryResolver, ElementRef,
-  EmbeddedViewRef, Injector, Input, OnInit, Type
+  ApplicationRef, Component, ComponentFactoryResolver,
+  ElementRef, EmbeddedViewRef, Injector, Input, OnInit, Type
 } from '@angular/core';
 import { Field, IRawFieldComponent, RawField, SelectField } from '../../fields';
 import { EFieldType } from '../../fields/base';

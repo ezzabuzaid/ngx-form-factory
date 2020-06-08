@@ -1,10 +1,14 @@
-import { BaseField, IBaseField, EFieldType } from './base';
 import { Type } from '@angular/core';
+import { BaseField, EFieldType, IBaseFieldOptions } from './base';
+
+interface IRawFieldOptions<T> extends IBaseFieldOptions<T> {
+    component: Type<IRawFieldComponent<T>>;
+}
 
 export class RawField<T> extends BaseField<T> {
     component: Type<IRawFieldComponent<T>>;
-    constructor(options: Partial<IBaseField<Date> & RawField<T>>) {
-        super(options ?? {});
+    constructor(options: IRawFieldOptions<T>) {
+        super(options);
         this.type = EFieldType.RAW_FIELD;
         this.component = options.component;
     }

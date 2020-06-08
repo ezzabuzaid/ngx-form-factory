@@ -1,7 +1,7 @@
 
 
-export type OmitProperties<T, P> = Pick<T, { [key in keyof T]: T[key] extends P ? never : key }[keyof T]>;
-export type Properties<T> = OmitProperties<T, (...args: any[]) => any>;
+export type Omit<T, P> = Pick<T, { [key in keyof T]: T[key] extends P ? never : key }[keyof T]>;
+export type Properties<T> = Omit<T, (...args: any[]) => any>;
 
 export function generateAlphabeticString(length = 5): string {
     let randomString = '';
@@ -13,8 +13,4 @@ export function generateAlphabeticString(length = 5): string {
         randomString += String.fromCharCode(randomAscii);
     }
     return randomString;
-}
-
-export function isNullorUndefined(value: any) {
-    return value === null || value === undefined;
 }
