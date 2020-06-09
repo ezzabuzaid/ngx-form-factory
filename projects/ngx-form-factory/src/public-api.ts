@@ -4,3 +4,4 @@
 
 export * from './lib/factory';
 export * from './lib/fields';
+export * from './lib/shared/toggle-passwod.directive';
