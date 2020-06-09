@@ -34,11 +34,11 @@ export interface IBaseField<T> extends FormControl {
 
 export interface IBaseFieldOptions<T> {
     section?: number;
-    value: T;
+    value?: T;
     id?: string;
     autocomplete?: string;
     validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null;
-    type: EFieldType;
+    type?: EFieldType;
     asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null;
 }
 
