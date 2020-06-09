@@ -1,12 +1,14 @@
 import { Component, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Form } from '../../fields/base';
+import { Form, TFields } from '../../fields/base';
 import { FormFactoryManager } from '../form-factory.manager';
+
 export interface SubmitEvent<T = any> {
   value: T;
   valid: boolean;
 }
+
 @Component({
   selector: 'ngx-form-factory',
   templateUrl: './form-factory.component.html',
@@ -33,7 +35,7 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
       .subscribe(show => {
         this.loading = show;
       });
-    this.fields = this.groupBySection(this.sortBySection(this.flattenFields(Object.values(this.formGroup?.fields))));
+    this.fields = this.groupBySection(this.sortBySection(this.flattenFields(values(this.formGroup.fields))));
   }
 
   submit() {
@@ -48,16 +50,16 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
     this.subscription.complete();
   }
 
-  isForm(field: any) {
-    return field instanceof Form;
+  form(field: any) {
+    return field instanceof Form ? field : null;
   }
 
-  private flattenFields(fields: any[]) {
-    return fields.reduce((acc, field) => {
-      if (this.isForm(field)) {
-        acc.push(...this.flattenFields(field.fields));
+  private flattenFields(controls: TFields<any>[0][]) {
+    return controls.reduce((acc, control) => {
+      if (this.form(control)) {
+        acc.push(...this.flattenFields(values(this.form(control).fields)));
       } else {
-        acc.push(field);
+        acc.push(control);
       }
       return acc;
     }, []);
@@ -78,4 +80,8 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
     return fields.sort((a, b) => a.section - b.section);
   }
 
+}
+
+function values(fields: TFields<any>): TFields<any>[0][] {
+  return Object.values(fields);
 }

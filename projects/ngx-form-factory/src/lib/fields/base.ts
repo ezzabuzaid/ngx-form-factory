@@ -74,18 +74,14 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
         return fromEvent(this.getElement(), eventName);
     }
 }
-
-interface IForm<T> extends AbstractControl {
-    fields: {
-        [key in keyof T]?: BaseField<T[key]> | IForm<T[key]>
-    };
+export type TFields<T> = { [key in keyof T]?: BaseField<T[key]> | IForm<T[key]> };
+export interface IForm<T> extends AbstractControl {
+    fields: TFields<T>;
     validation?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null;
 }
 export class Form<T> extends FormGroup implements IForm<T> {
     constructor(
-        public fields: {
-            [key in keyof T]?: BaseField<T[key]> | IForm<T[key]>
-        },
+        public fields: TFields<T>,
         validation?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null,
         asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null,
     ) {
