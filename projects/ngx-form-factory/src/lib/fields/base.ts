@@ -92,9 +92,8 @@ export class Form<T> extends FormGroup implements IForm<T> {
         super(fields, validation, asyncValidator);
     }
 
-    // @ts-ignore
-    get<Key extends keyof T>(name: Key): BaseField<T[Key]> {
-        return super.get(name as any) as BaseField<T[Key]>;
+    get<Key extends keyof T>(name: Key extends string ? Key : never): BaseField<T[Key]> {
+        return super.get(name as any) as any;
     }
 
     getName(name: keyof T) {
