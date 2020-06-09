@@ -13,8 +13,7 @@
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
             "tsConfig": "projects/ngx-form-factory/tsconfig.lib.json",
-            "project": "projects/ngx-form-factory/ng-package.json",
-            "sourceMap": true
+            "project": "projects/ngx-form-factory/ng-package.json"
           },
           "configurations": {
             "production": {
