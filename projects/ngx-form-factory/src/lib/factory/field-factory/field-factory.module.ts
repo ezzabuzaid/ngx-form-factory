@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { CountryControlModule, MobileControlModule } from '../../controls';
 import { FieldFactoryComponent } from './field-factory.component';
 import { TogglePasswodDirective } from '../../shared';
@@ -31,7 +32,8 @@ import { TogglePasswodDirective } from '../../shared';
     MatDatepickerModule,
     MobileControlModule,
     CountryControlModule,
-    MatCheckboxModule
+    MatInputModule,
+    MatCheckboxModule,
   ]
 })
 export class FieldFactoryModule { }
