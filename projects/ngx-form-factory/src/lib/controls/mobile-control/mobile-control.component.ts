@@ -3,9 +3,8 @@ import {
   forwardRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { from, Observable } from 'rxjs';
-import { PhoneNumberAssociatedWithCountryValidator } from './phonenumber.validator';
 import { IField } from '../../fields';
+import { PhoneNumberAssociatedWithCountryValidator } from './phonenumber.validator';
 
 @Component({
   selector: 'ngx-mobile-control',
@@ -21,7 +20,6 @@ import { IField } from '../../fields';
 export class MobileControlComponent implements OnInit, OnChanges, ControlValueAccessor {
   private intlTelInstance = null;
   @Input() private code: string = null;
-  @Input() private readonly autoDetectCountry = true;
 
   @ViewChild('phoneField', { static: true }) private readonly phoneField: ElementRef<HTMLElement>;
   @Input() public formControl: IField<string> = null;
@@ -44,21 +42,10 @@ export class MobileControlComponent implements OnInit, OnChanges, ControlValueAc
   }
 
   ngOnInit() {
-    if (this.autoDetectCountry && this.code) {
-      throw new TypeError('you can not use [autoDetectCountry] along with [code]');
-    }
     this.formControl.addValidator(PhoneNumberAssociatedWithCountryValidator(this.formControl.id));
     try {
       this.intlTelInstance = (window as any).intlTelInput(this.phoneField.nativeElement);
-      if (this.autoDetectCountry) {
-        this.getUserCountry()
-          .subscribe(({ countryCode }) => {
-            this.code = countryCode.toLowerCase();
-            this.ngOnChanges(null);
-          });
-      } else {
-        this.ngOnChanges(null);
-      }
+      this.ngOnChanges(null);
     } catch (error) { }
   }
 
@@ -75,11 +62,6 @@ export class MobileControlComponent implements OnInit, OnChanges, ControlValueAc
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
-  }
-
-  getUserCountry(): Observable<IpApi> {
-    return from(fetch('http://ip-api.com/json')
-      .then(res => res.json()));
   }
 
   getCountry(code = this.code) {
