@@ -14,7 +14,8 @@
                 <mat-hint>{{normalField().hint}}</mat-hint>
                 <input [id]="normalField().id" #input type="password" [attr.autocomplete]="normalField().autocomplete"
                     matInput [formControl]="field">
-                <mat-icon class="pointer text-muted font-size-20 position-relative bottom-4" matSuffix>
+                <mat-icon class="pointer text-muted font-size-20 position-relative bottom-4" matSuffix
+                    [ngxTogglePasswod]="input">
                     lock</mat-icon>
             </mat-form-field>
         </ng-container>

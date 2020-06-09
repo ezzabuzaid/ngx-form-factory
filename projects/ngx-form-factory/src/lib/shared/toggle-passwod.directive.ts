@@ -4,7 +4,7 @@ import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/
   selector: '[ngxTogglePasswod]'
 })
 export class TogglePasswodDirective {
-  @Input() togglePasswod: HTMLInputElement;
+  @Input() ngxTogglePasswod: HTMLInputElement;
 
   constructor(
     private readonly elRef: ElementRef<HTMLElement>,
@@ -13,12 +13,12 @@ export class TogglePasswodDirective {
 
   @HostListener('click') toggleType() {
     const iconElement = this.elRef.nativeElement;
-    const type = this.togglePasswod.type || this.togglePasswod.getAttribute('type');
+    const type = this.ngxTogglePasswod.type || this.ngxTogglePasswod.getAttribute('type');
     if (type !== 'text') {
-      this.renderer.setAttribute(this.togglePasswod, 'type', 'text');
+      this.renderer.setAttribute(this.ngxTogglePasswod, 'type', 'text');
       iconElement.textContent = 'lock_open';
     } else {
-      this.renderer.setAttribute(this.togglePasswod, 'type', 'password');
+      this.renderer.setAttribute(this.ngxTogglePasswod, 'type', 'password');
       iconElement.textContent = 'lock';
     }
   }
