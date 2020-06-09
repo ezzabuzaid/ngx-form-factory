@@ -30,6 +30,6 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm publish ./dist/ngx-form-factory
+      - run: npm publish --access public ./dist/ngx-form-factory
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
