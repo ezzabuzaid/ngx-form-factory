@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { EFieldType, IBaseFieldOptions } from './base';
-import { Field } from './field';
+import { EFieldType } from './base';
+import { Field, IFieldOptions } from './field';
 
 export class SelectOption {
     constructor(
@@ -9,7 +9,7 @@ export class SelectOption {
     ) { }
 }
 
-interface ISelectFieldOptions<T> extends IBaseFieldOptions<T> {
+interface ISelectFieldOptions<T> extends IFieldOptions<T> {
     options: Observable<SelectOption[]>;
     multiple: boolean;
 }

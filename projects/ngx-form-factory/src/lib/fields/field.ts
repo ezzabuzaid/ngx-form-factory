@@ -1,7 +1,7 @@
 import { BaseField, EFieldType, IBaseField, IBaseFieldOptions } from './base';
 
 
-interface IFieldOptions<T> extends IBaseFieldOptions<T> {
+export interface IFieldOptions<T> extends IBaseFieldOptions<T> {
     label?: string;
     hint?: string;
 }

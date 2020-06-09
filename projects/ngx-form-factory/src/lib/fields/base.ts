@@ -25,7 +25,7 @@ export enum EFieldType {
 
 export interface IBaseField<T> extends FormControl {
     id?: string;
-    type: EFieldType;
+    type?: EFieldType;
     value: T;
     section?: number;
     autocomplete?: string;

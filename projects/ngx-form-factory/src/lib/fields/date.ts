@@ -1,7 +1,7 @@
-import { Field } from './field';
-import { EFieldType, IBaseFieldOptions } from './base';
+import { EFieldType } from './base';
+import { Field, IFieldOptions } from './field';
 
-export interface IDateField extends IBaseFieldOptions<Date> {
+export interface IDateField extends IFieldOptions<Date> {
     min?: Date;
     max?: Date;
 }
