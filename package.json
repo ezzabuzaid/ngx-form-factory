@@ -9,7 +9,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "sync-readme": "cp ./README.md ./projects/ngx-form-factory",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "version:patch": "cd ./projects/ngx-form-factory/ && npm version patch",
+    "version:minor": "cd ./projects/ngx-form-factory/ && npm version minor",
+    "version:major": "cd ./projects/ngx-form-factory/ && npm version major"
   },
   "private": false,
   "dependencies": {
