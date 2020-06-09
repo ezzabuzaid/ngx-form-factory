@@ -13,7 +13,7 @@
         <ng-container *ngIf="!external">
             <ng-container *ngFor="let section of sectionsNames">
                 <div class="d-flex flex-wrap">
-                    <ng-container *ngFor="let field of section[section]">
+                    <ng-container *ngFor="let field of sections[section]">
                         <ngx-field-factory class="pr-4" [field]="field"></ngx-field-factory>
                     </ng-container>
                 </div>
