@@ -11,10 +11,10 @@
     </mat-card-header>
     <mat-card-content>
         <ng-container *ngIf="!external">
-            <ng-container *ngFor="let section of sections">
+            <ng-container *ngFor="let section of sectionsNames">
                 <div class="d-flex flex-wrap">
-                    <ng-container *ngFor="let field of fields[section]">
-                        <ngx-field-factory class="pr-4" [field]="$any(field)"></ngx-field-factory>
+                    <ng-container *ngFor="let field of section[section]">
+                        <ngx-field-factory class="pr-4" [field]="field"></ngx-field-factory>
                     </ng-container>
                 </div>
             </ng-container>

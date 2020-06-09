@@ -27,13 +27,13 @@ export interface IBaseField<T> extends FormControl {
     id?: string;
     type?: EFieldType;
     value: T;
-    section?: number;
+    section?: string;
     autocomplete?: string;
     addValidator?(...validator: ValidatorFn[]): void;
 }
 
 export interface IBaseFieldOptions<T> {
-    section?: number;
+    section?: string;
     value?: T;
     id?: string;
     autocomplete?: string;
@@ -43,9 +43,9 @@ export interface IBaseFieldOptions<T> {
 }
 
 export class BaseField<T> extends FormControl implements IBaseField<T> {
-    static incremntalSection = -1;
+    static defaultSection = '';
     public type: EFieldType = null;
-    public section: number = null;
+    public section: string = null;
     public value: T = null;
     public id = null;
     public autocomplete = '';
@@ -54,12 +54,7 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
         super(options?.value, options?.validatorOrOpts, options?.asyncValidator);
         this.id = options?.id ?? generateAlphabeticString(5);
         this.autocomplete = options?.autocomplete;
-        if (options?.section) {
-            this.section = options?.section;
-            BaseField.incremntalSection += options?.section;
-        } else {
-            this.section = ++BaseField.incremntalSection;
-        }
+        this.section = options?.section ?? BaseField.defaultSection;
     }
 
     addValidator(...validator: ValidatorFn[]) {

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Form, TFields } from '../../fields/base';
+import { Form, TFields, IBaseField } from '../../fields/base';
 import { FormFactoryManager } from '../form-factory.manager';
 
 export interface SubmitEvent<T = any> {
@@ -22,8 +22,8 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
   @Input() formGroup: Form<any>;
   @Input() external = false;
   @HostBinding('class.loading') public loading = false;
-  fields = [];
-  sections = [];
+  sectionsNames: string[] = [];
+  sections: { [key: string]: IBaseField<any>[] };
 
   constructor(
     private readonly formWidgetManager: FormFactoryManager
@@ -35,7 +35,9 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
       .subscribe(show => {
         this.loading = show;
       });
-    this.fields = this.groupBySection(this.sortBySection(this.flattenFields(values(this.formGroup.fields))));
+    const fields = this.flattenFields(values(this.formGroup.fields));
+    this.sectionsNames = fields.map(field => field.section);
+    this.sections = this.groupBySection(fields);
   }
 
   submit() {
@@ -65,19 +67,14 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
     }, []);
   }
 
-  private groupBySection(fields: any[]) {
+  private groupBySection(fields: IBaseField<any>[]) {
     return fields.reduce((acc, curr) => {
       if (!acc[curr.section]) {
-        this.sections.push(curr.section);
         acc[curr.section] = [];
       }
       acc[curr.section].push(curr);
       return acc;
     }, {});
-  }
-
-  private sortBySection(fields: any[]) {
-    return fields.sort((a, b) => a.section - b.section);
   }
 
 }
