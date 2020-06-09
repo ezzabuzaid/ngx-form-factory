@@ -8,7 +8,7 @@ export interface SubmitEvent<T = any> {
   valid: boolean;
 }
 @Component({
-  selector: 'ngx-form-container',
+  selector: 'ngx-form-factory',
   templateUrl: './form-factory.component.html',
   styleUrls: ['./form-factory.component.scss']
 })

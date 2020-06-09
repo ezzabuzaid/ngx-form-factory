@@ -1,5 +1,8 @@
 {
   "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "removeComments": false
+  },
   "angularCompilerOptions": {
     "enableIvy": false
   }
