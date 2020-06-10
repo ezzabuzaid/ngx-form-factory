@@ -9,7 +9,7 @@ export interface IDateField extends IFieldOptions<Date> {
 export class DateField extends Field<Date> implements IDateField {
     public min?: Date;
     public max?: Date;
-    constructor(options: IDateField) {
+    constructor(options?: IDateField) {
         super(options);
         this.type = EFieldType.DATE;
         this.min = options?.min;

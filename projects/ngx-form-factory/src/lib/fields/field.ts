@@ -14,7 +14,7 @@ export interface IField<T> extends IBaseField<T> {
 export class Field<T> extends BaseField<T> implements IField<T> {
     public label?: string;
     public hint?: string;
-    constructor(options: IFieldOptions<T>) {
+    constructor(options?: IFieldOptions<T>) {
         super(options);
         this.type = options?.type ?? EFieldType.TEXT;
         this.label = options?.label;

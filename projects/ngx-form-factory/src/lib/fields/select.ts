@@ -17,7 +17,7 @@ interface ISelectFieldOptions<T> extends IFieldOptions<T> {
 export class SelectField<T> extends Field<T>   {
     public options: Observable<SelectOption[]> = null;
     public multiple = false;
-    constructor(options: ISelectFieldOptions<T>) {
+    constructor(options?: ISelectFieldOptions<T>) {
         super(options);
         this.type = EFieldType.SELECT;
         this.options = options?.options;
