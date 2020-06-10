@@ -36,7 +36,7 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
         this.loading = show;
       });
     const fields = this.flattenFields(values(this.formGroup.fields));
-    this.sectionsNames = fields.map(field => field.section);
+    this.sectionsNames = [...new Set(fields.map(field => field.section))];
     this.sections = this.groupBySection(fields);
   }
 
