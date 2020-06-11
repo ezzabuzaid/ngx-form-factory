@@ -43,7 +43,7 @@ export interface IBaseFieldOptions<T> {
 }
 
 export class BaseField<T> extends FormControl implements IBaseField<T> {
-    static defaultSection = 'default';
+    static defaultSection = generateAlphabeticString();
     public type: EFieldType = null;
     public section: string = null;
     public value: T = null;
