@@ -7,8 +7,9 @@ Form factory is an extension of Reactive Form Group/Control that gives the abili
 ## Installition
 The library has two important classes that correlates to
 * `Form` extends `FormGroup`  with additional instance methods
-	1. `getControlValue` returns the value of the specified control name
-	2. `hasControlError` checks if the specified control name the control has
+	1. `getControlValue(controlName, defaultValue)` returns the value of the specified control name and defaultValue if the value is null or undefined
+	2. `hasControlError(controlName, errorName)` checks if the specified control name has an error
+	3. 
  
 * Field => FormControl
 
@@ -49,6 +50,6 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1NzM5OTU4LDI2MTg2MzUxNCwxMDY2MD
-U0NzQyLDcxNTk0ODYxMCwtMTM0MDc4MTYyOV19
+eyJoaXN0b3J5IjpbLTE0NDYzMzEwMDEsMjYxODYzNTE0LDEwNj
+YwNTQ3NDIsNzE1OTQ4NjEwLC0xMzQwNzgxNjI5XX0=
 -->
