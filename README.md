@@ -42,9 +42,12 @@ public form = new Form<IMyInterface>({
 ### Standalone `Field`
 You may want to create a field without formGroup at all, in this case all what you need is to create an instance from `Field` or any corresponding extension
 ```
+// YourModule.module.ts
+import { FieldFactoryModule } from '@ezzabuzaid/ngx-form-factory';
+ 
 public myField = new Field({ label: 'My Label' });
 
-<ngx-form-field></ng-
+<ngx-form-field [field]="myField" ></ngx-form-field>
 ```
 
 
@@ -73,8 +76,7 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTkzMzE3NzMsNTc0MTAzNzQsLTE0NT
-A0Njk4NzIsLTU4Nzg0NjY3MiwtMTczMzU2MDE4MSwyNjE4NjM1
-MTQsMTA2NjA1NDc0Miw3MTU5NDg2MTAsLTEzNDA3ODE2MjldfQ
-==
+eyJoaXN0b3J5IjpbMTA4MTUyODQ4Niw1NzQxMDM3NCwtMTQ1MD
+Q2OTg3MiwtNTg3ODQ2NjcyLC0xNzMzNTYwMTgxLDI2MTg2MzUx
+NCwxMDY2MDU0NzQyLDcxNTk0ODYxMCwtMTM0MDc4MTYyOV19
 -->
