@@ -1,10 +1,8 @@
 # Form Factory
 
-Don't forget to follow the project's author, [Ezz](https://github.com/ezzabuzaid), and consider starring the project to show your ❤️ and support.
+Don't forget to follow the project's author, [Ezz](https://github.com/ezzabuzaid), and consider starring the project to show your ❤️ and support
 
-If you're one of the developer who:
-1. Deals with CRUD two much
-2.  
+Form factory is an extension of Reactive Form Group/Control that gives the ability to control th
 
 ## Contributing
 Don't hesitate to open issues and make a pull request to help improve code
@@ -31,5 +29,6 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzE1OTQ4NjEwLC0xMzQwNzgxNjI5XX0=
+eyJoaXN0b3J5IjpbMTA2NjA1NDc0Miw3MTU5NDg2MTAsLTEzND
+A3ODE2MjldfQ==
 -->
