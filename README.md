@@ -2,7 +2,7 @@
 
 Don't forget to follow the project's author, [Ezz](https://github.com/ezzabuzaid), and consider starring the project to show your ❤️ and support
 
-Form factory is an extension of Reactive Form Group/Control that gives the ability to dynamically create strong typed forms
+Form factory is an extension of Reactive Form Group/Control that gives the ability to dynamically create strong typed forms associated with only [Material](https://material.angular.io) theme, untill now at least.
 
 ## Installition
 The library has two important classes that correlates to
@@ -50,6 +50,7 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MzM1NjAxODEsMjYxODYzNTE0LDEwNj
-YwNTQ3NDIsNzE1OTQ4NjEwLC0xMzQwNzgxNjI5XX0=
+eyJoaXN0b3J5IjpbLTU4Nzg0NjY3MiwtMTczMzU2MDE4MSwyNj
+E4NjM1MTQsMTA2NjA1NDc0Miw3MTU5NDg2MTAsLTEzNDA3ODE2
+MjldfQ==
 -->
