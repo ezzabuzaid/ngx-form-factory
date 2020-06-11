@@ -12,8 +12,7 @@ The library has two important classes that correlates to
 	3. `getName(controlName)` simple method that will return the same provided name, it mainly has been create to be used in HTML with `[formControlName]` directive, in case of name change the compiler will rise an error up
 	4. `get(controlName)` the same one in `FormGroup`, but with typing
  
-* Field => FormControl
-
+* `Field` extends `FormControl`
 
 3. `npm install @ezzabuzaid/ngx-form-factory`
 
@@ -51,6 +50,6 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNTYzMDM4MSwyNjE4NjM1MTQsMTA2Nj
-A1NDc0Miw3MTU5NDg2MTAsLTEzNDA3ODE2MjldfQ==
+eyJoaXN0b3J5IjpbLTE3MzM1NjAxODEsMjYxODYzNTE0LDEwNj
+YwNTQ3NDIsNzE1OTQ4NjEwLC0xMzQwNzgxNjI5XX0=
 -->
