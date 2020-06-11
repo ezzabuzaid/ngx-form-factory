@@ -26,7 +26,7 @@ The library has two important classes
  } from  '@ezzabuzaid/ngx-form-factory';
  ```
 3. Prepare your class representation of the Form
-4. Create an instance of `Form` in your component with the fields you want to show
+4. Create an instance from `Form` in your component with the fields you want to show
 ```
 interface IMyInterface {
 	name: string;
@@ -40,7 +40,12 @@ public form = new Form<IMyInterface>({
 5. Add `<ngx-form-factory [formGroup]="form"></ngx-form-factory>`  to your component HTML file
 
 ### Standalone `Field`
-You may want to create a field without formGroup at all, in this case all what you need is to c
+You may want to create a field without formGroup at all, in this case all what you need is to create an instance from `Field` or any corresponding extension
+```
+public myField = new Field({ label: 'My Label' });
+
+<ngx-form-field></ng-
+```
 
 
 ## Contributing
@@ -68,7 +73,8 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5MDkyMjE5Miw1NzQxMDM3NCwtMTQ1MD
-Q2OTg3MiwtNTg3ODQ2NjcyLC0xNzMzNTYwMTgxLDI2MTg2MzUx
-NCwxMDY2MDU0NzQyLDcxNTk0ODYxMCwtMTM0MDc4MTYyOV19
+eyJoaXN0b3J5IjpbLTE0OTkzMzE3NzMsNTc0MTAzNzQsLTE0NT
+A0Njk4NzIsLTU4Nzg0NjY3MiwtMTczMzU2MDE4MSwyNjE4NjM1
+MTQsMTA2NjA1NDc0Miw3MTU5NDg2MTAsLTEzNDA3ODE2MjldfQ
+==
 -->
