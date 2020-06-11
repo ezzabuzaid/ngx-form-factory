@@ -2,7 +2,10 @@
 
 Don't forget to follow the project's author, [Ezz](https://github.com/ezzabuzaid), and consider starring the project to show your ❤️ and support
 
-Form factory is an extension of Reactive Form Group/Control that gives the ability to control th
+Form factory is an extension of Reactive Form Group/Control that gives the ability to dynamically create strong typed forms
+
+
+
 
 ## Contributing
 Don't hesitate to open issues and make a pull request to help improve code
@@ -29,6 +32,6 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2NjA1NDc0Miw3MTU5NDg2MTAsLTEzND
-A3ODE2MjldfQ==
+eyJoaXN0b3J5IjpbLTExMDk3NjkxMDQsMTA2NjA1NDc0Miw3MT
+U5NDg2MTAsLTEzNDA3ODE2MjldfQ==
 -->
