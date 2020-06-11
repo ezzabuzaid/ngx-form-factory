@@ -5,7 +5,7 @@ Don't forget to follow the project's author, [Ezz](https://github.com/ezzabuzaid
 Form factory is an extension of Reactive Form Group/Control that gives the ability to dynamically create strong typed forms associated with only [Material](https://material.angular.io) theme, untill now at least.
 
 ## Installition
-The library has two important classes that correlates to
+The library has two important classes
 * `Form` extends `FormGroup`  with additional instance methods
 	1. `getControlValue(controlName, defaultValue)` returns the value of the specified control name and defaultValue if the value is null or undefined
 	2. `hasControlError(controlName, errorName)` checks if the specified control name has an error
@@ -53,7 +53,7 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTA0Njk4NzIsLTU4Nzg0NjY3MiwtMT
-czMzU2MDE4MSwyNjE4NjM1MTQsMTA2NjA1NDc0Miw3MTU5NDg2
-MTAsLTEzNDA3ODE2MjldfQ==
+eyJoaXN0b3J5IjpbNTc0MTAzNzQsLTE0NTA0Njk4NzIsLTU4Nz
+g0NjY3MiwtMTczMzU2MDE4MSwyNjE4NjM1MTQsMTA2NjA1NDc0
+Miw3MTU5NDg2MTAsLTEzNDA3ODE2MjldfQ==
 -->
