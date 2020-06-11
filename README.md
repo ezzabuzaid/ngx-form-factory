@@ -39,6 +39,9 @@ public form = new Form<IMyInterface>({
 ```
 5. Add `<ngx-form-factory [formGroup]="form"></ngx-form-factory>`  to your component HTML file
 
+### Standalone `Field`
+You may want to create a field without formGroup at all, in this case all what you need is to c
+
 
 ## Contributing
 Don't hesitate to open issues and make a pull request to help improve code
@@ -65,7 +68,7 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjg4NDk3NTA0LDU3NDEwMzc0LC0xNDUwND
-Y5ODcyLC01ODc4NDY2NzIsLTE3MzM1NjAxODEsMjYxODYzNTE0
-LDEwNjYwNTQ3NDIsNzE1OTQ4NjEwLC0xMzQwNzgxNjI5XX0=
+eyJoaXN0b3J5IjpbLTc5MDkyMjE5Miw1NzQxMDM3NCwtMTQ1MD
+Q2OTg3MiwtNTg3ODQ2NjcyLC0xNzMzNTYwMTgxLDI2MTg2MzUx
+NCwxMDY2MDU0NzQyLDcxNTk0ODYxMCwtMTM0MDc4MTYyOV19
 -->
