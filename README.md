@@ -22,7 +22,7 @@ The library has two important classes that correlates to
 	 FieldFactoryModule, FormFactoryModule
  } from  '@ezzabuzaid/ngx-form-factory';
  ```
-5. Add `<ngx-form-factory> </ngx-form-factory>`  to your component HTML file
+5. Add `<ngx-form-factory></ngx-form-factory>`  to your component HTML file
 6. Create 
 
 ## Contributing
@@ -50,7 +50,7 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4Nzg0NjY3MiwtMTczMzU2MDE4MSwyNj
-E4NjM1MTQsMTA2NjA1NDc0Miw3MTU5NDg2MTAsLTEzNDA3ODE2
-MjldfQ==
+eyJoaXN0b3J5IjpbMjAwMjkzNTE2NiwtNTg3ODQ2NjcyLC0xNz
+MzNTYwMTgxLDI2MTg2MzUxNCwxMDY2MDU0NzQyLDcxNTk0ODYx
+MCwtMTM0MDc4MTYyOV19
 -->
