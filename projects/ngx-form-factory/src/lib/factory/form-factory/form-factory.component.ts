@@ -20,8 +20,10 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
   @Output() public readonly onSubmit = new EventEmitter<SubmitEvent>();
   @Input() public title: string = null;
   @Input() formGroup: Form<any>;
-  @Input() external = false;
+  @Input() submitButton = true;
+  @Input() implicitFields = true;
   @HostBinding('class.loading') public loading = false;
+
   sectionsNames: string[] = [];
   sections: { [key: string]: IBaseField<any>[] };
 

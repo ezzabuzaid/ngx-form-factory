@@ -10,7 +10,7 @@
         </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <ng-container *ngIf="!external">
+        <ng-container *ngIf="!implicitFields">
             <ng-container *ngFor="let section of sectionsNames">
                 <div class="fields-wrapper">
                     <ng-container *ngFor="let field of sections[section]">
@@ -22,7 +22,7 @@
         <ng-content select="[form-body]"></ng-content>
     </mat-card-content>
     <mat-card-actions>
-        <div class="text-center">
+        <div *ngIf="submitButton" class="text-center">
             <button color="primary" class="px-5 py-1" (click)="submit()" [disabled]="formGroup?.invalid"
                 mat-raised-button>
                 Submit
