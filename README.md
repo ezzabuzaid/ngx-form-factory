@@ -27,10 +27,18 @@ The library has two important classes
  ```
 3. Prepare your class representation of the Form
 4. Create an instance of `Form` in your component with the fields you want to show
-interface {YourInterface}
-`new Form<YourInterface>({});`
+```
+interface IMyInterface {
+	name: string;
+	age: number;
+}
+public form = new Form<IMyInterface>({
+	name: new Field({label: 'Name'}),
+	age: new Field({label: 'Age'})
+});
+```
+5. Add `<ngx-form-factory [formGroup]="form"></ngx-form-factory>`  to your component HTML file
 
-6. Add `<ngx-form-factory></ngx-form-factory>`  to your component HTML file
 
 ## Contributing
 Don't hesitate to open issues and make a pull request to help improve code
@@ -57,7 +65,7 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3Mzg0NjM5OSw1NzQxMDM3NCwtMTQ1MD
-Q2OTg3MiwtNTg3ODQ2NjcyLC0xNzMzNTYwMTgxLDI2MTg2MzUx
-NCwxMDY2MDU0NzQyLDcxNTk0ODYxMCwtMTM0MDc4MTYyOV19
+eyJoaXN0b3J5IjpbNjg4NDk3NTA0LDU3NDEwMzc0LC0xNDUwND
+Y5ODcyLC01ODc4NDY2NzIsLTE3MzM1NjAxODEsMjYxODYzNTE0
+LDEwNjYwNTQ3NDIsNzE1OTQ4NjEwLC0xMzQwNzgxNjI5XX0=
 -->
