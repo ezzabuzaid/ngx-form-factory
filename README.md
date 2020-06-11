@@ -1,5 +1,9 @@
 # Form Factory
 
+Don't forget to follow the project's author, [Ezz](https://github.com/ezzabuzaid), and consider starring the project to show your ❤️ and support.
+
+You already know who hard to create complex reactive
+
 ## Contributing
 Don't hesitate to open issues and make a pull request to help improve code
 1.  Fork it!
@@ -25,5 +29,5 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3MjE1NjMwNCwtMTM0MDc4MTYyOV19
+eyJoaXN0b3J5IjpbMjAwMTk3Mjk5MCwtMTM0MDc4MTYyOV19
 -->
