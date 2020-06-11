@@ -28,7 +28,7 @@ $zIndex: 99;
     }
     .fields-wrapper {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       ngx-field-factory {
         padding: 0 0.5rem;
         min-width: calc(100% / 3);
