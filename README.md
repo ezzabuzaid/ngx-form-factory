@@ -6,8 +6,9 @@ Form factory is an extension of Reactive Form Group/Control that gives the abili
 
 ## Installition
 The library has two important classes that correlates to
-* Form => FormGroup
+* `Form` extends `FormGroup` to add 
 * Field => FormControl
+
 
 3. `npm install @ezzabuzaid/ngx-form-factory`
 
@@ -45,6 +46,6 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjYxODYzNTE0LDEwNjYwNTQ3NDIsNzE1OT
-Q4NjEwLC0xMzQwNzgxNjI5XX0=
+eyJoaXN0b3J5IjpbMjg2ODc1MzAwLDI2MTg2MzUxNCwxMDY2MD
+U0NzQyLDcxNTk0ODYxMCwtMTM0MDc4MTYyOV19
 -->
