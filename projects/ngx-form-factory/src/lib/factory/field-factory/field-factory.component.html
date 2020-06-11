@@ -14,8 +14,7 @@
                 <mat-hint>{{normalField().hint}}</mat-hint>
                 <input [id]="normalField().id" #input type="password" [attr.autocomplete]="normalField().autocomplete"
                     matInput [formControl]="field">
-                <mat-icon class="pointer text-muted font-size-20 position-relative bottom-4" matSuffix
-                    [ngxTogglePasswod]="input">
+                <mat-icon class="password-lock-icon" matSuffix [ngxTogglePasswod]="input">
                     lock</mat-icon>
             </mat-form-field>
         </ng-container>
@@ -64,7 +63,7 @@
         </ng-container>
         <ng-container *ngSwitchCase="types.RADIO">
             <mat-label>{{normalField().label}}</mat-label>
-            <mat-radio-group [id]="normalField().id" class="d-flex flex-column">
+            <mat-radio-group [id]="normalField().id">
                 <mat-radio-button *ngFor="let option of (selectField().options | async)" [value]="option.key">
                     {{option.value}}
                 </mat-radio-button>

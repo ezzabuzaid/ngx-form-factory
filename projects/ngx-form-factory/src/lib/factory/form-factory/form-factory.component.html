@@ -3,8 +3,8 @@
 </ng-container>
 
 <mat-card>
-    <mat-card-header class="py-3 ">
-        <mat-card-title class="text-uppercase">{{ title}}</mat-card-title>
+    <mat-card-header>
+        <mat-card-title>{{ title }}</mat-card-title>
         <mat-card-subtitle>
             <ng-content select="[form-header]"></ng-content>
         </mat-card-subtitle>
@@ -12,9 +12,9 @@
     <mat-card-content>
         <ng-container *ngIf="!external">
             <ng-container *ngFor="let section of sectionsNames">
-                <div class="d-flex flex-wrap">
+                <div class="fields-wrapper">
                     <ng-container *ngFor="let field of sections[section]">
-                        <ngx-field-factory class="pr-4" [field]="field"></ngx-field-factory>
+                        <ngx-field-factory [field]="field"></ngx-field-factory>
                     </ng-container>
                 </div>
             </ng-container>

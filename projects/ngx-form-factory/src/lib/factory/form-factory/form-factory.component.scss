@@ -3,7 +3,7 @@ $zIndex: 99;
   display: block;
   position: relative;
   &::before {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     width: 100%;
@@ -19,10 +19,28 @@ $zIndex: 99;
       z-index: $zIndex;
     }
   }
-  app-field-factory {
-    min-width: calc(100% / 3);
-    flex-grow: 1;
-    flex-basis: 25%;
+  mat-card {
+    mat-card-header {
+      padding-top: 1.5rem;
+    }
+    mat-card-title {
+      text-transform: uppercase;
+    }
+    .fields-wrapper {
+      display: flex;
+      flex-direction: column;
+      ngx-field-factory {
+        padding: 0 0.5rem;
+        min-width: calc(100% / 3);
+        flex-grow: 1;
+        @media (max-width: 1200px) {
+          min-width: calc(100% / 2);
+        }
+        @media (max-width: 768px) {
+          min-width: calc(100% / 1);
+        }
+      }
+    }
   }
 }
 mat-progress-bar {
