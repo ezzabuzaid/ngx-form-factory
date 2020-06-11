@@ -50,9 +50,13 @@ export class AnyModule {}
 // AnyComponent.component.ts
 import { FieldFactoryModule } from '@ezzabuzaid/ngx-form-factory';
 public myField = new Field({ label: 'My Label' });
-// AnyComponent.component.ts
-<ngx-form-field [field]="myField" ></ngx-form-field>
+
+// AnyComponent.component.html
+<ngx-form-field [field]="myField"></ngx-form-field>
 ```
+
+### Other `Field` Types
+There's some fields 
 
 
 ## Contributing
@@ -80,7 +84,7 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyMTQzMjk1LDU3NDEwMzc0LC0xNDUwND
+eyJoaXN0b3J5IjpbMTk3OTQxNjEyLDU3NDEwMzc0LC0xNDUwND
 Y5ODcyLC01ODc4NDY2NzIsLTE3MzM1NjAxODEsMjYxODYzNTE0
 LDEwNjYwNTQ3NDIsNzE1OTQ4NjEwLC0xMzQwNzgxNjI5XX0=
 -->
