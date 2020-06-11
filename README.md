@@ -57,10 +57,20 @@ public myField = new Field({ label: 'My Label' });
 
 ### Other `Field` Types
 Absouletly you want to have non-text fields such as `Select`,  `Date`, ..etc
-there's only some fields shipped with the library for now
+there's only some custom fields shipped with the library for now
 * `Field`
 * `DateField` 
 * `SelectField`
+
+The available types are
+* TEXT
+* TEXTAREA
+* EMAIL
+* PASSWORD
+* CHECKBOX
+* RADIO
+* TEL
+* COUNTRY
 
 ## Contributing
 Don't hesitate to open issues and make a pull request to help improve code
@@ -87,8 +97,8 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2MDMzMjc4NSwxMzMzNzU2NDI2LDU3ND
-EwMzc0LC0xNDUwNDY5ODcyLC01ODc4NDY2NzIsLTE3MzM1NjAx
-ODEsMjYxODYzNTE0LDEwNjYwNTQ3NDIsNzE1OTQ4NjEwLC0xMz
-QwNzgxNjI5XX0=
+eyJoaXN0b3J5IjpbODI3Mzc5MTE2LDEzMzM3NTY0MjYsNTc0MT
+AzNzQsLTE0NTA0Njk4NzIsLTU4Nzg0NjY3MiwtMTczMzU2MDE4
+MSwyNjE4NjM1MTQsMTA2NjA1NDc0Miw3MTU5NDg2MTAsLTEzND
+A3ODE2MjldfQ==
 -->
