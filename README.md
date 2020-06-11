@@ -5,18 +5,20 @@ Don't forget to follow the project's author, [Ezz](https://github.com/ezzabuzaid
 Form factory is an extension of Reactive Form Group/Control that gives the ability to dynamically create strong typed forms
 
 ## Installition
-The library has two important classes that 
+The library has two important classes that correlates to
+* Form => FormGroup
+* Field => FormControl
 
-1. `npm install @ezzabuzaid/ngx-form-factory`
+3. `npm install @ezzabuzaid/ngx-form-factory`
 
-2. Import the `FieldFactoryModule`, `FormFactoryModule` in your module
+4. Import the `FieldFactoryModule`, `FormFactoryModule` in your module
  ```
  import {
 	 FieldFactoryModule, FormFactoryModule
  } from  '@ezzabuzaid/ngx-form-factory';
  ```
-3. Add `<ngx-form-factory> </ngx-form-factory>`  to your component HTML file
-4. Create 
+5. Add `<ngx-form-factory> </ngx-form-factory>`  to your component HTML file
+6. Create 
 
 ## Contributing
 Don't hesitate to open issues and make a pull request to help improve code
@@ -43,6 +45,6 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzM1OTQ0MTksMTA2NjA1NDc0Miw3MT
-U5NDg2MTAsLTEzNDA3ODE2MjldfQ==
+eyJoaXN0b3J5IjpbMjYxODYzNTE0LDEwNjYwNTQ3NDIsNzE1OT
+Q4NjEwLC0xMzQwNzgxNjI5XX0=
 -->
