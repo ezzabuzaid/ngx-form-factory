@@ -25,9 +25,10 @@ The library has two important classes
 	 FieldFactoryModule, FormFactoryModule
  } from  '@ezzabuzaid/ngx-form-factory';
  ```
+3. Prepare your interface/class
+4. Create an instance of `Form` `new Form<YourInterface>({});` in 
+5. Choose the fields you want to dislpay
 3. Add `<ngx-form-factory></ngx-form-factory>`  to your component HTML file
-4. Create an instance from `Form` new Form({});
-5. 
 
 ## Contributing
 Don't hesitate to open issues and make a pull request to help improve code
@@ -54,7 +55,7 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTE1NTI1NTksNTc0MTAzNzQsLTE0NT
+eyJoaXN0b3J5IjpbLTE4OTY2NjU2ODEsNTc0MTAzNzQsLTE0NT
 A0Njk4NzIsLTU4Nzg0NjY3MiwtMTczMzU2MDE4MSwyNjE4NjM1
 MTQsMTA2NjA1NDc0Miw3MTU5NDg2MTAsLTEzNDA3ODE2MjldfQ
 ==
