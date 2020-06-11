@@ -14,7 +14,8 @@ The library has two important classes that correlates to
  
 * `Field` extends `FormControl` with additional instance methods
 	1. `addValidator(validator)` add an array of Validator without lossing the existing ones
-	2. `getElement` return the asocciated element with that control
+	2. `getElement()` return the asocciated element with that `Field`
+	3. `on(eventName)` the same as `element.addEventListener(eventName, handler)` but instead it will return an `Observable` that you easily apply your operator on top of it.
 
 3. `npm install @ezzabuzaid/ngx-form-factory`
 
@@ -52,7 +53,7 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyNDU4OTc0NCwtNTg3ODQ2NjcyLC0xNz
-MzNTYwMTgxLDI2MTg2MzUxNCwxMDY2MDU0NzQyLDcxNTk0ODYx
-MCwtMTM0MDc4MTYyOV19
+eyJoaXN0b3J5IjpbLTE0NTA0Njk4NzIsLTU4Nzg0NjY3MiwtMT
+czMzU2MDE4MSwyNjE4NjM1MTQsMTA2NjA1NDc0Miw3MTU5NDg2
+MTAsLTEzNDA3ODE2MjldfQ==
 -->
