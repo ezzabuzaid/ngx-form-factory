@@ -7,7 +7,8 @@ Form factory is an extension of Reactive Form Group/Control that gives the abili
 ## Installition
 1. `npm install @ezzabuzaid/ngx-form-factory`
 
-2. 
+2. Import the `FieldFactoryModule`, `FormFactoryModule` in your module
+ ` import { FieldFactoryModule, FormFactoryModule } from  '@ezzabuzaid/ngx-form-factory';`
 
 ## Contributing
 Don't hesitate to open issues and make a pull request to help improve code
@@ -34,6 +35,6 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxNzY4MTc4NCwxMDY2MDU0NzQyLDcxNT
-k0ODYxMCwtMTM0MDc4MTYyOV19
+eyJoaXN0b3J5IjpbODgyMjMwNzk3LDEwNjYwNTQ3NDIsNzE1OT
+Q4NjEwLC0xMzQwNzgxNjI5XX0=
 -->
