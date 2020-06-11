@@ -43,7 +43,6 @@ export interface IBaseFieldOptions<T> {
 }
 
 export class BaseField<T> extends FormControl implements IBaseField<T> {
-    static defaultSection = generateAlphabeticString();
     public type: EFieldType = null;
     public section: string = null;
     public value: T = null;
@@ -54,7 +53,7 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
         super(options?.value, options?.validatorOrOpts, options?.asyncValidator);
         this.id = options?.id ?? generateAlphabeticString(5);
         this.autocomplete = options?.autocomplete;
-        this.section = options?.section ?? BaseField.defaultSection;
+        this.section = options?.section ?? generateAlphabeticString(5);
     }
 
     addValidator(...validator: ValidatorFn[]) {
