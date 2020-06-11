@@ -56,7 +56,7 @@ public myField = new Field({ label: 'My Label' });
 ```
 
 ### Other `Field` Types
-There's some fields 
+Absouletly you want to have non-text fields such as `Select` field or perhaps `Date` Field
 
 
 ## Contributing
@@ -84,7 +84,7 @@ For more information on SemVer, please visit http://semver.org.
 
 # Built with love <3
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3OTQxNjEyLDU3NDEwMzc0LC0xNDUwND
-Y5ODcyLC01ODc4NDY2NzIsLTE3MzM1NjAxODEsMjYxODYzNTE0
-LDEwNjYwNTQ3NDIsNzE1OTQ4NjEwLC0xMzQwNzgxNjI5XX0=
+eyJoaXN0b3J5IjpbMTMzMzc1NjQyNiw1NzQxMDM3NCwtMTQ1MD
+Q2OTg3MiwtNTg3ODQ2NjcyLC0xNzMzNTYwMTgxLDI2MTg2MzUx
+NCwxMDY2MDU0NzQyLDcxNTk0ODYxMCwtMTM0MDc4MTYyOV19
 -->
