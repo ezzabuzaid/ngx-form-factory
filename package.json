@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "sync-readme": "cp ./README.md ./projects/ngx-form-factory",
-    "prepublish": "npm run build",
+    "sync-readme": "cp ./README.md ./dist/ngx-form-factory",
+    "prepublish": "npm run build && npm run sync-readme",
     "version:patch": "cd ./projects/ngx-form-factory/ && npm version patch -m 'update patch version'",
     "version:minor": "cd ./projects/ngx-form-factory/ && npm version minor -m 'update minor version'",
     "version:major": "cd ./projects/ngx-form-factory/ && npm version major -m 'update major version'"
