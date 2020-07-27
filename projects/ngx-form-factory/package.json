@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "tslib": "^2.0.0"
-},
+  },
   "name": "@ezzabuzaid/ngx-form-factory",
-  "version": "0.0.20",
+  "version": "0.1.0",
   "bugs": {
     "email": "ezzabuzaid@hotmail.com",
     "url": "https://github.com/ezzabuzaid/ngx-form-factory/issues"
