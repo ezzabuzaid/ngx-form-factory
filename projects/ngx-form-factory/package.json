@@ -1,10 +1,10 @@
 {
   "peerDependencies": {
-    "@angular/common": "^9.0.7",
-    "@angular/core": "^9.0.7",
-    "@angular/material": "^9.2.4",
-    "@angular/cdk": "^9.2.4",
-    "@angular/forms": "~9.0.2"
+    "@angular/common": "~10.0.5",
+    "@angular/core": "~10.0.5",
+    "@angular/material": "^10.1.0",
+    "@angular/cdk": "^10.1.0",
+    "@angular/forms": "~10.0.5"
   },
   "dependencies": {
     "tslib": "^2.0.0"
