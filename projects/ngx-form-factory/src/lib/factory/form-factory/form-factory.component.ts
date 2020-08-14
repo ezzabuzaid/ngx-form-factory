@@ -17,11 +17,13 @@ export interface SubmitEvent<T = any> {
 export class FormFactoryComponent implements OnInit, OnDestroy {
   public readonly progressListener = this.formWidgetManager.watch();
   private readonly subscription = new Subject();
+  @Input() submitButtonDisableState = false;
   @Output() public readonly onSubmit = new EventEmitter<SubmitEvent>();
   @Input() public title: string = null;
   @Input() formGroup: Form<any>;
   @Input() submitButton = true;
   @Input() implicitFields = true;
+  @Input() autoValidateSubmitButton = true;
   @HostBinding('class.loading') public loading = false;
 
   sectionsNames: string[] = [];
@@ -77,6 +79,14 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
       acc[curr.section].push(curr);
       return acc;
     }, {});
+  }
+
+  disableSubmitButton() {
+    this.submitButtonDisableState = true;
+  }
+
+  enableSubmitButton() {
+    this.submitButtonDisableState = false;
   }
 
 }

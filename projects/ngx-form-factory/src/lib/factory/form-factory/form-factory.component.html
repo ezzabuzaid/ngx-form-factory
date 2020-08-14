@@ -23,7 +23,8 @@
     </mat-card-content>
     <mat-card-actions>
         <div *ngIf="submitButton" class="text-center">
-            <button color="primary" class="px-5 py-1" (click)="submit()" [disabled]="formGroup?.invalid"
+            <button color="primary" class="px-5 py-1" (click)="submit()"
+                [disabled]="(autoValidateSubmitButton && formGroup?.invalid) || submitButtonDisableState"
                 mat-raised-button>
                 Submit
             </button>

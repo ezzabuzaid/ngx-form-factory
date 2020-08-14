@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { FormContainerModule } from 'ngx-form-factory';
+import { FormFactoryModule } from '@ezzabuzaid/ngx-form-factory';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { FormContainerModule } from 'ngx-form-factory';
   ],
   imports: [
     BrowserModule,
-    FormContainerModule
+    FormFactoryModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
