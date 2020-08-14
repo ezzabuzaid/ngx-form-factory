@@ -51,6 +51,7 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
 
     constructor(options?: IBaseFieldOptions<T>) {
         super(options?.value, options?.validatorOrOpts, options?.asyncValidator);
+        this.value = options?.value;
         this.id = options?.id ?? generateAlphabeticString(5);
         this.autocomplete = options?.autocomplete;
         this.section = options?.section ?? generateAlphabeticString(5);
