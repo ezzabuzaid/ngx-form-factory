@@ -14,3 +14,7 @@ export function generateAlphabeticString(length = 5): string {
     }
     return randomString;
 }
+
+export function isNullorUndefined(value: any) {
+    return value === null || value === undefined;
+}

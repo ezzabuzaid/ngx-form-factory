@@ -10,7 +10,7 @@
     "tslib": "^2.0.0"
   },
   "name": "@ezzabuzaid/ngx-form-factory",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "bugs": {
     "email": "ezzabuzaid@hotmail.com",
     "url": "https://github.com/ezzabuzaid/ngx-form-factory/issues"
