@@ -27,7 +27,6 @@ export class SelectOption {
         }
     }
 }
-new SelectOption('',)
 
 interface ISelectFieldOptions<T> extends IFieldOptions<T> {
     options: Observable<SelectOption[]>;
