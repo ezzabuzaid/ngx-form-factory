@@ -20,7 +20,8 @@ export enum EFieldType {
     NUMBER,
     TEL,
     COUNTRY,
-    RAW_FIELD
+    RAW_FIELD,
+    HIDDEN
 }
 
 export interface IBaseField<T> extends FormControl {

@@ -27,10 +27,10 @@ export class FieldFactoryComponent implements OnInit {
     const rawField = this.rawField();
     if (rawField) {
       const component = this.createComponent(rawField.component);
-      Object.keys(rawField.inputs).forEach(input => {
+      Object.keys(rawField.inputs ?? {}).forEach(input => {
         component[input] = rawField.inputs[input];
       });
-      Object.keys(rawField.outputs).forEach(output => {
+      Object.keys(rawField.outputs ?? {}).forEach(output => {
         (component[output] as EventEmitter<any>).subscribe(rawField.outputs[output]);
       });
     }

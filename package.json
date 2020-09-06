@@ -11,9 +11,9 @@
     "e2e": "ng e2e",
     "sync-readme": "cp ./README.md ./dist/ngx-form-factory",
     "prepublish": "npm run build && npm run sync-readme",
-    "version:patch": "node changelog && cd ./projects/ngx-form-factory/ && npm version patch -m 'update patch version'",
-    "version:minor": "node changelog && cd ./projects/ngx-form-factory/ && npm version minor -m 'update minor version'",
-    "version:major": "node changelog && cd ./projects/ngx-form-factory/ && npm version major -m 'update major version'"
+    "version:patch": "cd ./projects/ngx-form-factory/ && npm version patch -m 'update patch version'",
+    "version:minor": "cd ./projects/ngx-form-factory/ && npm version minor -m 'update minor version'",
+    "version:major": "cd ./projects/ngx-form-factory/ && npm version major -m 'update major version'"
   },
   "private": false,
   "dependencies": {
