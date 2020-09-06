@@ -87,6 +87,10 @@ The same as Field with **`SELECT`** type and `multiple` option used to create **
  `new SelectField({options: [new SelectOption('label', 'key')]})`
 The available types could be found in `EFieldType` enum
 
+* `RawField`
+Special field type that takes a component to be used as field
+have two important attributes, inputs and output that maps to component inputs and outputs
+
 * TEXT
 * TEXTAREA
 * DATE

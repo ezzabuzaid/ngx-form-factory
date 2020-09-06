@@ -1,10 +1,11 @@
 import {
   ApplicationRef, Component, ComponentFactoryResolver,
-  ElementRef, EmbeddedViewRef, Injector, Input, OnInit, Type
+  ElementRef, EmbeddedViewRef, Injector, Input, OnInit, Type, EventEmitter
 } from '@angular/core';
 import { Field, IRawFieldComponent, RawField, SelectField } from '../../fields';
 import { EFieldType } from '../../fields/base';
 import { DateField } from '../../fields/date';
+import { EventManager } from '@angular/platform-browser';
 
 @Component({
   selector: 'ngx-field-factory',
@@ -23,8 +24,15 @@ export class FieldFactoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.rawField()) {
-      this.createComponent(this.rawField().component);
+    const rawField = this.rawField();
+    if (rawField) {
+      const component = this.createComponent(rawField.component);
+      Object.keys(rawField.inputs).forEach(input => {
+        component[input] = rawField.inputs[input];
+      });
+      Object.keys(rawField.outputs).forEach(output => {
+        (component[output] as EventEmitter<any>).subscribe(rawField.outputs[output]);
+      });
     }
   }
 
@@ -35,6 +43,7 @@ export class FieldFactoryComponent implements OnInit {
     this.applicationRef.attachView(componentRef.hostView);
     const element = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     this.elementRef.nativeElement.appendChild(element);
+    return componentRef.instance;
   }
 
 
