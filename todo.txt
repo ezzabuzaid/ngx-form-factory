@@ -1,2 +1,0 @@
-1. Write docs
-2. Add demo app

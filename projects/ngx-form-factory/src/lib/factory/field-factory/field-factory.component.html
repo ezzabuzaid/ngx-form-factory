@@ -47,6 +47,19 @@
                 <mat-datepicker #datePicker></mat-datepicker>
             </mat-form-field>
         </ng-container>
+        <ng-container *ngSwitchCase="types.TIME">
+            <mat-form-field>
+                <mat-label>{{ normalField().label }}</mat-label>
+                <input [max]="timeField().max" [min]="timeField().min" [id]="timeField().id" matInput
+                    [formControl]="field" type="time">
+            </mat-form-field>
+        </ng-container>
+        <ng-container *ngSwitchCase="types.DATETIME">
+            <mat-form-field>
+                <mat-label>{{ normalField().label }}</mat-label>
+                <input [id]="normalField().id" matInput [formControl]="field" type="datetime-local">
+            </mat-form-field>
+        </ng-container>
         <ng-container *ngSwitchCase="types.CHECKBOX">
             <mat-checkbox [id]="normalField().id" [formControl]="field">{{normalField().label}}
             </mat-checkbox>

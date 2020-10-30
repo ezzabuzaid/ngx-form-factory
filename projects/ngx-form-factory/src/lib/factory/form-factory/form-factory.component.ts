@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Form, TFields, IBaseField } from '../../fields/base';
+import { Form, IBaseField, TFields } from '../../fields/base';
 import { FormFactoryManager } from '../form-factory.manager';
 
 export interface SubmitEvent<T = any> {

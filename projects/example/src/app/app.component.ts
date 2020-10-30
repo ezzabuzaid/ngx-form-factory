@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { Form } from 'dist/ngx-form-factory/lib/fields/base';
-import { Field } from 'dist/ngx-form-factory/lib/fields';
-import { DateField } from 'dist/ngx-form-factory/lib/fields/date';
+import { Form, Field, EFieldType, TimeField } from '@ezzabuzaid/ngx-form-factory';
 
-interface User {
-  username?: string;
-  password?: string;
-  mobile?: string;
-  age?: number;
-  created_at?: Date;
+interface IForm {
+  datetime: string;
 }
 
 @Component({
@@ -18,9 +12,8 @@ interface User {
 })
 export class AppComponent {
   title = 'example';
-  form = new Form<User>({
-    age: new Field(),
-    created_at: new DateField()
+  form = new Form<IForm>({
+    datetime: new TimeField({ type: EFieldType.TIME, label: 'Test' }),
   });
   constructor() { }
 }

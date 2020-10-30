@@ -16,12 +16,13 @@ export enum EFieldType {
     DATE,
     DATETIME,
     CHECKBOX,
+    TIME,
     RADIO,
     NUMBER,
     TEL,
     COUNTRY,
     RAW_FIELD,
-    HIDDEN
+    HIDDEN,
 }
 
 export interface IBaseField<T> extends FormControl {

@@ -4,3 +4,4 @@ export * from './field';
 export * from './raw';
 export * from './select';
 export * from './date';
+export * from './time';

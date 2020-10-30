@@ -1,11 +1,10 @@
 import {
   ApplicationRef, Component, ComponentFactoryResolver,
-  ElementRef, EmbeddedViewRef, Injector, Input, OnInit, Type, EventEmitter
+  ElementRef, EmbeddedViewRef, EventEmitter, Injector, Input, OnInit, Type
 } from '@angular/core';
-import { Field, IRawFieldComponent, RawField, SelectField } from '../../fields';
+import { Field, IRawFieldComponent, RawField, SelectField, TimeField } from '../../fields';
 import { EFieldType } from '../../fields/base';
 import { DateField } from '../../fields/date';
-import { EventManager } from '@angular/platform-browser';
 
 @Component({
   selector: 'ngx-field-factory',
@@ -61,6 +60,10 @@ export class FieldFactoryComponent implements OnInit {
 
   dateField() {
     return this.field instanceof DateField ? this.field : null;
+  }
+
+  timeField() {
+    return this.field instanceof TimeField ? this.field : null;
   }
 
 
