@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "removeComments": false
+    "removeComments": false,
+    "enableIvy": false
   }
 }
