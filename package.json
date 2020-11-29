@@ -4,10 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "sync-readme": "cp ./README.md ./dist/ngx-form-factory",
+    "version:patch": "cd ./projects/ngx-form-factory/ && npm version patch -m 'update patch version'",
+    "version:minor": "cd ./projects/ngx-form-factory/ && npm version minor -m 'update minor version'",
+    "version:major": "cd ./projects/ngx-form-factory/ && npm version major -m 'update major version'"
   },
   "private": true,
   "dependencies": {

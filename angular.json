@@ -165,7 +165,7 @@
       }
     }
   },
-  "defaultProject": "form-factory",
+  "defaultProject": "ngx-form-factory",
   "cli": {
     "analytics": "d4e4ba91-0edc-4c39-acc2-abc79ea46255"
   }
