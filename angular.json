@@ -123,6 +123,50 @@
           }
         }
       }
-    }},
-  "defaultProject": "form-factory"
+    },
+    "ngx-form-factory": {
+      "projectType": "library",
+      "root": "projects/ngx-form-factory",
+      "sourceRoot": "projects/ngx-form-factory/src",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-form-factory/tsconfig.lib.json",
+            "project": "projects/ngx-form-factory/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-form-factory/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-form-factory/src/test.ts",
+            "tsConfig": "projects/ngx-form-factory/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-form-factory/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-form-factory/tsconfig.lib.json",
+              "projects/ngx-form-factory/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "form-factory",
+  "cli": {
+    "analytics": "d4e4ba91-0edc-4c39-acc2-abc79ea46255"
+  }
 }

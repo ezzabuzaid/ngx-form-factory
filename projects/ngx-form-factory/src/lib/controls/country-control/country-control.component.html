@@ -1,0 +1,17 @@
+<mat-form-field>
+    <mat-label>{{formControl?.label}}</mat-label>
+    <mat-select matInput [formControl]="formControl" (selectionChange)="updateModel($event?.value)">
+        <mat-select-trigger>
+            <div class="iti__flag-box">
+                <div class="iti__flag iti__{{currentCountry?.iso2?.toLowerCase()}}"></div>
+            </div>
+            {{currentCountry?.name}}
+        </mat-select-trigger>
+        <mat-option *ngFor="let country of countries" [value]="country.iso2">
+            <div class="iti__flag-box">
+                <div class="iti__flag iti__{{country.iso2.toLowerCase()}}"></div>
+            </div>
+            {{ country.name }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

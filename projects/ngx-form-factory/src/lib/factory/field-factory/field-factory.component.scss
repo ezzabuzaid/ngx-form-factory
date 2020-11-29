@@ -1,0 +1,13 @@
+:host {
+    .password-lock-icon {
+        cursor: pointer;
+        color: #6c757d;
+        font-size: 20px;
+        position: relative;
+        bottom: 4px;
+    }
+    mat-radio-group {
+        display: flex;
+        flex-direction: column;
+    }
+}

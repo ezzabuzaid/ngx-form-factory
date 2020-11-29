@@ -1,0 +1,54 @@
+$zIndex: 99;
+:host {
+  display: block;
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &.loading {
+    &::before {
+      background-color: rgba(255, 255, 255, 0.5);
+      z-index: $zIndex;
+    }
+  }
+  mat-card {
+    mat-card-header {
+      padding-top: 1.5rem;
+    }
+    mat-card-content {
+      padding-top: 1rem;
+    }
+    mat-card-title {
+      text-transform: uppercase;
+    }
+    .fields-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      ngx-field-factory {
+        padding: 0 0.5rem;
+        min-width: calc(100% / 3);
+        flex-grow: 1;
+        @media (max-width: 1200px) {
+          min-width: calc(100% / 2);
+        }
+        @media (max-width: 768px) {
+          min-width: calc(100% / 1);
+        }
+      }
+    }
+  }
+}
+mat-progress-bar {
+  position: absolute;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  z-index: $zIndex + 1;
+}
