@@ -66,5 +66,16 @@ export class FieldFactoryComponent implements OnInit {
     return this.field instanceof TimeField ? this.field : null;
   }
 
+  errors() {
+    return Object.entries(this.field.errorsMessages ?? {}).map(([errorName, value]) => {
+      return [
+        errorName,
+        typeof value === 'function'
+          ? () => value(this.field.value)
+          : () => value
+      ]
+    });
+  }
+
 
 }

@@ -2,7 +2,13 @@ import { BaseField, EFieldType, IBaseField, IBaseFieldOptions } from './base';
 
 
 export interface IFieldOptions<T> extends IBaseFieldOptions<T> {
+    /**
+     * Field placeholder 
+     */
     label?: string;
+    /**
+     * small text to show underneath the field
+     */
     hint?: string;
 }
 

@@ -6,6 +6,9 @@
                 <mat-hint>{{normalField().hint}}</mat-hint>
                 <input [id]="normalField().id" type="text" [attr.autocomplete]="normalField().autocomplete" matInput
                     [formControl]="field">
+                <mat-error *ngFor="let error of errors()">
+                    <span *ngIf="normalField().hasError(error[0])">{{error[1]()}}</span>
+                </mat-error>
             </mat-form-field>
         </ng-container>
         <ng-container *ngSwitchCase="types.PASSWORD">
@@ -49,15 +52,16 @@
         </ng-container>
         <ng-container *ngSwitchCase="types.TIME">
             <mat-form-field>
-                <mat-label>{{ normalField().label }}</mat-label>
+                <mat-label>{{ timeField().label }}</mat-label>
                 <input [max]="timeField().max" [min]="timeField().min" [id]="timeField().id" matInput
                     [formControl]="field" type="time">
             </mat-form-field>
         </ng-container>
         <ng-container *ngSwitchCase="types.DATETIME">
             <mat-form-field>
-                <mat-label>{{ normalField().label }}</mat-label>
-                <input [id]="normalField().id" matInput [formControl]="field" type="datetime-local">
+                <mat-label>{{ timeField().label }}</mat-label>
+                <input [max]="timeField().max" [min]="timeField().min" [id]="timeField().id" matInput
+                    [formControl]="field" type="datetime-local">
             </mat-form-field>
         </ng-container>
         <ng-container *ngSwitchCase="types.CHECKBOX">
@@ -75,8 +79,8 @@
             </mat-form-field>
         </ng-container>
         <ng-container *ngSwitchCase="types.RADIO">
-            <mat-label>{{normalField().label}}</mat-label>
-            <mat-radio-group [id]="normalField().id">
+            <mat-label>{{selectField().label}}</mat-label>
+            <mat-radio-group [id]="selectField().id">
                 <mat-radio-button *ngFor="let option of (selectField().options | async)" [value]="option.key">
                     {{option.value}}
                 </mat-radio-button>

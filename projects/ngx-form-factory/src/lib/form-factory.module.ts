@@ -16,6 +16,7 @@ import { MobileControlModule, CountryControlModule } from './controls';
 import { FieldFactoryComponent } from './factory/field-factory/field-factory.component';
 import { FormFactoryComponent } from './factory/form-factory/form-factory.component';
 import { TogglePasswodDirective } from './shared';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { TogglePasswodDirective } from './shared';
     ],
     imports: [
         CommonModule,
+        BrowserAnimationsModule,
         ReactiveFormsModule,
         MatCardModule,
         MatProgressBarModule,
