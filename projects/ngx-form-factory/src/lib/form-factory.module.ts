@@ -46,4 +46,4 @@ import { TogglePasswodDirective } from './shared';
         TogglePasswodDirective
     ],
 })
-export class NgxFormFactoryModule { }
+export class FormFactoryModule { }
