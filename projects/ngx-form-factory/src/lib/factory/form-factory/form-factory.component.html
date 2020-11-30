@@ -4,7 +4,7 @@
 
 <mat-card class="mat-elevation-z0">
     <mat-card-header>
-        <mat-card-title>{{ title }}</mat-card-title>
+        <mat-card-title *ngIf="title">{{ title }}</mat-card-title>
         <mat-card-subtitle>
             <ng-content select="[form-header]"></ng-content>
         </mat-card-subtitle>

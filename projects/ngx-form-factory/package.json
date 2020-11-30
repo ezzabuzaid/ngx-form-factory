@@ -15,15 +15,14 @@
     "email": "ezzabuzaid@hotmail.com",
     "url": "https://github.com/ezzabuzaid/ngx-form-factory/issues"
   },
-  "description": "Allows to pass custom options to http interceptors",
+  "description": "Dynamic angular reactive form creation with material design",
   "keywords": [
     "Angular",
-    "http",
-    "interceptor",
-    "interceptors",
-    "module augmentation",
-    "angular interceptors",
-    "angular interceptor"
+    "Forms",
+    "Reactive forms",
+    "Create form on runtime",
+    "json based forms",
+    "ezzabuzaid"
   ],
   "author": {
     "name": "ezzabuzaid",

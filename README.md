@@ -37,13 +37,30 @@ therefore, I started working on this library with a goal of easy defining forms 
 <ngx-form-factory [formGroup]="form"></ngx-form-factory>
 ```
 
+ 
 and here you go! all setup is done.
 
-## API
+`ngx-form-factory` will loop over all defined form fields and create corresponding <mat-form-field> for each of them.
+those fields will be included in a <mat-card> component to give them nice look.
+
+| Property                  | Type  | Default | Description
+| ------------------------- | ----- | ------- | -----------
+| formGroup | @Input() | undefined | Form instance
+| title | @Input() | undefined | Form title that will be shown in <mat-card-title>
+| implicitFields | @Input() | true | whether you want auto create form
+| submitButton | @Input() | true | whether to show submit button or not
+| submitButtonDisableState | @Input() | false | initial submit button disable state
+| autoValidateSubmitButton | @Input() | true | whether you want auto disable and enable submit button
+| onSubmit | @Output() | new EventEmitter<SubmitEvent>() | listen to submit
+| [form-header] | ng-content | | project HTML in <mat-card-subtitle>
+| [form-body] | ng-content | | project HTML in <mat-card-content>, handy when implicitFields is false so you can originize your fields as you need with <ngx-form-field>
+| [form-footer] | ng-content | | project HTML in  <mat-card-actions>
+
+ ## API
 
 The library has two important classes with additional options as argument
 
-* `Form` extends `FormGroup` with additional instance methods, at take the same parameter as FormGroup class
+* `Form` extends `FormGroup` with additional instance methods, it take the same parameter as FormGroup class
 
     1. `getControlValue(controlName, defaultValue)` returns the value of the specified control name and defaultValue if the value is null or undefined
 
@@ -131,7 +148,7 @@ const field = new Field({
 
 Note: `COUNTRY` and `TEL` types are using `intl-tel-input` library, so make sure to install it if you want to use it
 
-### Example
+## Example
 
 * Form
 
