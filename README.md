@@ -51,10 +51,12 @@ those fields will be included in a <mat-card> component to give them nice look.
 | submitButton | @Input() | true | whether to show submit button or not
 | submitButtonDisableState | @Input() | false | initial submit button disable state
 | autoValidateSubmitButton | @Input() | true | whether you want auto disable and enable submit button
-| onSubmit | @Output() | new EventEmitter<SubmitEvent>() | listen to submit
-| [form-header] | ng-content | | project HTML in <mat-card-subtitle>
-| [form-body] | ng-content | | project HTML in <mat-card-content>, handy when implicitFields is false so you can originize your fields as you need with <ngx-form-field>
-| [form-footer] | ng-content | | project HTML in  <mat-card-actions>
+| onSubmit | @Output() | new EventEmitter< `SubmitEvent` >() | listen to submit button click
+| [form-header] | ng-content | | project HTML in `<mat-card-subtitle>`
+
+| [form-body] | ng-content | | project HTML in `<mat-card-content>` , handy when implicitFields is false so you can originize your fields as you need with `<ngx-form-field>`
+
+| [form-footer] | ng-content | | project HTML in `<mat-card-actions>`
 
  ## API
 
