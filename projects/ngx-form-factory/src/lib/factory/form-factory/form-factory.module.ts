@@ -20,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
         MatProgressBarModule,
         FieldFactoryModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
     ],
     exports: [
         FormFactoryComponent

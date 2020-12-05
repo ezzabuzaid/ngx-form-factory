@@ -3,11 +3,9 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Form, IBaseField, TFields } from '../../fields/base';
 import { FormFactoryManager } from '../form-factory.manager';
+import { SubmitEvent } from './submit_event';
 
-export interface SubmitEvent<T = any> {
-  value: T;
-  valid: boolean;
-}
+
 
 @Component({
   selector: 'ngx-form-factory',
