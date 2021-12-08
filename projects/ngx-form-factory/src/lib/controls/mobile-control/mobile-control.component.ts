@@ -9,7 +9,6 @@ import { PhoneNumberAssociatedWithCountryValidator } from './phonenumber.validat
 @Component({
   selector: 'ngx-mobile-control',
   templateUrl: './mobile-control.component.html',
-  styleUrls: ['./mobile-control.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{
     provide: NG_VALUE_ACCESSOR,

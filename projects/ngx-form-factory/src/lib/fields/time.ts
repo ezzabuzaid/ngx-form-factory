@@ -37,7 +37,7 @@ export class TimeField extends Field<string> implements ITimeField {
     public max?: string;
     constructor(options?: ITimeFieldOptions) {
         super(options);
-        this.type = options.type ?? EFieldType.TIME;
+        this.type = options?.type ?? EFieldType.TIME;
         this.min = options?.min;
         this.max = options?.max;
     }

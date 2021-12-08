@@ -10,9 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
-    declarations: [
-        FormFactoryComponent,
-    ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
@@ -21,9 +18,6 @@ import { MatIconModule } from '@angular/material/icon';
         FieldFactoryModule,
         MatButtonModule,
         MatIconModule,
-    ],
-    exports: [
-        FormFactoryComponent
     ],
 })
 export class FormFactoryModule { }

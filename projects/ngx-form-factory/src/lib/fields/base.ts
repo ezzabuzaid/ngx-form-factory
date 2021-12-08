@@ -154,7 +154,7 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
         this.id = options?.id ?? generateAlphabeticString(5);
         this.autocomplete = options?.autocomplete;
         this.section = options?.section ?? generateAlphabeticString(5);
-        this.errorsMessages = options.errors;
+        this.errorsMessages = options?.errors;
     }
 
     /**

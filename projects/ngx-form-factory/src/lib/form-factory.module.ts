@@ -17,13 +17,10 @@ import { FieldFactoryComponent } from './factory/field-factory/field-factory.com
 import { FormFactoryComponent } from './factory/form-factory/form-factory.component';
 import { TogglePasswodDirective } from './shared';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FieldFactoryModule } from 'ngx-form-factory';
 
 @NgModule({
-    declarations: [
-        FormFactoryComponent,
-        FieldFactoryComponent,
-        TogglePasswodDirective
-    ],
+
     imports: [
         CommonModule,
         ReactiveFormsModule,
@@ -40,11 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         CountryControlModule,
         MatInputModule,
         MatCheckboxModule,
-    ],
-    exports: [
-        FormFactoryComponent,
-        FieldFactoryComponent,
-        TogglePasswodDirective
-    ],
+        FieldFactoryModule
+    ]
 })
 export class FormFactoryModule { }

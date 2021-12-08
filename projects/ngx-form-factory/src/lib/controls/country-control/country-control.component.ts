@@ -5,7 +5,6 @@ import { IField } from '../../fields';
 @Component({
   selector: 'ngx-country-control',
   templateUrl: './country-control.component.html',
-  styleUrls: ['./country-control.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => CountryControlComponent),

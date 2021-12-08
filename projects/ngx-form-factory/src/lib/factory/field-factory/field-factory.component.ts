@@ -1,5 +1,5 @@
 import {
-  ApplicationRef, Component, ComponentFactoryResolver,
+  ApplicationRef, ChangeDetectionStrategy, Component, ComponentFactoryResolver,
   ElementRef, EmbeddedViewRef, EventEmitter, Injector, Input, OnInit, Type
 } from '@angular/core';
 import { Field, IRawFieldComponent, RawField, SelectField, TimeField } from '../../fields';
@@ -9,7 +9,8 @@ import { DateField } from '../../fields/date';
 @Component({
   selector: 'ngx-field-factory',
   templateUrl: './field-factory.component.html',
-  styleUrls: ['./field-factory.component.scss']
+  styleUrls: ['./field-factory.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FieldFactoryComponent implements OnInit {
   @Input() field: Field<any> | RawField<any> | DateField | SelectField<any>;
@@ -23,8 +24,12 @@ export class FieldFactoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (!this.field) {
+      throw new Error('Field is not provided');
+    }
     const rawField = this.rawField();
     if (rawField) {
+      // Use dynamic view creator directive instead
       const component = this.createComponent(rawField.component);
       Object.keys(rawField.inputs ?? {}).forEach(input => {
         component[input] = rawField.inputs[input];
