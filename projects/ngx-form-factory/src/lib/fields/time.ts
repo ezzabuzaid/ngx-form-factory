@@ -1,6 +1,6 @@
 import { EFieldType } from './base';
 import { Field, IFieldOptions } from './field';
-
+import { Time } from '@angular/common';
 
 export interface ITimeFieldOptions extends IFieldOptions<string> {
     /**
@@ -32,7 +32,7 @@ export interface ITimeField {
     max?: string;
 }
 
-export class TimeField extends Field<string> implements ITimeField {
+export class TimeField extends Field<Time> implements ITimeField {
     public min?: string;
     public max?: string;
     constructor(options?: ITimeFieldOptions) {
