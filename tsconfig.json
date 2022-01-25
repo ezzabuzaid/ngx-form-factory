@@ -11,15 +11,16 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "paths": {
       "ngx-form-factory": [
         "dist/ngx-form-factory/ngx-form-factory",
-        "dist/ngx-form-factory"
+        "dist/ngx-form-factory",
+        "projects/ngx-form-factory/src/public-api"
       ]
     }
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true
   }
 }

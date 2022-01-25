@@ -9,7 +9,6 @@ import { PhoneNumberAssociatedWithCountryValidator } from './phonenumber.validat
 @Component({
   selector: 'ngx-mobile-control',
   templateUrl: './mobile-control.component.html',
-  styleUrls: ['./mobile-control.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{
     provide: NG_VALUE_ACCESSOR,
@@ -42,7 +41,7 @@ export class MobileControlComponent implements OnInit, OnChanges, ControlValueAc
   }
 
   ngOnInit() {
-    this.formControl.addValidator(PhoneNumberAssociatedWithCountryValidator(this.formControl.id));
+    this.formControl.addValidators(PhoneNumberAssociatedWithCountryValidator(this.formControl.id));
     try {
       this.intlTelInstance = (window as any).intlTelInput(this.phoneField.nativeElement);
       this.ngOnChanges(null);
