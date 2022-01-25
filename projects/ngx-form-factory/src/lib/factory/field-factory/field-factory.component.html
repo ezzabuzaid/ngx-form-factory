@@ -1,96 +1,234 @@
-<ng-container *ngIf="!rawField();">
-    <ng-container [ngSwitch]="normalField().type">
-        <ng-container *ngSwitchCase="types.TEXT">
-            <mat-form-field>
-                <mat-label>{{normalField().label}}</mat-label>
-                <mat-hint>{{normalField().hint}}</mat-hint>
-                <input [id]="normalField().id" type="text" [attr.autocomplete]="normalField().autocomplete" matInput
-                    [formControl]="field">
-                <mat-error *ngFor="let error of errors()">
-                    <span *ngIf="normalField().hasError(error[0])">{{error[1]()}}</span>
-                </mat-error>
-            </mat-form-field>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.PASSWORD">
-            <mat-form-field>
-                <mat-label>{{normalField().label}}</mat-label>
-                <mat-hint>{{normalField().hint}}</mat-hint>
-                <input [id]="normalField().id" #input type="password" [attr.autocomplete]="normalField().autocomplete"
-                    matInput [formControl]="field">
-                <mat-icon class="password-lock-icon" matSuffix [ngxTogglePasswod]="input">
-                    lock</mat-icon>
-            </mat-form-field>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.TEXTAREA">
-            <mat-form-field>
-                <mat-label>{{normalField().label}}</mat-label>
-                <textarea [id]="normalField().id" matInput [formControl]="field"></textarea>
-            </mat-form-field>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.EMAIL">
-            <mat-form-field>
-                <mat-label>{{normalField().label}}</mat-label>
-                <input [id]="normalField().id" type="email" matInput
-                    [attr.autocomplete]="normalField().autocomplete || 'email'" [formControl]="field">
-                <mat-error *ngIf="normalField().hasError('email')">Please enter correct email</mat-error>
-            </mat-form-field>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.NUMBER">
-            <mat-form-field>
-                <mat-label>{{normalField().label}}</mat-label>
-                <input [id]="normalField().id" type="number" matInput [formControl]="field">
-            </mat-form-field>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.DATE">
-            <mat-form-field>
-                <mat-label>{{ normalField().label }}</mat-label>
-                <input [id]="normalField().id" matInput [max]="dateField().max" [min]="dateField().min"
-                    (focus)="datePicker.open()" [matDatepicker]="datePicker" [formControl]="field">
-                <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-                <mat-datepicker #datePicker></mat-datepicker>
-            </mat-form-field>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.TIME">
-            <mat-form-field>
-                <mat-label>{{ timeField().label }}</mat-label>
-                <input [max]="timeField().max" [min]="timeField().min" [id]="timeField().id" matInput
-                    [formControl]="field" type="time">
-            </mat-form-field>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.DATETIME">
-            <mat-form-field>
-                <mat-label>{{ timeField().label }}</mat-label>
-                <input [max]="timeField().max" [min]="timeField().min" [id]="timeField().id" matInput
-                    [formControl]="field" type="datetime-local">
-            </mat-form-field>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.CHECKBOX">
-            <mat-checkbox [id]="normalField().id" [formControl]="field">{{normalField().label}}
-            </mat-checkbox>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.SELECT">
-            <mat-form-field>
-                <mat-label>{{normalField().label}}</mat-label>
-                <mat-select [multiple]="selectField().multiple" [id]="normalField().id" [formControl]="field">
-                    <mat-option *ngFor="let option of (selectField().options | async)" [value]="option.key">
-                        {{option.value}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.RADIO">
-            <mat-label>{{selectField().label}}</mat-label>
-            <mat-radio-group [id]="selectField().id">
-                <mat-radio-button *ngFor="let option of (selectField().options | async)" [value]="option.key">
-                    {{option.value}}
-                </mat-radio-button>
-            </mat-radio-group>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.TEL">
-            <ngx-mobile-control [formControl]="$any(normalField())"></ngx-mobile-control>
-        </ng-container>
-        <ng-container *ngSwitchCase="types.COUNTRY">
-            <ngx-country-control [id]="normalField().id" [formControl]="$any(normalField())"></ngx-country-control>
-        </ng-container>
+<ng-container *ngIf="!rawField()">
+  <ng-container [ngSwitch]="normalField()?.type">
+    <ng-container *ngSwitchCase="types.TEXT">
+      <mat-form-field
+        [hideRequiredMarker]="normalField().hideRequiredMarker"
+        [floatLabel]="normalField().floatLabel"
+        [appearance]="normalField().appearance"
+      >
+        <mat-label>{{ normalField().label }}</mat-label>
+        <mat-hint>{{ normalField().hint }}</mat-hint>
+        <input
+          [id]="normalField().id"
+          type="text"
+          [attr.autocomplete]="normalField().autocomplete"
+          matInput
+          [formControl]="field"
+        />
+        <mat-error>
+          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
+        </mat-error>
+      </mat-form-field>
     </ng-container>
+    <ng-container *ngSwitchCase="types.PASSWORD">
+      <mat-form-field
+        [hideRequiredMarker]="normalField().hideRequiredMarker"
+        [floatLabel]="normalField().floatLabel"
+        [appearance]="normalField().appearance"
+      >
+        <mat-label>{{ normalField().label }}</mat-label>
+        <mat-hint>{{ normalField().hint }}</mat-hint>
+        <input
+          [id]="normalField().id"
+          #input
+          type="password"
+          [attr.autocomplete]="normalField().autocomplete"
+          matInput
+          [formControl]="field"
+        />
+        <mat-icon
+          class="password-lock-icon"
+          matSuffix
+          [ngxTogglePasswod]="input"
+        >
+          lock</mat-icon
+        >
+        <mat-error>
+          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.TEXTAREA">
+      <mat-form-field
+        [hideRequiredMarker]="normalField().hideRequiredMarker"
+        [floatLabel]="normalField().floatLabel"
+        [appearance]="normalField().appearance"
+      >
+        <mat-label>{{ normalField().label }}</mat-label>
+        <textarea
+          [id]="normalField().id"
+          matInput
+          [formControl]="field"
+        ></textarea>
+        <mat-error>
+          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.EMAIL">
+      <mat-form-field
+        [hideRequiredMarker]="normalField().hideRequiredMarker"
+        [floatLabel]="normalField().floatLabel"
+        [appearance]="normalField().appearance"
+      >
+        <mat-label>{{ normalField().label }}</mat-label>
+        <input
+          [id]="normalField().id"
+          type="email"
+          matInput
+          [attr.autocomplete]="normalField().autocomplete || 'email'"
+          [formControl]="field"
+        />
+        <mat-error>
+          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.NUMBER">
+      <mat-form-field
+        [hideRequiredMarker]="normalField().hideRequiredMarker"
+        [floatLabel]="normalField().floatLabel"
+        [appearance]="normalField().appearance"
+      >
+        <mat-label>{{ normalField().label }}</mat-label>
+        <input
+          [id]="normalField().id"
+          type="number"
+          matInput
+          [formControl]="field"
+        />
+
+        <mat-error>
+          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.DATE">
+      <mat-form-field
+        [hideRequiredMarker]="normalField().hideRequiredMarker"
+        [floatLabel]="normalField().floatLabel"
+        [appearance]="normalField().appearance"
+      >
+        <mat-label>{{ normalField().label }}</mat-label>
+        <input
+          [id]="normalField().id"
+          matInput
+          [max]="dateField().max"
+          [min]="dateField().min"
+          (focus)="datePicker.open()"
+          [matDatepicker]="datePicker"
+          [formControl]="field"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="datePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+        <mat-error>
+          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.TIME">
+      <mat-form-field
+        [hideRequiredMarker]="normalField().hideRequiredMarker"
+        [floatLabel]="normalField().floatLabel"
+        [appearance]="normalField().appearance"
+      >
+        <mat-label>{{ timeField().label }}</mat-label>
+        <input
+          [max]="timeField().max"
+          [min]="timeField().min"
+          [id]="timeField().id"
+          matInput
+          [formControl]="field"
+          type="time"
+        />
+
+        <mat-error>
+          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.DATETIME">
+      <mat-form-field
+        [hideRequiredMarker]="normalField().hideRequiredMarker"
+        [floatLabel]="normalField().floatLabel"
+        [appearance]="normalField().appearance"
+      >
+        <mat-label>{{ timeField().label }}</mat-label>
+        <input
+          [max]="timeField().max"
+          [min]="timeField().min"
+          [id]="timeField().id"
+          matInput
+          [formControl]="field"
+          type="datetime-local"
+        />
+
+        <mat-error>
+          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.CHECKBOX">
+      <mat-checkbox [id]="normalField().id" [formControl]="field"
+        >{{ normalField().label }}
+      </mat-checkbox>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.SELECT">
+      <mat-form-field
+        [hideRequiredMarker]="normalField().hideRequiredMarker"
+        [floatLabel]="normalField().floatLabel"
+        [appearance]="normalField().appearance"
+      >
+        <mat-label>{{ normalField().label }}</mat-label>
+        <mat-hint>{{ normalField().hint }}</mat-hint>
+        <mat-select
+          [multiple]="selectField().multiple"
+          [id]="normalField().id"
+          [formControl]="field"
+        >
+          <mat-option
+            *ngFor="let option of selectField().options | async"
+            [value]="option.value"
+          >
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+
+        <mat-error>
+          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.RADIO">
+      <mat-label>{{ selectField().label }}</mat-label>
+      <mat-radio-group [id]="selectField().id">
+        <mat-radio-button
+          *ngFor="let option of selectField().options | async"
+          [value]="option.value"
+        >
+          {{ option.label }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.TEL">
+      <ngx-mobile-control
+        [formControl]="$any(normalField())"
+      ></ngx-mobile-control>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.COUNTRY">
+      <ngx-country-control
+        [id]="normalField().id"
+        [formControl]="$any(normalField())"
+      ></ngx-country-control>
+    </ng-container>
+  </ng-container>
 </ng-container>
+
+<ng-template #errorTemplate>
+  <mat-error *ngFor="let error of errors()">
+    <span *ngIf="normalField().hasError(error[0])">{{ error[1]() }}</span>
+  </mat-error>
+</ng-template>

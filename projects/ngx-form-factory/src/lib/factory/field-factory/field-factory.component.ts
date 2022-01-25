@@ -1,5 +1,5 @@
 import {
-  ApplicationRef, Component, ComponentFactoryResolver,
+  ApplicationRef, ChangeDetectionStrategy, Component, ComponentFactoryResolver,
   ElementRef, EmbeddedViewRef, EventEmitter, Injector, Input, OnInit, Type
 } from '@angular/core';
 import { Field, IRawFieldComponent, RawField, SelectField, TimeField } from '../../fields';
@@ -9,7 +9,8 @@ import { DateField } from '../../fields/date';
 @Component({
   selector: 'ngx-field-factory',
   templateUrl: './field-factory.component.html',
-  styleUrls: ['./field-factory.component.scss']
+  styleUrls: ['./field-factory.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FieldFactoryComponent implements OnInit {
   @Input() field: Field<any> | RawField<any> | DateField | SelectField<any>;
@@ -23,8 +24,12 @@ export class FieldFactoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (!this.field) {
+      throw new Error('Field is not provided');
+    }
     const rawField = this.rawField();
     if (rawField) {
+      // FIXME: Use dynamic view creator directive instead
       const component = this.createComponent(rawField.component);
       Object.keys(rawField.inputs ?? {}).forEach(input => {
         component[input] = rawField.inputs[input];
@@ -32,6 +37,20 @@ export class FieldFactoryComponent implements OnInit {
       Object.keys(rawField.outputs ?? {}).forEach(output => {
         (component[output] as EventEmitter<any>).subscribe(rawField.outputs[output]);
       });
+    }
+    if (
+      this.field.type === EFieldType.TIME
+      &&
+      this.timeField().max
+    ) {
+      this.field.addValidators(maxTimeValidator(this.timeField().max));
+    }
+    if (
+      this.field.type === EFieldType.TIME
+      &&
+      this.timeField().min
+    ) {
+      this.field.addValidators(minTimeValidator(this.timeField().min));
     }
   }
 
@@ -66,7 +85,7 @@ export class FieldFactoryComponent implements OnInit {
     return this.field instanceof TimeField ? this.field : null;
   }
 
-  errors() {
+  errors(): [string, () => string][] {
     return Object.entries(this.field.errorsMessages ?? {}).map(([errorName, value]) => {
       return [
         errorName,
@@ -78,4 +97,16 @@ export class FieldFactoryComponent implements OnInit {
   }
 
 
+}
+
+function maxTimeValidator(max: string) {
+  return (control: Field<string>) => {
+    return control.getElement()?.checkValidity() ? null : { max: true }
+  };
+}
+
+function minTimeValidator(min: string) {
+  return (control: Field<string>) => {
+    return control.getElement()?.checkValidity() ? null : { min: true }
+  };
 }

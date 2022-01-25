@@ -20,7 +20,10 @@ import { TogglePasswodDirective } from '../../shared';
     FieldFactoryComponent,
     TogglePasswodDirective
   ],
-  exports: [FieldFactoryComponent],
+  exports: [
+    FieldFactoryComponent,
+    TogglePasswodDirective
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
