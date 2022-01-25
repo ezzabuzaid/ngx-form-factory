@@ -1,5 +1,5 @@
 
-import { AbstractControl, AbstractControlOptions, AsyncValidatorFn, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, AbstractControlOptions, AsyncValidatorFn, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { fromEvent } from 'rxjs';
 import { generateAlphabeticString } from '../shared';
 
@@ -10,7 +10,7 @@ export declare type Constructor<T> = new (...args: any[]) => T;
 export enum EFieldType {
     /**
      * Basic field type, equal to input[type="text"]
-     * 
+     *
      * Default Field type,
      */
     TEXT,
@@ -37,13 +37,13 @@ export enum EFieldType {
     DATE,
     /**
      * Basic field type, equal to input[type="datetime-local"]
-     * 
+     *
      * Use it with TimeField
      */
     DATETIME,
     /**
      * Basic field type, equal to input[type="time"]
-     * 
+     *
      * Default for TimeField
      */
     TIME,
@@ -60,7 +60,7 @@ export enum EFieldType {
      */
     NUMBER,
     /**
-     * Field type that using "intl-tel-input" library with material design to display countries dial-number 
+     * Field type that using "intl-tel-input" library with material design to display countries dial-number
      */
     TEL,
     /**
@@ -83,25 +83,24 @@ export interface IBaseField<T> extends FormControl {
     value: T | { initialValue: T, disabled: boolean };
     section?: string;
     autocomplete?: string;
-    addValidator?(...validator: ValidatorFn[]): void;
 }
 
 export interface IBaseFieldOptions<T> {
     /**
      * Group fields by section name
-     * 
+     *
      * used to reflow the fields to shape together in the HTML as line of maximum 3 fields
      */
     section?: string;
     /**
      * Give the field unique id to locate it's element in the DOM
-     * 
-     * generate uniquly, unless you want to give it specific one 
+     *
+     * generate uniquly, unless you want to give it specific one
      */
     id?: string;
     /**
      * HTMLInputElement autocomplete
-     * 
+     *
      * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
      */
     autocomplete?: string;
@@ -122,16 +121,16 @@ export interface IBaseFieldOptions<T> {
      */
     value?: T | { initialValue: T, disabled: boolean };
     /**
-     * type of the field that you want to 
+     * type of the field that you want to
      */
     type?: EFieldType;
     /**
      * Object that represent the expected error names and the message for each of them to show
-     * 
+     *
      * {
      *  "required": "please enter some info, this field is required",
      *  "minlength": (value) => `${value.length} is less than the minumum length`,
-     * }  
+     * }
      */
     errors?: { [key: string]: string | ((value: any) => string) };
 }
@@ -154,26 +153,19 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
         this.id = options?.id ?? generateAlphabeticString(5);
         this.autocomplete = options?.autocomplete;
         this.section = options?.section ?? generateAlphabeticString(5);
-        this.errorsMessages = options.errors;
-    }
-
-    /**
-     * Add validator on runtime without effecting the existing
-     */
-    addValidator(...validator: ValidatorFn[]) {
-        this.setValidators(Validators.compose([this.validator, ...validator]));
+        this.errorsMessages = options?.errors;
     }
 
     /**
      * return the input element
      */
-    getElement() {
-        return document.getElementById(this.id);
+    getElement<T extends HTMLElement>() {
+        return document.getElementById(this.id) as T;
     }
 
     /**
      * Attach an event handler to the field input element
-     * 
+     *
      */
     on(eventName: keyof HTMLElementEventMap) {
         return fromEvent(this.getElement(), eventName);
@@ -212,7 +204,7 @@ export class Form<T> extends FormGroup implements IForm<T> {
     }
 
     /**
-     * 
+     *
      * Reports whether the control with the given path has the error specified.
      *
      * @param name of the field control
@@ -223,9 +215,9 @@ export class Form<T> extends FormGroup implements IForm<T> {
     }
 
     /**
-     * 
+     *
      * Return the specified control typed value
-     * 
+     *
      * @param name of the field control
      * @param defaultValue that will be used in case of null or undefined
      */
