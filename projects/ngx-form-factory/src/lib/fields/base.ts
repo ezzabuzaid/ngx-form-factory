@@ -78,7 +78,7 @@ export enum EFieldType {
 }
 
 export interface IBaseField<T> extends FormControl {
-    id?: string;
+    id: string;
     type?: EFieldType;
     value: T | { initialValue: T, disabled: boolean };
     section?: string;
@@ -132,24 +132,22 @@ export interface IBaseFieldOptions<T> {
      *  "minlength": (value) => `${value.length} is less than the minumum length`,
      * }
      */
-    errors?: { [key: string]: string | ((value: any) => string) };
+    errors?: Record<string, string | ((value: any) => string)>;
 }
 
 export class BaseField<T> extends FormControl implements IBaseField<T> {
-    public type: EFieldType = null;
-    public section: string = null;
-    public value: T | { initialValue: T, disabled: boolean };
-    public id = null;
-    public autocomplete = '';
+    public type!: EFieldType;
+    public section: string;
+    public id;
+    public autocomplete?;
 
     /**
      * @internal
      */
-    public errorsMessages: { [key: string]: string | ((value: any) => string); };
+    public errorsMessages?: Record<string, string | ((value: any) => string)>;
 
     constructor(options?: IBaseFieldOptions<T>) {
         super(options?.value, options?.validatorOrOpts, options?.asyncValidator);
-        this.value = options?.value;
         this.id = options?.id ?? generateAlphabeticString(5);
         this.autocomplete = options?.autocomplete;
         this.section = options?.section ?? generateAlphabeticString(5);
@@ -171,7 +169,7 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
         return fromEvent(this.getElement(), eventName);
     }
 }
-export type TFields<T> = { [key in keyof T]?: BaseField<T[key]> | IForm<T[key]> };
+export type TFields<T> = { [key in keyof T]: BaseField<T[key]> | IForm<T[key]> };
 export interface IForm<T> extends AbstractControl {
     fields: TFields<T>;
     validation?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null;
@@ -190,6 +188,7 @@ export class Form<T> extends FormGroup implements IForm<T> {
      *
      * @param name of the field control
      */
+    // @ts-ignore
     get<Key extends keyof T>(name: Key extends string ? Key : never): BaseField<T[Key]> {
         return super.get(name as any) as any;
     }

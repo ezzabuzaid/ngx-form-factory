@@ -23,12 +23,12 @@ export class RawField<T> extends BaseField<T> {
     component: Type<IRawFieldComponent<T>>;
     inputs?: UserInputs;
     outputs?: UserOutputs;
-    constructor(options?: IRawFieldOptions<T>) {
+    constructor(options: IRawFieldOptions<T>) {
         super(options);
         this.type = EFieldType.RAW_FIELD;
         this.component = options.component;
-        this.inputs = options.inputs;
-        this.outputs = options.outputs;
+        this.inputs = options?.inputs;
+        this.outputs = options?.outputs;
     }
 }
 

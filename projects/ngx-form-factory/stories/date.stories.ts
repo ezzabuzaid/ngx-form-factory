@@ -1,7 +1,7 @@
 import { MatCardModule } from "@angular/material/card";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ArgTypes, Meta, Story } from "@storybook/angular";
-import { DateField, FieldFactoryModule } from "ngx-form-factory";
+import { DateField, FormFactoryModule } from "ngx-form-factory";
 import { commonArgTypes } from "./common_arg_types";
 import { ARGS, FieldModelerComponent } from "./field_modeler_component";
 import field_options from "./field_options";
@@ -38,7 +38,7 @@ export default {
 const Story: Story = (args, context) => ({
   moduleMetadata: {
     declarations: [FieldModelerComponent],
-    imports: [BrowserAnimationsModule, FieldFactoryModule, MatCardModule],
+    imports: [BrowserAnimationsModule, FormFactoryModule, MatCardModule],
     providers: [
       {
         provide: ARGS,
@@ -47,8 +47,8 @@ const Story: Story = (args, context) => ({
           return {
             field: new DateField({
               ...field_options(args),
-              min: new Date(args.minFilter),
-              max: new Date(args.maxFilter),
+              min: new Date(args['minFilter']),
+              max: new Date(args['maxFilter']),
             }),
             ...args
           }

@@ -1,5 +1,5 @@
 import { ArgTypes } from "@storybook/angular";
-import { EFieldType } from "../src/lib/fields";
+import { EFieldType } from "ngx-form-factory";
 
 export const typeControl: () => ArgTypes = () => ({
     type: {

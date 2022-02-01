@@ -1,5 +1,5 @@
 import { Component, Inject, InjectionToken } from "@angular/core";
-import { EFieldType } from "../src/lib/fields";
+import { EFieldType } from "ngx-form-factory";
 
 export const ARGS = new InjectionToken('ARGS');
 

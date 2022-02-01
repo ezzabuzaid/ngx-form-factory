@@ -1,8 +1,8 @@
 import { Validators } from "@angular/forms";
-import { IFieldOptions } from "../src/lib/fields";
+import { IFieldOptions } from "ngx-form-factory";
 import { convertArgsToProps } from "./field_modeler_component";
 
-export default (args): IFieldOptions<any> => {
+export default (args: any): IFieldOptions<any> => {
     const props = convertArgsToProps(args);
     return {
         appearance: args.appearance,
@@ -11,7 +11,7 @@ export default (args): IFieldOptions<any> => {
         label: args.label,
         autocomplete: args.autocomplete,
         value: args.value,
-        errors: props.errors,
+        errors: props['errors'],
         hint: args.hint,
         validatorOrOpts: {
             validators: [

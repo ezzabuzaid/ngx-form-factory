@@ -12,6 +12,10 @@ import { IField } from '../../fields';
   }],
 })
 export class CountryControlComponent implements OnInit, ControlValueAccessor {
+  private _value?: string;
+  @Input() public formControl!: IField<string>;
+  public countries: any[] = [];
+  public currentCountry?: any;
 
   set value(value) {
     this._value = value;
@@ -23,13 +27,8 @@ export class CountryControlComponent implements OnInit, ControlValueAccessor {
     return this._value;
   }
 
-  private _value: string;
-  @Input() public formControl: IField<string> = null;
-  public countries = [];
-  public currentCountry = null;
-
-  onChange: (value) => {};
-  onTouched: () => {};
+  onChange!: (value: any) => {};
+  onTouched!: () => {};
 
   constructor() { }
 
@@ -40,7 +39,7 @@ export class CountryControlComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
-    this.countries = window['intlTelInputGlobals'].getCountryData();
+    this.countries = (window as any)['intlTelInputGlobals'].getCountryData();
   }
 
   public updateModel(value: string) {

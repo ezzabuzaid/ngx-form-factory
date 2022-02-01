@@ -1,13 +1,12 @@
 import { MatCardModule } from "@angular/material/card";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ArgTypes, Meta, Story } from "@storybook/angular";
-import { EFieldType, Field, FieldFactoryModule } from "ngx-form-factory";
+import { EFieldType, Field, FormFactoryModule } from "ngx-form-factory";
 import { commonArgTypes } from "./common_arg_types";
 import { ARGS, convertArgsToProps, FieldModelerComponent } from "./field_modeler_component";
 import field_options from "./field_options";
 import { typeControl } from "./type_control";
 import { maxLengthArgType, minLengthArgType, patternArgType, requiredArgType } from "./validation_arg_types";
-
 
 const argTypes: ArgTypes = {
   ...commonArgTypes()
@@ -22,7 +21,7 @@ export default {
 const Story: Story = (args, context) => ({
   moduleMetadata: {
     declarations: [FieldModelerComponent],
-    imports: [BrowserAnimationsModule, FieldFactoryModule, MatCardModule],
+    imports: [BrowserAnimationsModule, FormFactoryModule, MatCardModule],
     providers: [
       {
         provide: ARGS,

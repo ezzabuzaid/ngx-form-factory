@@ -1,7 +1,7 @@
 import { MatCardModule } from "@angular/material/card";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ArgTypes, Meta, Story } from "@storybook/angular";
-import { FieldFactoryModule, SelectField, SelectOption } from "ngx-form-factory";
+import { FormFactoryModule, SelectField, SelectOption } from "ngx-form-factory";
 import { of } from "rxjs";
 import { commonArgTypes } from "./common_arg_types";
 import { ARGS, convertArgsToProps, FieldModelerComponent } from "./field_modeler_component";
@@ -13,7 +13,7 @@ const { autocomplete, ...restOfArgTypes } = commonArgTypes();
 const argTypes: ArgTypes = {
     ...restOfArgTypes,
     options: {
-        defaultValue: Array.from({ length: 5 }, (_, index) => `Option ${ index + 1 }`),
+        defaultValue: Array.from({ length: 5 }, (_, index) => `Option ${index + 1}`),
         control: { type: 'object' },
     }
 };
@@ -27,7 +27,7 @@ export default {
 const Story: Story = (args, context) => ({
     moduleMetadata: {
         declarations: [FieldModelerComponent],
-        imports: [BrowserAnimationsModule, FieldFactoryModule, MatCardModule],
+        imports: [BrowserAnimationsModule, FormFactoryModule, MatCardModule],
         providers: [
             {
                 provide: ARGS,
@@ -36,9 +36,9 @@ const Story: Story = (args, context) => ({
                     return {
                         field: new SelectField({
                             ...field_options(args),
-                            options: of(args.options.map(option => new SelectOption(option))),
-                            multiple: props.multiple,
-                            errors: props.errors,
+                            options: of(args['options'].map((option: any) => new SelectOption(option))),
+                            multiple: props['multiple'],
+                            errors: props['errors'],
                         }),
                         ...props
                     }

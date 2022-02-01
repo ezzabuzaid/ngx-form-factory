@@ -17,14 +17,14 @@ import { PhoneNumberAssociatedWithCountryValidator } from './phonenumber.validat
   }]
 })
 export class MobileControlComponent implements OnInit, OnChanges, ControlValueAccessor {
-  private intlTelInstance = null;
-  @Input() private code: string = null;
+  private intlTelInstance?: any;
+  @Input() private code?: string;
 
-  @ViewChild('phoneField', { static: true }) private readonly phoneField: ElementRef<HTMLElement>;
-  @Input() public formControl: IField<string> = null;
+  @ViewChild('phoneField', { static: true }) private readonly phoneField?: ElementRef<HTMLElement>;
+  @Input() public formControl!: IField<string>;
 
-  onChange: (value: string) => {};
-  onTouched: () => {};
+  onChange!: (value: string) => {};
+  onTouched!: () => {};
 
   constructor() { }
 
@@ -43,8 +43,8 @@ export class MobileControlComponent implements OnInit, OnChanges, ControlValueAc
   ngOnInit() {
     this.formControl.addValidators(PhoneNumberAssociatedWithCountryValidator(this.formControl.id));
     try {
-      this.intlTelInstance = (window as any).intlTelInput(this.phoneField.nativeElement);
-      this.ngOnChanges(null);
+      this.intlTelInstance = (window as any).intlTelInput(this.phoneField?.nativeElement);
+      this.ngOnChanges({});
     } catch (error) { }
   }
 
@@ -65,7 +65,7 @@ export class MobileControlComponent implements OnInit, OnChanges, ControlValueAc
 
   getCountry(code = this.code) {
     return (window as any).intlTelInputGlobals.getCountryData()
-      .find(country => {
+      .find((country: any) => {
         const dialCode = country.dialCode.toLowerCase();
         const isoCode = country.iso2.toLowerCase();
         const inputCode = String(code).toLowerCase();

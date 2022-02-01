@@ -4,7 +4,7 @@ import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/
   selector: '[ngxTogglePasswod]'
 })
 export class TogglePasswodDirective {
-  @Input() ngxTogglePasswod: HTMLInputElement;
+  @Input() ngxTogglePasswod!: HTMLInputElement;
 
   constructor(
     private readonly elRef: ElementRef<HTMLElement>,

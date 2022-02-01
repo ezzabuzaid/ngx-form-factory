@@ -11,24 +11,24 @@ import { assertNotNullOrUndefined } from '../../shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FieldFactoryComponent implements OnInit {
-  @Input() field: Field<any> | RawField<any> | DateField | SelectField<any>;
+  @Input() field!: Field<any> | RawField<any> | DateField | SelectField<any>;
   types = EFieldType;
 
   ngOnInit() {
-    assertNotNullOrUndefined(this.field)
+    assertNotNullOrUndefined(this.field);
     if (
       this.field.type === EFieldType.TIME
       &&
-      this.timeField().max
+      this.timeField()!.max
     ) {
-      this.field.addValidators(maxTimeValidator(this.timeField().max));
+      this.field.addValidators(maxTimeValidator(this.timeField()!.max!) as any);
     }
     if (
       this.field.type === EFieldType.TIME
       &&
-      this.timeField().min
+      this.timeField()!.min
     ) {
-      this.field.addValidators(minTimeValidator(this.timeField().min));
+      this.field.addValidators(minTimeValidator(this.timeField()!.min!) as any);
     }
   }
 
@@ -76,4 +76,4 @@ function minTimeValidator(min: string) {
   return (control: Field<string>) => {
     return control.getElement()?.checkValidity() ? null : { min: true }
   };
-}
+};

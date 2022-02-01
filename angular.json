@@ -12,15 +12,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/ngx-form-factory/tsconfig.lib.json",
             "project": "projects/ngx-form-factory/ng-package.json"
           },
-          "defaultConfiguration": "production",
           "configurations": {
             "production": {
               "tsConfig": "projects/ngx-form-factory/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-form-factory/tsconfig.lib.json"
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -33,8 +35,5 @@
       }
     }
   },
-  "defaultProject": "ngx-form-factory",
-  "cli": {
-    "analytics": "d4e4ba91-0edc-4c39-acc2-abc79ea46255"
-  }
+  "defaultProject": "ngx-form-factory"
 }
