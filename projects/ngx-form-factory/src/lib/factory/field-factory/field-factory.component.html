@@ -227,6 +227,14 @@
   </ng-container>
 </ng-container>
 
+<ng-container *ngIf="rawField() as _rawField">
+  <ng-container
+    [dynamic-component]="_rawField.component"
+    [inputs]="_rawField.inputs"
+    [outputs]="_rawField.outputs"
+  ></ng-container>
+</ng-container>
+
 <ng-template #errorTemplate>
   <mat-error *ngFor="let error of errors()">
     <span *ngIf="normalField().hasError(error[0])">{{ error[1]() }}</span>

@@ -6,19 +6,20 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
 import { CountryControlModule, MobileControlModule } from '../../controls';
+import { DynamicComponentDirective, TogglePasswodDirective } from '../../shared';
 import { FieldFactoryComponent } from './field-factory.component';
-import { TogglePasswodDirective } from '../../shared';
 
 
 
 @NgModule({
   declarations: [
     FieldFactoryComponent,
-    TogglePasswodDirective
+    TogglePasswodDirective,
+    DynamicComponentDirective
   ],
   exports: [
     FieldFactoryComponent,

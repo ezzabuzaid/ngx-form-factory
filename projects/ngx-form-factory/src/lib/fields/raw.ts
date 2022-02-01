@@ -1,4 +1,5 @@
 import { Type } from '@angular/core';
+import { UserInputs, UserOutputs } from '../shared';
 import { BaseField, EFieldType, IBaseFieldOptions } from './base';
 
 interface IRawFieldOptions<T> extends IBaseFieldOptions<T> {
@@ -7,7 +8,7 @@ interface IRawFieldOptions<T> extends IBaseFieldOptions<T> {
      */
     component: Type<IRawFieldComponent<T>>;
     /**
-     * Component inputs 
+     * Component inputs
      */
     inputs?: { [key: string]: any };
     /**
@@ -20,8 +21,8 @@ interface IRawFieldOptions<T> extends IBaseFieldOptions<T> {
 
 export class RawField<T> extends BaseField<T> {
     component: Type<IRawFieldComponent<T>>;
-    inputs?: { [key: string]: any };
-    outputs?: { [key: string]: (event: any) => any };
+    inputs?: UserInputs;
+    outputs?: UserOutputs;
     constructor(options?: IRawFieldOptions<T>) {
         super(options);
         this.type = EFieldType.RAW_FIELD;

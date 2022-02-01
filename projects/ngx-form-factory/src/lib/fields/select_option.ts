@@ -1,4 +1,4 @@
-import { isNullorUndefined } from '../shared';
+import { isNullOrUndefined } from '../shared';
 
 /**
  * The mat-select `<mat-option></mat-option>`
@@ -17,7 +17,7 @@ export class SelectOption {
          */
         public label?: string,
     ) {
-        if (isNullorUndefined(this.label)) {
+        if (isNullOrUndefined(this.label)) {
             this.label = `${this.value}`;
         }
     }

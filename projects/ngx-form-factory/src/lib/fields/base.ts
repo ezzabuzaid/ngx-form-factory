@@ -159,7 +159,7 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
     /**
      * return the input element
      */
-    getElement<T extends HTMLElement>() {
+    getElement<T extends HTMLInputElement>() {
         return document.getElementById(this.id) as T;
     }
 

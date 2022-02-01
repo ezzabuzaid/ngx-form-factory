@@ -20,141 +20,141 @@ therefore, I started working on this library with a goal of easy defining forms 
 2. import `FormFactoryModule` in a feature module
 3. create an instance of `Form` in a component and define your fields
 
-``` typescript
-  form = new Form({
-    name: new Field({
-      label: "Name",
-    }),
-    birthdate: new DateField({
-      label: "Birthdate",
-    })
-  })
+```typescript
+form = new Form({
+  name: new Field({
+    label: "Name",
+  }),
+  birthdate: new DateField({
+    label: "Birthdate",
+  }),
+});
 ```
 
 4. put the required markup
 
-``` html
+```html
 <ngx-form-factory [formGroup]="form"></ngx-form-factory>
 ```
 
- 
 and here you go! all setup is done.
 
 `ngx-form-factory` will loop over all defined form fields and create corresponding <mat-form-field> for each of them.
 those fields will be included in a <mat-card> component to give them nice look.
 
-| Property                  | Type  | Default | Description
-| ------------------------- | ----- | ------- | -----------
-| formGroup | @Input() | undefined | Form instance
-| title | @Input() | undefined | Form title that will be shown in <mat-card-title>
-| implicitFields | @Input() | true | whether you want auto create form
-| submitButton | @Input() | true | whether to show submit button or not
-| submitButtonDisableState | @Input() | false | initial submit button disable state
-| autoValidateSubmitButton | @Input() | true | whether you want auto disable and enable submit button
-| onSubmit | @Output() | new EventEmitter< `SubmitEvent` >() | listen to submit button click
-| [form-header] | ng-content | | project HTML in `<mat-card-subtitle>`
+| Property                 | Type       | Default                             | Description                                            |
+| ------------------------ | ---------- | ----------------------------------- | ------------------------------------------------------ |
+| formGroup                | @Input()   | undefined                           | Form instance                                          |
+| title                    | @Input()   | undefined                           | Form title that will be shown in <mat-card-title>      |
+| implicitFields           | @Input()   | true                                | whether you want auto create form                      |
+| submitButton             | @Input()   | true                                | whether to show submit button or not                   |
+| submitButtonDisableState | @Input()   | false                               | initial submit button disable state                    |
+| autoValidateSubmitButton | @Input()   | true                                | whether you want auto disable and enable submit button |
+| onSubmit                 | @Output()  | new EventEmitter< `SubmitEvent` >() | listen to submit button click                          |
+| [form-header]            | ng-content |                                     | project HTML in `<mat-card-subtitle>`                  |
 
 | [form-body] | ng-content | | project HTML in `<mat-card-content>` , handy when implicitFields is false so you can originize your fields as you need with `<ngx-form-field>`
 
 | [form-footer] | ng-content | | project HTML in `<mat-card-actions>`
 
- ## API
+## API
 
 The library has two important classes with additional options as argument
 
-* `Form` extends `FormGroup` with additional instance methods, it take the same parameter as FormGroup class
+- `Form` extends `FormGroup` with additional instance methods, it take the same parameter as FormGroup class
 
-    1. `getControlValue(controlName, defaultValue)` returns the value of the specified control name and defaultValue if the value is null or undefined
+  1. `getControlValue(controlName, defaultValue)` returns the value of the specified control name and defaultValue if the value is null or undefined
 
-    2. `hasControlError(controlName, errorName)` checks if the specified control name
+  2. `hasControlError(controlName, errorName)` checks if the specified control name
 
-    has an error
+  has an error
 
-    3. `getName(controlName)` simple method that will return the same provided name, it mainly has been create to be used in HTML with `[formControlName]` directive, in case of name change the compiler will rise an error up
+  3. `getName(controlName)` simple method that will return the same provided name, it mainly has been create to be used in HTML with `[formControlName]` directive, in case of name change the compiler will rise an error up
 
-    4. `get(controlName)` the same one in `FormGroup` , but with typing
+  4. `get(controlName)` the same one in `FormGroup` , but with typing
 
-* `Field(options: IFieldOptions)` extends `FormControl` with additional instance methods
-    - `addValidator(validator)` add an array of Validator without lossing the existing ones
+- `Field(options: IFieldOptions)` extends `FormControl` with additional instance methods
 
-    - `getElement()` return the asocciated element with that `Field`
+  - `addValidator(validator)` add an array of Validator without lossing the existing ones
 
-    - `on(eventName)` the same as `element.addEventListener(eventName, handler)` but instead it will return an `Observable`.
+  - `getElement()` return the asocciated element with that `Field`
 
-  + constructor(options)
+  - `on(eventName)` the same as `element.addEventListener(eventName, handler)` but instead it will return an `Observable`.
 
-* `DateField(options: IDateFieldOptions)`
+  * constructor(options)
 
-* `SelectField(options: ISelectFieldOptions)`
+- `DateField(options: IDateFieldOptions)`
 
-* `TimeField(options: ITimeFieldOptions)`
+- `SelectField(options: ISelectFieldOptions)`
 
-* `RadioField(options: IRadioFieldOptions)`
+- `TimeField(options: ITimeFieldOptions)`
 
-* `RawField(options: IRawFieldOptions)`
+- `RadioField(options: IRadioFieldOptions)`
 
-	Special field type that takes a component to be used as field,
-	have two important attributes, inputs and output that maps to component inputs and outputs.
+- `RawField(options: IRawFieldOptions)`
 
-	In case you have special or complex field you can utilize `RawField` to make it compatible with `Form` , it acts as Component Adaptar.
+  Special field type that takes a component to be used as field,
+  have two important attributes, inputs and output that maps to component inputs and outputs.
 
-	Please see an example in `src/app/typeahead-field`
+  In case you have special or complex field you can utilize `RawField` to make it compatible with `Form` , it acts as Component Adaptar.
+
+  Please see an example in `src/app/typeahead-field`
 
 Other field types that only can be used with `Field` class
 
-``` typescript
+```typescript
 export enum EFieldType {
-    /**
-     * Textarea field
-     */
-    TEXTAREA,
-    /**
-     * Basic field type, equal to input[type="password"]
-     */
-    PASSWORD,
-    /**
-     * Basic field type, equal to input[type="email"]
-     */
-    EMAIL,
-    /**
-     * Material checkbox
-     */
-    CHECKBOX,
-    /**
-     * Material radio field
-     */
-    RADIO,
-    /**
-     * Basic field type, equal to input[type="number"]
-     */
-    NUMBER,
-    /**
-     * Field type that using "intl-tel-input" library with material design to display countries dial-number 
-     */
-    TEL,
-    /**
-     * Field type that used "intl-tel-input" library with material design to display list of countries
-     */
-    COUNTRY,
-    /**
-     * Field that will be registerd in the Form group without being shown in the DOM
-     */
-    HIDDEN,
+  /**
+   * Textarea field
+   */
+  TEXTAREA,
+  /**
+   * Basic field type, equal to input[type="password"]
+   */
+  PASSWORD,
+  /**
+   * Basic field type, equal to input[type="email"]
+   */
+  EMAIL,
+  /**
+   * Material checkbox
+   */
+  CHECKBOX,
+  /**
+   * Material radio field
+   */
+  RADIO,
+  /**
+   * Basic field type, equal to input[type="number"]
+   */
+  NUMBER,
+  /**
+   * Field type that using "intl-tel-input" library with material design to display countries dial-number
+   */
+  TEL,
+  /**
+   * Field type that used "intl-tel-input" library with material design to display list of countries
+   */
+  COUNTRY,
+  /**
+   * Field that will be registerd in the Form group without being shown in the DOM
+   */
+  HIDDEN,
 }
 
 const field = new Field({
-	label:'Some Label',
-	type: EFieldType.TEXTAREA
-})
+  label: "Some Label",
+  type: EFieldType.TEXTAREA,
+});
 ```
 
 Note: `COUNTRY` and `TEL` types are using `intl-tel-input` library, so make sure to install it if you want to use it
 
 ## Example
 
-* Form
+- Form
 
-``` typescript
+```typescript
 import { Form, SubmitEvent } from  '@ezzabuzaid/ngx-form-factory';
 
 interface IUserInfo {
@@ -180,26 +180,26 @@ export class DumpComponent {
 }
 ```
 
-* Standalone Field
+- Standalone Field
 
 You may want to create a field without Form at all, in this case all what you need is to create an instance of `Field`
 
-``` typescript
+```typescript
 import {  Field } from  '@ezzabuzaid/ngx-form-factory';
 
 @Component({
 	template:"<ngx-form-field [field]="myField"></ngx-form-field>"
 })
 export class DumpComponent {
-	
+
 	public myField = new Field({ label: 'My Label' });
 
 }
 ```
 
-* RawField
+- RawField
 
-``` typescript
+```typescript
 
 public form = new Form<IUserInfo>({
 	user: new RawField(
@@ -213,177 +213,169 @@ public form = new Form<IUserInfo>({
 
 ```
 
-	Please check `src/app/typeahead-field` which contain detailed implemention of how you can consume and customize RawField as peer your need
+    Please check `src/app/typeahead-field` which contain detailed implemention of how you can consume and customize RawField as peer your need
 
 ## Classes
 
-``` typescript
+```typescript
 interface IBaseFieldOptions<T> {
-    /**
-     * Group fields by section name
-     * 
-     * used to reflow the fields to shape together in the HTML as line of maximum 3 fields
-     */
-    section?: string;
-    /**
-     * Give the field unique id to locate it's element in the DOM
-     * 
-     * generate uniquly, unless you want to give it specific one 
-     */
-    id?: string;
-    /**
-     * HTMLInputElement autocomplete
-     * 
-     * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
-     */
-    autocomplete?: string;
-    /**
-     * @param validatorOrOpts A synchronous validator function, or an array of
-     * such functions, or an `AbstractControlOptions` object that contains validation functions
-     * and a validation trigger.
-     */
-    validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null;
-    /**
-     * @param asyncValidator A single async validator or array of async validator functions
-     * @note quoted from Angular docs
-     */
-    asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null;
-    /**
-     * @param formState Initializes the control with an initial value,
-     * or an object that defines the initial value and disabled state.
-     */
-    value?: T | { initialValue: T, disabled: boolean };
-    /**
-     * type of the field that you want to 
-     */
-    type?: EFieldType;
-    /**
-     * Object that represent the expected error names and the message for each of them to show
-     * 
-     * {
-     *  "required": "please enter some info, this field is required",
-     *  "minlength": (value) => `${value.length} is less than the minumum length`,
-     * }  
-     */
-    errors?: { [key: string]: string | ((value: any) => string) };
+  /**
+   * Group fields by section name
+   *
+   * used to reflow the fields to shape together in the HTML as line of maximum 3 fields
+   */
+  section?: string;
+  /**
+   * Give the field unique id to locate it's element in the DOM
+   *
+   * generate uniquly, unless you want to give it specific one
+   */
+  id?: string;
+  /**
+   * HTMLInputElement autocomplete
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+   */
+  autocomplete?: string;
+  /**
+   * @param validatorOrOpts A synchronous validator function, or an array of
+   * such functions, or an `AbstractControlOptions` object that contains validation functions
+   * and a validation trigger.
+   */
+  validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null;
+  /**
+   * @param asyncValidator A single async validator or array of async validator functions
+   * @note quoted from Angular docs
+   */
+  asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null;
+  /**
+   * @param formState Initializes the control with an initial value,
+   * or an object that defines the initial value and disabled state.
+   */
+  value?: T | { initialValue: T; disabled: boolean };
+  /**
+   * type of the field that you want to
+   */
+  type?: EFieldType;
+  /**
+   * Object that represent the expected error names and the message for each of them to show
+   *
+   * {
+   *  "required": "please enter some info, this field is required",
+   *  "minlength": (value) => `${value.length} is less than the minumum length`,
+   * }
+   */
+  errors?: { [key: string]: string | ((value: any) => string) };
 }
 ```
 
-``` typescript
+```typescript
 export interface IFieldOptions<T> extends IBaseFieldOptions<T> {
-    /**
-     * Field placeholder
-     */
-    label?: string;
-    /**
-     * small text to show underneath the field
-     */
-    hint?: string;
+  /**
+   * Field placeholder
+   */
+  label?: string;
+  /**
+   * small text to show underneath the field
+   */
+  hint?: string;
 }
-
 ```
 
-``` typescript
+```typescript
 interface IDateFieldOptions extends IFieldOptions<Date> {
-    /**
-     * Minumum allowed date to enter
-     * 
-     * by default material date picker will disable anydate the comes before it
-     */
-    min?: Date;
-    /**
-     * Maximum allowed date to enter
-     *
-     * by default material date picker will disable anydate the comes after it
-     */
-    max?: Date;
+  /**
+   * Minumum allowed date to enter
+   *
+   * by default material date picker will disable anydate the comes before it
+   */
+  min?: Date;
+  /**
+   * Maximum allowed date to enter
+   *
+   * by default material date picker will disable anydate the comes after it
+   */
+  max?: Date;
 }
 ```
 
-``` typescript
-
+```typescript
 export class SelectOption {
-    constructor(
-        /**
-         * The Label that will be shown in the select option
-         */
-        public value: string,
-        /**
-         * The value of the option that will be used as field value
-         */
-        public key?: string | number
-    ) {
-        if (isNullorUndefined(this.key)) {
-            this.key = this.value;
-        }
+  constructor(
+    /**
+     * The Label that will be shown in the select option
+     */
+    public value: string,
+    /**
+     * The value of the option that will be used as field value
+     */
+    public key?: string | number
+  ) {
+    if (isNullOrUndefined(this.key)) {
+      this.key = this.value;
     }
+  }
 }
 
 interface ISelectFieldOptions<T> extends IFieldOptions<T> {
-    /**
-     * An Observable that will return List of SelectOption
-     * 
-     * Observable made specifically for a use cases where the options will come from an API rather than hardcoded
-     */
-    options: Observable<SelectOption[]>;
-    /**
-     * Indicates if the select field is multiple select 
-     */
-    multiple?: boolean;
+  /**
+   * An Observable that will return List of SelectOption
+   *
+   * Observable made specifically for a use cases where the options will come from an API rather than hardcoded
+   */
+  options: Observable<SelectOption[]>;
+  /**
+   * Indicates if the select field is multiple select
+   */
+  multiple?: boolean;
 }
-
 ```
 
-``` typescript
-
+```typescript
 export interface ITimeFieldOptions extends IFieldOptions<string> {
-    /**
-     * Minumum allowed time to enter
-     * 
-     * e.g: 10:02
-     */
-    min?: string;
-    /**
+  /**
+   * Minumum allowed time to enter
+   *
+   * e.g: 10:02
+   */
+  min?: string;
+  /**
      * Maximum allowed time to enter
 
      * e.g: 10:02
      */
-    max?: string;
+  max?: string;
 }
-
 ```
 
-``` typescript
-
+```typescript
 interface IRawFieldOptions<T> extends IBaseFieldOptions<T> {
-    /**
-     * the component which will act as field
-     */
-    component: Type<IRawFieldComponent<T>>;
-    /**
-     * Component inputs 
-     */
-    inputs?: { [key: string]: any };
-    /**
-     * Component outputs
-     */
-    outputs?: {
-        [key: string]: (event: any) => any
-    };
+  /**
+   * the component which will act as field
+   */
+  component: Type<IRawFieldComponent<T>>;
+  /**
+   * Component inputs
+   */
+  inputs?: { [key: string]: any };
+  /**
+   * Component outputs
+   */
+  outputs?: {
+    [key: string]: (event: any) => any;
+  };
 }
 ```
 
-``` typescript
-
+```typescript
 interface IRadioFieldOptions<T> extends IFieldOptions<T> {
-    /**
-     * An Observable that will return List of SelectOption
-     * 
-     * Observable made specifically for a use cases where the options will come from an API rather than hardcoded
-     */
-    options: Observable<SelectOption[]>;
+  /**
+   * An Observable that will return List of SelectOption
+   *
+   * Observable made specifically for a use cases where the options will come from an API rather than hardcoded
+   */
+  options: Observable<SelectOption[]>;
 }
-
 ```
 
 ## Contributing
@@ -396,13 +388,11 @@ Don't hesitate to open issues and make a pull request to help improve code
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-  
-
 ## Versioning
 
 This library will be maintained under the semantic versioning guidelines.
 Releases will be numbered with the following format:
- `<major>.<minor>.<patch>`
+`<major>.<minor>.<patch>`
 
 For more information on SemVer, please visit http://semver.org.
 
@@ -410,8 +400,8 @@ For more information on SemVer, please visit http://semver.org.
 
 ##### [Ezzabuzaid](mailto:ezzabuzaid@hotmail.com)
 
-* [GitHub](https://github.com/ezzabuzaid)
-* [Linkedin](https://www.linkedin.com/in/ezzabuzaid)
+- [GitHub](https://github.com/ezzabuzaid)
+- [Linkedin](https://www.linkedin.com/in/ezzabuzaid)
 
 ## License
 
