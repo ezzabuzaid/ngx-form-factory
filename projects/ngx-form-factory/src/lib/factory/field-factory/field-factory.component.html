@@ -11,6 +11,10 @@
         <input
           [id]="normalField().id"
           type="text"
+          [placeholder]="normalField().placeholder"
+          [readonly]="normalField().readonly"
+          [maxlength]="normalField().maxlength"
+          [minlength]="normalField().minlength"
           [attr.autocomplete]="normalField().autocomplete"
           matInput
           [formControl]="field"
@@ -31,6 +35,10 @@
         <input
           [id]="normalField().id"
           #input
+          [placeholder]="normalField().placeholder"
+          [readonly]="normalField().readonly"
+          [maxlength]="normalField().maxlength"
+          [minlength]="normalField().minlength"
           type="password"
           [attr.autocomplete]="normalField().autocomplete"
           matInput
@@ -58,6 +66,10 @@
         <textarea
           [id]="normalField().id"
           matInput
+          [placeholder]="normalField().placeholder"
+          [readonly]="normalField().readonly"
+          [maxlength]="normalField().maxlength"
+          [minlength]="normalField().minlength"
           [formControl]="field"
         ></textarea>
         <mat-error>
@@ -75,6 +87,10 @@
         <input
           [id]="normalField().id"
           type="email"
+          [placeholder]="normalField().placeholder"
+          [readonly]="normalField().readonly"
+          [maxlength]="normalField().maxlength"
+          [minlength]="normalField().minlength"
           matInput
           [attr.autocomplete]="normalField().autocomplete || 'email'"
           [formControl]="field"
@@ -93,6 +109,8 @@
         <mat-label>{{ normalField().label }}</mat-label>
         <input
           [id]="normalField().id"
+          [placeholder]="normalField().placeholder"
+          [readonly]="normalField().readonly"
           type="number"
           matInput
           [formControl]="field"
@@ -111,8 +129,10 @@
       >
         <mat-label>{{ normalField().label }}</mat-label>
         <input
-          [id]="normalField().id"
           matInput
+          [id]="normalField().id"
+          [placeholder]="normalField().placeholder"
+          [readonly]="normalField().readonly"
           [max]="dateField().max"
           [min]="dateField().min"
           (focus)="datePicker.open()"
@@ -137,6 +157,8 @@
       >
         <mat-label>{{ timeField().label }}</mat-label>
         <input
+          [placeholder]="normalField().placeholder"
+          [readonly]="normalField().readonly"
           [max]="timeField().max"
           [min]="timeField().min"
           [id]="timeField().id"
@@ -158,6 +180,8 @@
       >
         <mat-label>{{ timeField().label }}</mat-label>
         <input
+          [placeholder]="timeField().placeholder"
+          [readonly]="timeField().readonly"
           [max]="timeField().max"
           [min]="timeField().min"
           [id]="timeField().id"
@@ -178,15 +202,16 @@
     </ng-container>
     <ng-container *ngSwitchCase="types.SELECT">
       <mat-form-field
-        [hideRequiredMarker]="normalField().hideRequiredMarker"
-        [floatLabel]="normalField().floatLabel"
-        [appearance]="normalField().appearance"
+        [hideRequiredMarker]="selectField().hideRequiredMarker"
+        [floatLabel]="selectField().floatLabel"
+        [appearance]="selectField().appearance"
       >
-        <mat-label>{{ normalField().label }}</mat-label>
-        <mat-hint>{{ normalField().hint }}</mat-hint>
+        <mat-label>{{ selectField().label }}</mat-label>
+        <mat-hint>{{ selectField().hint }}</mat-hint>
         <mat-select
+          [placeholder]="selectField().placeholder"
           [multiple]="selectField().multiple"
-          [id]="normalField().id"
+          [id]="selectField().id"
           [formControl]="field"
         >
           <mat-option

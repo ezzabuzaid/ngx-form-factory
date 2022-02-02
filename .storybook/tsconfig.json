@@ -2,7 +2,8 @@
   "extends": "../projects/ngx-form-factory/tsconfig.lib.json",
   "compilerOptions": {
     "types": ["node"],
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "../src/test.ts",
