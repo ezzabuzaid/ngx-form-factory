@@ -57,25 +57,9 @@
       </mat-form-field>
     </ng-container>
     <ng-container *ngSwitchCase="types.TEXTAREA">
-      <mat-form-field
-        [hideRequiredMarker]="normalField().hideRequiredMarker"
-        [floatLabel]="normalField().floatLabel"
-        [appearance]="normalField().appearance"
-      >
-        <mat-label>{{ normalField().label }}</mat-label>
-        <textarea
-          [id]="normalField().id"
-          matInput
-          [placeholder]="normalField().placeholder"
-          [readonly]="normalField().readonly"
-          [maxlength]="normalField().maxlength"
-          [minlength]="normalField().minlength"
-          [formControl]="field"
-        ></textarea>
-        <mat-error>
-          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
-        </mat-error>
-      </mat-form-field>
+      <ngx-textarea [field]="$any(field)">
+        <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
+      </ngx-textarea>
     </ng-container>
     <ng-container *ngSwitchCase="types.EMAIL">
       <mat-form-field

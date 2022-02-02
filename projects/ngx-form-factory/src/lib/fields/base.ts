@@ -2,80 +2,12 @@
 import { AbstractControl, AbstractControlOptions, AsyncValidatorFn, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { fromEvent } from 'rxjs';
 import { generateAlphabeticString } from '../shared';
+import { EFieldType } from './field_type';
 
 export type FieldName<T> = keyof T extends string ? keyof T : never;
 export type FieldValue<T, name> = { [key in keyof T]: key extends name ? T[key] : never }[keyof T];
 export declare type Constructor<T> = new (...args: any[]) => T;
 
-export enum EFieldType {
-    /**
-     * Basic field type, equal to input[type="text"]
-     *
-     * Default Field type,
-     */
-    TEXT,
-    /**
-     * Textarea field
-     */
-    TEXTAREA,
-    /**
-     * Dropdown field, equal to <mat-select>
-     * @internal use SelectField
-     */
-    SELECT,
-    /**
-     * Basic field type, equal to input[type="password"]
-     */
-    PASSWORD,
-    /**
-     * Basic field type, equal to input[type="email"]
-     */
-    EMAIL,
-    /**
-     * Material datepicker
-     */
-    DATE,
-    /**
-     * Basic field type, equal to input[type="datetime-local"]
-     *
-     * Use it with TimeField
-     */
-    DATETIME,
-    /**
-     * Basic field type, equal to input[type="time"]
-     *
-     * Default for TimeField
-     */
-    TIME,
-    /**
-     * Material checkbox
-     */
-    CHECKBOX,
-    /**
-     * Material radio field
-     */
-    RADIO,
-    /**
-     * Basic field type, equal to input[type="number"]
-     */
-    NUMBER,
-    /**
-     * Field type that using "intl-tel-input" library with material design to display countries dial-number
-     */
-    TEL,
-    /**
-     * Field type that used "intl-tel-input" library with material design to display list of countries
-     */
-    COUNTRY,
-    /**
-     * @internal
-     */
-    RAW_FIELD,
-    /**
-     * Field that will be registerd in the Form group without being shown in the DOM
-     */
-    HIDDEN,
-}
 
 export interface IBaseField<T> extends FormControl {
     id: string;
@@ -95,7 +27,7 @@ export interface IBaseFieldOptions<T> {
     /**
      * Give the field unique id to locate it's element in the DOM
      *
-     * generate uniquly, unless you want to give it specific one
+     * It'll be generated uniquly, unless you want to give it specific one
      */
     id?: string;
     /**
@@ -138,8 +70,8 @@ export interface IBaseFieldOptions<T> {
 export class BaseField<T> extends FormControl implements IBaseField<T> {
     public type!: EFieldType;
     public section: string;
-    public id;
-    public autocomplete?;
+    public id: string;
+    public autocomplete?: string;
 
     /**
      * @internal

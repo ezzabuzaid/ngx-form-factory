@@ -1,6 +1,7 @@
 import { Type } from '@angular/core';
 import { UserInputs, UserOutputs } from '../shared';
-import { BaseField, EFieldType, IBaseFieldOptions } from './base';
+import { BaseField, IBaseFieldOptions } from './base';
+import { EFieldType } from './field_type';
 
 interface IRawFieldOptions<T> extends IBaseFieldOptions<T> {
     /**

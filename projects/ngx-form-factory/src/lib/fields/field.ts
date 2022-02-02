@@ -1,5 +1,6 @@
 import { FloatLabelType, MatFormFieldAppearance, MatFormFieldDefaultOptions } from '@angular/material/form-field';
-import { BaseField, EFieldType, IBaseField, IBaseFieldOptions } from './base';
+import { BaseField, IBaseField, IBaseFieldOptions } from './base';
+import { EFieldType } from './field_type';
 
 
 export interface IFieldOptions<T> extends IBaseFieldOptions<T>, MatFormFieldDefaultOptions {

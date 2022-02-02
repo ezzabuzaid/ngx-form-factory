@@ -1,5 +1,5 @@
-import { EFieldType } from './base';
 import { Field, IFieldOptions } from './field';
+import { EFieldType } from './field_type';
 
 
 export interface ITimeFieldOptions extends IFieldOptions<string> {

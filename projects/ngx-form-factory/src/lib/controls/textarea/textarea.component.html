@@ -1,0 +1,30 @@
+<mat-form-field
+  [hideRequiredMarker]="field.hideRequiredMarker"
+  [floatLabel]="field.floatLabel"
+  [appearance]="field.appearance"
+>
+  <mat-label>{{ field.label }}</mat-label>
+  <textarea
+    matInput
+    #autosize="cdkTextareaAutosize"
+    [id]="field.id"
+    [cdkTextareaAutosize]="field.autosize"
+    [cdkAutosizeMinRows]="field.autosizeMinRows"
+    [cdkAutosizeMaxRows]="field.autosizeMaxRows"
+    [cols]="field.cols"
+    [rows]="field.rows"
+    [wrap]="field.wrap"
+    [autocomplete]="field.autocomplete"
+    [placeholder]="field.placeholder"
+    [readonly]="field.readonly"
+    [maxlength]="field.maxlength"
+    [minlength]="field.minlength"
+    [spellcheck]="field.spellcheck"
+    [attr.autofocus]="field.autofocus"
+    [spellcheck]="field.spellcheck"
+    [formControl]="field"
+  ></textarea>
+  <mat-error>
+    <ng-content></ng-content>
+  </mat-error>
+</mat-form-field>

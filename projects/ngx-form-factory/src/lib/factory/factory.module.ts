@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import { CountryControlModule, MobileControlModule } from '../controls';
+import { CountryControlModule, MobileControlModule, TextareaModule } from '../controls';
 import { DynamicComponentDirective, TogglePasswodDirective } from '../shared';
 import { FieldFactoryComponent } from './field-factory/field-factory.component';
 import { FormFactoryComponent } from './form-factory/form-factory.component';
@@ -45,6 +45,7 @@ import { FormFactoryComponent } from './form-factory/form-factory.component';
         CountryControlModule,
         MatInputModule,
         MatCheckboxModule,
+        TextareaModule
     ]
 })
 export class FactoryModule { }

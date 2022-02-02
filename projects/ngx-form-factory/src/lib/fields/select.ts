@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { EFieldType } from './base';
 import { Field, IFieldOptions } from './field';
+import { EFieldType } from './field_type';
 import { SelectOption } from './select_option';
 
 

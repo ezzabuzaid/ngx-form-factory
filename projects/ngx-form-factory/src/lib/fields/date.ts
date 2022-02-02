@@ -1,5 +1,5 @@
-import { EFieldType } from './base';
 import { Field, IFieldOptions } from './field';
+import { EFieldType } from './field_type';
 
 export interface IDateField {
     min?: Date;
@@ -9,7 +9,7 @@ export interface IDateField {
 export interface IDateFieldOptions extends IFieldOptions<Date> {
     /**
      * Minumum allowed date to enter
-     * 
+     *
      * by default material date picker will disable anydate the comes before it
      */
     min?: Date;
