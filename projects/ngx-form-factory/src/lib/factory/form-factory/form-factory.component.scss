@@ -1,4 +1,3 @@
-$zIndex: 99;
 :host {
   display: block;
   position: relative;
@@ -19,36 +18,27 @@ $zIndex: 99;
       z-index: $zIndex;
     }
   }
-  mat-card {
-    mat-card-header {
-      padding-top: 1.5rem;
-    }
-    mat-card-content {
-      padding-top: 1rem;
-    }
-    mat-card-title {
-      text-transform: uppercase;
-    }
-    .fields-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      ngx-field-factory {
+  .fields-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    ngx-field-factory {
+      &:nth-child(even) {
         padding: 0 0.5rem;
-        min-width: calc(100% / 3);
-        flex-grow: 1;
-        @media (max-width: 1200px) {
-          min-width: calc(100% / 2);
-        }
-        @media (max-width: 768px) {
-          min-width: calc(100% / 1);
-        }
+      }
+      min-width: calc(100% / 3);
+      flex-grow: 1;
+      @media (max-width: 1200px) {
+        min-width: calc(100% / 2);
+      }
+      @media (max-width: 768px) {
+        min-width: calc(100% / 1);
       }
     }
   }
 }
 mat-progress-bar {
-  position: absolute;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  z-index: $zIndex + 1;
+  z-index: 100;
+  margin-bottom: 1rem;
 }

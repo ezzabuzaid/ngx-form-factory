@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Form, IBaseField, TFields } from '../../fields/base';
@@ -6,12 +6,11 @@ import { assertNotNullOrUndefined } from '../../shared';
 import { FormFactoryManager } from '../form-factory.manager';
 import { SubmitEvent } from './submit_event';
 
-
-
 @Component({
   selector: 'ngx-form-factory',
   templateUrl: './form-factory.component.html',
-  styleUrls: ['./form-factory.component.scss']
+  styleUrls: ['./form-factory.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormFactoryComponent implements OnInit, OnDestroy {
   public readonly progressListener = this.formWidgetManager.watch();
@@ -29,7 +28,7 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
   sections!: { [key: string]: IBaseField<any>[] };
 
   constructor(
-    private readonly formWidgetManager: FormFactoryManager
+    private readonly formWidgetManager: FormFactoryManager,
   ) { }
 
   ngOnInit() {
@@ -40,6 +39,7 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
       .subscribe(show => {
         this.loading = show;
       });
+
     const fields = this.flattenFields(values(this.formGroup.fields));
     this.sectionsNames = [...new Set(fields.map(field => field.section))];
     this.sections = this.groupBySection(fields);
