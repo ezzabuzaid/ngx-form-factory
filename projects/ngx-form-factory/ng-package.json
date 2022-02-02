@@ -1,7 +1,10 @@
 {
-  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/ngx-form-factory",
-  "lib": {
-    "entryFile": "src/public-api.ts"
-  }
+    "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "allowedNonPeerDependencies": [
+        "."
+    ],
+    "dest": "../../dist/ngx-form-factory",
+    "lib": {
+        "entryFile": "src/public-api.ts"
+    }
 }

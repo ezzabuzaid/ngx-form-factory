@@ -6,7 +6,7 @@ type Spellcheck = 'true' | 'false' | 'default';
 
 export interface ITextareaFieldOptions
     extends
-    Omit<IFieldOptions<string>, 'type' | 'id'> {
+    Omit<IFieldOptions<string>, 'type'> {
     rows?: number;
     cols?: number;
     wrap?: Wrap;

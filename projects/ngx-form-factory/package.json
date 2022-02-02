@@ -1,35 +1,37 @@
 {
-  "name": "@ezzabuzaid/ngx-form-factory",
-  "version": "1.0.0",
-  "peerDependencies": {
-    "@angular/common": "^13.1.0",
-    "@angular/core": "^13.1.0",
-    "@angular/material": "^13.0.3",
-    "@angular/cdk": "^13.0.3",
-    "@angular/forms": "~13.1.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "bugs": {
-    "email": "ezzabuzaid@hotmail.com",
-    "url": "https://github.com/ezzabuzaid/ngx-form-factory/issues"
-  },
-  "description": "Dynamic angular reactive form creation with material design",
-  "keywords": [
-    "Angular",
-    "Forms",
-    "Reactive forms",
-    "Create form on runtime",
-    "json based forms",
-    "ezzabuzaid"
-  ],
-  "author": {
-    "name": "ezzabuzaid",
-    "email": "ezzabuzaid@hotmail.com",
-    "url": "https://github.com/ezzabuzaid/"
-  },
-  "repository": "github:ezzabuzaid/ngx-form-factory",
-  "private": false,
-  "license": "MIT"
+    "name": "@ezzabuzaid/ngx-form-factory",
+    "version": "1.0.0",
+    "peerDependencies": {
+        "@angular/common": "^13.1.0",
+        "@angular/core": "^13.1.0",
+        "@angular/material": "^13.0.3",
+        "@angular/cdk": "^13.0.3",
+        "@angular/forms": "~13.1.0",
+        "@ngneat/input-mask": "^5.1.0",
+        "inputmask": "^5.0.7"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    },
+    "bugs": {
+        "email": "ezzabuzaid@hotmail.com",
+        "url": "https://github.com/ezzabuzaid/ngx-form-factory/issues"
+    },
+    "description": "Dynamic angular reactive form creation with material design",
+    "keywords": [
+        "Angular",
+        "Forms",
+        "Reactive forms",
+        "Create form on runtime",
+        "json based forms",
+        "ezzabuzaid"
+    ],
+    "author": {
+        "name": "ezzabuzaid",
+        "email": "ezzabuzaid@hotmail.com",
+        "url": "https://github.com/ezzabuzaid/"
+    },
+    "repository": "github:ezzabuzaid/ngx-form-factory",
+    "private": false,
+    "license": "MIT"
 }

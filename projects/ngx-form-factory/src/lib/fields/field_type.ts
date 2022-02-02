@@ -70,4 +70,5 @@ export enum EFieldType {
      * Field that will be registerd in the Form group without being shown in the DOM
      */
     HIDDEN,
+    MASK
 }

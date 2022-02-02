@@ -9,14 +9,14 @@
         <mat-label>{{ normalField().label }}</mat-label>
         <mat-hint>{{ normalField().hint }}</mat-hint>
         <input
-          [id]="normalField().id"
           type="text"
+          matInput
+          [id]="normalField().id"
           [placeholder]="normalField().placeholder"
           [readonly]="normalField().readonly"
           [maxlength]="normalField().maxlength"
           [minlength]="normalField().minlength"
           [attr.autocomplete]="normalField().autocomplete"
-          matInput
           [formControl]="field"
         />
         <mat-error>
@@ -232,6 +232,9 @@
         [id]="normalField().id"
         [formControl]="$any(normalField())"
       ></ngx-country-control>
+    </ng-container>
+    <ng-container *ngSwitchCase="types.MASK">
+      <ngx-mask [field]="$any(field)"></ngx-mask>
     </ng-container>
   </ng-container>
 </ng-container>

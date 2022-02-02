@@ -1,0 +1,16 @@
+<mat-form-field
+  [hideRequiredMarker]="field.hideRequiredMarker"
+  [floatLabel]="field.floatLabel"
+  [appearance]="field.appearance"
+>
+  <mat-label>{{ field.label }}</mat-label>
+  <input
+    matInput
+    [id]="field.id"
+    [inputMask]="field.mask"
+    [autocomplete]="field.autocomplete"
+    [placeholder]="field.placeholder"
+    [readonly]="field.readonly"
+    [formControl]="field"
+  />
+</mat-form-field>

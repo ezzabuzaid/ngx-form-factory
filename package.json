@@ -25,6 +25,8 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
+    "@ngneat/input-mask": "^5.1.0",
+    "inputmask": "^5.0.7",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -40,11 +42,12 @@
     "@storybook/angular": "^6.4.7",
     "@storybook/builder-webpack5": "^6.4.7",
     "@storybook/manager-webpack5": "^6.4.7",
-    "babel-loader": "^8.2.3",
+    "@types/inputmask": "^5.0.1",
     "@types/node": "^12.11.1",
-    "ng-packagr": "^13.0.0",
-    "typescript": "~4.5.2",
+    "babel-loader": "^8.2.3",
     "cpy-cli": "^1.0.1",
-    "del-cli": "^4.0.1"
+    "del-cli": "^4.0.1",
+    "ng-packagr": "^13.0.0",
+    "typescript": "~4.5.2"
   }
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { EFieldType, Field, RawField, SelectField, TextareaField, TimeField } from '../../fields';
+import { EFieldType, Field, RawField, SelectField, TimeField } from '../../fields';
 import { DateField } from '../../fields/date';
 import { assertNotNullOrUndefined } from '../../shared';
 
@@ -10,7 +10,7 @@ import { assertNotNullOrUndefined } from '../../shared';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FieldFactoryComponent implements OnInit {
-    @Input() field!: Field<any> | RawField<any> | DateField | SelectField<any> | TextareaField;
+    @Input() field!: Field<any> | RawField<any> | DateField | SelectField<any>;
     types = EFieldType;
 
     ngOnInit() {
