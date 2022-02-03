@@ -32,7 +32,7 @@ export class FormFactoryComponent implements OnInit, OnDestroy, OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['submitButtonOptions']) {
-            Object.assign({}, {
+            this.submitButtonOptions = Object.assign({}, {
                 autoValidate: true,
                 disabled: false,
                 show: true,
