@@ -49,11 +49,11 @@
             "tag": true
         },
         "github": {
-            "release": false
+            "release": true
         },
         "npm": {
-            "publish": false,
-            "publishPath": "./../../dist"
+            "publish": true,
+            "publishPath": "./../../dist/ngx-form-factory"
         },
         "hooks": {
             "before:init": [],
