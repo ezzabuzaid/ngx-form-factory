@@ -1,3 +1,10 @@
+### [1.0.2](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.1...v1.0.2) (2022-02-03)
+
+
+### Bug Fixes
+
+* **FormFactory:** assign defaults to submitButtonOptions ([f560053](https://github.com/ezzabuzaid/ngx-form-factory/commit/f56005339efb9c3c87d1e064d3e891f1d292f004))
+
 ### [1.0.1](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.0...v1.0.1) (2022-02-03)
 
 ## [1.0.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v0.7.0...v1.0.0) (2022-02-03)
