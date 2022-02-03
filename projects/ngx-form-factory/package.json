@@ -1,6 +1,6 @@
 {
     "name": "@ezzabuzaid/ngx-form-factory",
-    "version": "0.7.0",
+    "version": "1.0.0",
     "peerDependencies": {
         "@angular/common": "^13.1.0",
         "@angular/core": "^13.1.0",
