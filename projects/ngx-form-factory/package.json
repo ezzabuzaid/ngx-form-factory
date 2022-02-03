@@ -1,6 +1,6 @@
 {
     "name": "@ezzabuzaid/ngx-form-factory",
-    "version": "1.0.0",
+    "version": "0.7.0",
     "peerDependencies": {
         "@angular/common": "^13.1.0",
         "@angular/core": "^13.1.0",
@@ -33,5 +33,37 @@
     },
     "repository": "github:ezzabuzaid/ngx-form-factory",
     "private": false,
-    "license": "MIT"
+    "license": "MIT",
+    "release-it": {
+        "plugins": {
+            "@release-it/conventional-changelog": {
+                "preset": "conventionalcommits",
+                "infile": "./../../CHANGELOG.md"
+            }
+        },
+        "git": {
+            "requireBranch": "master",
+            "requireCleanWorkingDir": true,
+            "requireCommits": true,
+            "requireUpstream": true,
+            "tag": true
+        },
+        "github": {
+            "release": false
+        },
+        "npm": {
+            "publish": false,
+            "publishPath": "./../../dist"
+        },
+        "hooks": {
+            "before:init": [],
+            "after:bump": "npm run build",
+            "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+        }
+    },
+    "scripts": {
+        "release": "release-it",
+        "build": "ng build",
+        "prebuild": "del-cli ./dist/"
+    }
 }
