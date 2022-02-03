@@ -1,3 +1,5 @@
+### [1.0.1](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.0...v1.0.1) (2022-02-03)
+
 ## [1.0.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v0.7.0...v1.0.0) (2022-02-03)
 
 
