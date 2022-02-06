@@ -245,6 +245,7 @@
     [inputs]="_rawField.inputs"
     [outputs]="_rawField.outputs"
     [properties]="{ formControl: _rawField }"
+    (create)="onRawFieldCreation($event, _rawField)"
   ></ng-container>
 </ng-container>
 

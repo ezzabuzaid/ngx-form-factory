@@ -10,7 +10,7 @@ import { assertNotNullOrUndefined } from '../../shared';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FieldFactoryComponent implements OnInit {
-    @Input() field!: Field<any> | RawField<any> | DateField | SelectField<any>;
+    @Input() field!: Field<any> | RawField<any, any> | DateField | SelectField<any>;
     types = EFieldType;
 
     ngOnInit() {
@@ -62,6 +62,9 @@ export class FieldFactoryComponent implements OnInit {
         });
     }
 
+    onRawFieldCreation(instance, rawField: RawField<any, any>) {
+        rawField.componentInstance = instance;
+    }
 
 }
 

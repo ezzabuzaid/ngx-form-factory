@@ -1,4 +1,4 @@
-import { ComponentFactory, ComponentFactoryResolver, ComponentRef, Directive, EventEmitter, Injector, Input, OnChanges, OnDestroy, SimpleChange, SimpleChanges, Type, ViewContainerRef } from '@angular/core';
+import { ComponentFactory, ComponentFactoryResolver, ComponentRef, Directive, EventEmitter, Injector, Input, OnChanges, OnDestroy, Output, SimpleChange, SimpleChanges, Type, ViewContainerRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { assertNotNullOrUndefined, UserInputs, UserOutputs } from './utils';
@@ -13,6 +13,7 @@ export class DynamicComponentDirective implements OnDestroy, OnChanges {
     private subscription = new Subject();
     private componentFactory?: ComponentFactory<any>;
     private componentRef?: ComponentRef<any>;
+    @Output() create = new EventEmitter();
     @Input('dynamic-component') component!: Type<any>;
     @Input() properties?: Record<string, any> = {};
     @Input() outputs?: UserOutputs = {};
@@ -81,6 +82,7 @@ export class DynamicComponentDirective implements OnDestroy, OnChanges {
         this.componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.component);
         this.componentRef = this.viewContainerRef.createComponent<any>(this.componentFactory, 0, this.injector);
         Object.assign(this.componentRef.instance, this.properties ?? {});
+        this.create.emit(this.componentRef.instance);
     }
 
     private bindOutputs(componentOutputs: ComponentInputs, userOutputs: UserInputs, componentInstance: any) {

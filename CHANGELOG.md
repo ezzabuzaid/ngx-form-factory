@@ -1,3 +1,10 @@
+### [1.0.3](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.2...v1.0.3) (2022-02-06)
+
+
+### Bug Fixes
+
+* **RawField:** assign missing formControl to raw field component ([da8ae2c](https://github.com/ezzabuzaid/ngx-form-factory/commit/da8ae2c70f27ccd8fcaf3398b0ba6f95550a1309))
+
 ### [1.0.2](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.1...v1.0.2) (2022-02-03)
 
 

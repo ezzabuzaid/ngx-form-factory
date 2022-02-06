@@ -20,10 +20,11 @@ interface IRawFieldOptions<T> extends IBaseFieldOptions<T> {
     };
 }
 
-export class RawField<T> extends BaseField<T> {
+export class RawField<T, C> extends BaseField<T> {
     component: Type<IRawFieldComponent<T>>;
     inputs?: UserInputs;
     outputs?: UserOutputs;
+    componentInstance: C;
     constructor(options: IRawFieldOptions<T>) {
         super(options);
         this.type = EFieldType.RAW_FIELD;

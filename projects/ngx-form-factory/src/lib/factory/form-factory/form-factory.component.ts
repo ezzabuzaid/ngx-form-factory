@@ -7,6 +7,12 @@ import { FormFactoryManager } from '../form-factory.manager';
 import { SubmitButtonOptions } from './submit_button_options';
 import { SubmitEvent } from './submit_event';
 
+const DEFAULT_SUBMIT_BUTTON_OPTIONS = {
+    autoValidate: true,
+    disabled: false,
+    show: true,
+    class: []
+} as SubmitButtonOptions;
 @Component({
     selector: 'ngx-form-factory',
     templateUrl: './form-factory.component.html',
@@ -16,7 +22,7 @@ import { SubmitEvent } from './submit_event';
 export class FormFactoryComponent implements OnInit, OnDestroy, OnChanges {
     public readonly progressListener = this.formWidgetManager.watch();
     private readonly subscription = new Subject();
-    @Input() submitButtonOptions?: SubmitButtonOptions;
+    @Input() submitButtonOptions?: SubmitButtonOptions = DEFAULT_SUBMIT_BUTTON_OPTIONS;
     @Output() public readonly onSubmit = new EventEmitter<SubmitEvent>();
     @Input() formGroup!: Form<any>;
     @Input() implicitFields = true;
@@ -32,12 +38,7 @@ export class FormFactoryComponent implements OnInit, OnDestroy, OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['submitButtonOptions']) {
-            this.submitButtonOptions = Object.assign({}, {
-                autoValidate: true,
-                disabled: false,
-                show: true,
-                class: []
-            } as SubmitButtonOptions, this.submitButtonOptions)
+            this.submitButtonOptions = Object.assign({}, DEFAULT_SUBMIT_BUTTON_OPTIONS, this.submitButtonOptions)
         }
     }
 
