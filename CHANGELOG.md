@@ -1,3 +1,10 @@
+### [1.0.5](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.4...v1.0.5) (2022-02-06)
+
+
+### Bug Fixes
+
+* some mat-hint were missing for some fields ([09e910b](https://github.com/ezzabuzaid/ngx-form-factory/commit/09e910beaa2096a0ac47642610cc204a2b3ce42a))
+
 ### [1.0.4](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.3...v1.0.4) (2022-02-06)
 
 
