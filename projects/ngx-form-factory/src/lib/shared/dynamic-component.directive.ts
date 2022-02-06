@@ -14,6 +14,7 @@ export class DynamicComponentDirective implements OnDestroy, OnChanges {
     private componentFactory?: ComponentFactory<any>;
     private componentRef?: ComponentRef<any>;
     @Input('dynamic-component') component!: Type<any>;
+    @Input() properties?: Record<string, any> = {};
     @Input() outputs?: UserOutputs = {};
     @Input() inputs?: UserInputs = {};
     @Input() injector?: Injector;
@@ -24,7 +25,6 @@ export class DynamicComponentDirective implements OnDestroy, OnChanges {
     ) { }
 
     ngOnChanges(changes: SimpleChanges): void {
-
         assertNotNullOrUndefined(this.component);
 
         let componentChanges: Record<string, SimpleChange>;
@@ -80,6 +80,7 @@ export class DynamicComponentDirective implements OnDestroy, OnChanges {
     private createComponent() {
         this.componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.component);
         this.componentRef = this.viewContainerRef.createComponent<any>(this.componentFactory, 0, this.injector);
+        Object.assign(this.componentRef.instance, this.properties ?? {});
     }
 
     private bindOutputs(componentOutputs: ComponentInputs, userOutputs: UserInputs, componentInstance: any) {
