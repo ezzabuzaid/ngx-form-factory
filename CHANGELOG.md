@@ -1,3 +1,10 @@
+### [1.0.4](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.3...v1.0.4) (2022-02-06)
+
+
+### Bug Fixes
+
+* **RawField:** add componentInstance to raw field ([60bbf15](https://github.com/ezzabuzaid/ngx-form-factory/commit/60bbf15e1bc1137946b01a39f87d19fc08f1aeb9))
+
 ### [1.0.3](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.2...v1.0.3) (2022-02-06)
 
 
