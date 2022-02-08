@@ -252,7 +252,7 @@ interface IBaseFieldOptions<T> {
    * @param formState Initializes the control with an initial value,
    * or an object that defines the initial value and disabled state.
    */
-  value?: T | { initialValue: T; disabled: boolean };
+  value?: T | { value: T; disabled: boolean };
   /**
    * type of the field that you want to
    */
