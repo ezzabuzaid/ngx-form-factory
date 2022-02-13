@@ -13,7 +13,7 @@ import { IField } from '../../fields';
 })
 export class CountryControlComponent implements OnInit, ControlValueAccessor {
   private _value?: string;
-  @Input() public formControl!: IField<string>;
+  @Input() public field!: IField<string>;
   public countries: any[] = [];
   public currentCountry?: any;
 
@@ -47,7 +47,7 @@ export class CountryControlComponent implements OnInit, ControlValueAccessor {
   }
 
   public getCountry() {
-    return this.countries.find(el => el.iso2 === this.formControl.value);
+    return this.countries.find(el => el.iso2 === this.field.value);
   }
 
   writeValue(value: string) {

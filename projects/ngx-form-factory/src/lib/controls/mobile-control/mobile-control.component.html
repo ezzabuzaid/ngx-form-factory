@@ -1,17 +1,17 @@
-<mat-form-field floatLabel="always">
-  <mat-label>{{ formControl.label }}</mat-label>
-  <mat-hint>{{ formControl.hint }}</mat-hint>
+<mat-form-field floatLabel="always" [class]="field.class">
+  <mat-label>{{ field.label }}</mat-label>
+  <mat-hint>{{ field.hint }}</mat-hint>
   <input
     matInput
     autocomplete="mobile"
-    [formControl]="formControl"
+    [formControl]="field"
     #phoneField
-    [id]="formControl.id"
-    [placeholder]="formControl.placeholder"
-    [readonly]="formControl.readonly"
+    [id]="field.id"
+    [placeholder]="field.placeholder"
+    [readonly]="field.readonly"
     (input)="updateModel()"
   />
-  <mat-error *ngIf="formControl.hasError('not_associated')"
+  <mat-error *ngIf="field.hasError('not_associated')"
     >The number is not valid</mat-error
   >
 </mat-form-field>

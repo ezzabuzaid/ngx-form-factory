@@ -2,6 +2,7 @@
   <ng-container [ngSwitch]="normalField()?.type">
     <ng-container *ngSwitchCase="types.TEXT">
       <mat-form-field
+        [class]="normalField().class"
         [hideRequiredMarker]="normalField().hideRequiredMarker"
         [floatLabel]="normalField().floatLabel"
         [appearance]="normalField().appearance"
@@ -26,6 +27,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="types.PASSWORD">
       <mat-form-field
+        [class]="normalField().class"
         [hideRequiredMarker]="normalField().hideRequiredMarker"
         [floatLabel]="normalField().floatLabel"
         [appearance]="normalField().appearance"
@@ -63,6 +65,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="types.EMAIL">
       <mat-form-field
+        [class]="normalField().class"
         [hideRequiredMarker]="normalField().hideRequiredMarker"
         [floatLabel]="normalField().floatLabel"
         [appearance]="normalField().appearance"
@@ -87,6 +90,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="types.NUMBER">
       <mat-form-field
+        [class]="normalField().class"
         [hideRequiredMarker]="normalField().hideRequiredMarker"
         [floatLabel]="normalField().floatLabel"
         [appearance]="normalField().appearance"
@@ -109,6 +113,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="types.DATE">
       <mat-form-field
+        [class]="normalField().class"
         [hideRequiredMarker]="normalField().hideRequiredMarker"
         [floatLabel]="normalField().floatLabel"
         [appearance]="normalField().appearance"
@@ -138,6 +143,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="types.TIME">
       <mat-form-field
+        [class]="normalField().class"
         [hideRequiredMarker]="normalField().hideRequiredMarker"
         [floatLabel]="normalField().floatLabel"
         [appearance]="normalField().appearance"
@@ -162,6 +168,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="types.DATETIME">
       <mat-form-field
+        [class]="normalField().class"
         [hideRequiredMarker]="normalField().hideRequiredMarker"
         [floatLabel]="normalField().floatLabel"
         [appearance]="normalField().appearance"
@@ -191,6 +198,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="types.SELECT">
       <mat-form-field
+        [class]="normalField().class"
         [hideRequiredMarker]="selectField().hideRequiredMarker"
         [floatLabel]="selectField().floatLabel"
         [appearance]="selectField().appearance"
@@ -228,14 +236,12 @@
       </mat-radio-group>
     </ng-container>
     <ng-container *ngSwitchCase="types.TEL">
-      <ngx-mobile-control
-        [formControl]="$any(normalField())"
-      ></ngx-mobile-control>
+      <ngx-mobile-control [field]="$any(normalField())"></ngx-mobile-control>
     </ng-container>
     <ng-container *ngSwitchCase="types.COUNTRY">
       <ngx-country-control
         [id]="normalField().id"
-        [formControl]="$any(normalField())"
+        [field]="$any(normalField())"
       ></ngx-country-control>
     </ng-container>
     <ng-container *ngSwitchCase="types.MASK">

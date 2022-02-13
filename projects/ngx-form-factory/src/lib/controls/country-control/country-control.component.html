@@ -1,9 +1,9 @@
-<mat-form-field>
-  <mat-label>{{ formControl?.label }}</mat-label>
-  <mat-hint>{{ formControl.hint }}</mat-hint>
+<mat-form-field [class]="field.class">
+  <mat-label>{{ field?.label }}</mat-label>
+  <mat-hint>{{ field.hint }}</mat-hint>
   <mat-select
     matInput
-    [formControl]="formControl"
+    [formControl]="field"
     (selectionChange)="updateModel($event?.value)"
   >
     <mat-select-trigger>

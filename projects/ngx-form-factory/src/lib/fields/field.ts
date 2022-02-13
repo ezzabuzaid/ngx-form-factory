@@ -19,6 +19,7 @@ export interface IFieldOptions<T> extends IBaseFieldOptions<T>, MatFormFieldDefa
      * Small text to show underneath the field
      */
     hint?: string;
+    class?: string | string[];
 }
 
 export interface IField<T> extends IBaseField<T>, MatFormFieldDefaultOptions {
@@ -28,6 +29,7 @@ export interface IField<T> extends IBaseField<T>, MatFormFieldDefaultOptions {
     label?: string;
     hint?: string;
     placeholder?: string;
+    class?: string | string[];
 }
 
 export class Field<T> extends BaseField<T> implements IField<T>{
@@ -40,6 +42,7 @@ export class Field<T> extends BaseField<T> implements IField<T>{
     public maxlength?: number;
     public minlength?: number;
     public placeholder?: string;
+    public class?: string | string[];
     constructor(options?: IFieldOptions<T>) {
         super(options);
         this.type = options?.type ?? EFieldType.TEXT;
@@ -52,6 +55,7 @@ export class Field<T> extends BaseField<T> implements IField<T>{
         this.minlength = options?.minlength;
         this.maxlength = options?.maxlength;
         this.readonly = options?.readonly;
+        this.class = options?.class;
     }
 
 }

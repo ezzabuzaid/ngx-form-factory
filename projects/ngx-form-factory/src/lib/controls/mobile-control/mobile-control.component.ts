@@ -21,7 +21,7 @@ export class MobileControlComponent implements OnInit, OnChanges, ControlValueAc
   @Input() private code?: string;
 
   @ViewChild('phoneField', { static: true }) private readonly phoneField?: ElementRef<HTMLElement>;
-  @Input() public formControl!: IField<string>;
+  @Input() public field!: IField<string>;
 
   onChange!: (value: string) => {};
   onTouched!: () => {};
@@ -41,7 +41,7 @@ export class MobileControlComponent implements OnInit, OnChanges, ControlValueAc
   }
 
   ngOnInit() {
-    this.formControl.addValidators(PhoneNumberAssociatedWithCountryValidator(this.formControl.id));
+    this.field.addValidators(PhoneNumberAssociatedWithCountryValidator(this.field.id));
     try {
       this.intlTelInstance = (window as any).intlTelInput(this.phoneField?.nativeElement);
       this.ngOnChanges({});

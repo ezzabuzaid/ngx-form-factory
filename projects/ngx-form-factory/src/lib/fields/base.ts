@@ -71,6 +71,7 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
     public type!: EFieldType;
     public section: string;
     public id: string;
+    // FIXME should be moved to only field that supports it.
     public autocomplete?: string;
 
     /**
