@@ -136,11 +136,11 @@
           [for]="datePicker"
         ></mat-datepicker-toggle>
         <mat-datepicker
+          #datePicker
           [startView]="dateField().startView"
           [startAt]="dateField().startAt"
-          (monthSelected)="dateField().monthSelected($event)"
-          (yearSelected)="dateField().yearSelected($event)"
-          #datePicker
+          (monthSelected)="dateField().monthSelected($event, datePicker)"
+          (yearSelected)="dateField().yearSelected($event, datePicker)"
         ></mat-datepicker>
         <mat-error>
           <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>

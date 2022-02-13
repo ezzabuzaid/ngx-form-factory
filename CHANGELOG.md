@@ -1,3 +1,10 @@
+### [1.1.1](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.1.0...v1.1.1) (2022-02-13)
+
+
+### Bug Fixes
+
+* **DateField:** pass  to monthSelected and yearSelected ([7821c59](https://github.com/ezzabuzaid/ngx-form-factory/commit/7821c5955fac8a13c74ebf0b104bf0daba827954))
+
 ## [1.1.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.4...v1.1.0) (2022-02-13)
 
 
