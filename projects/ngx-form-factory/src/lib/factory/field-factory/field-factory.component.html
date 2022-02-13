@@ -135,7 +135,13 @@
           matSuffix
           [for]="datePicker"
         ></mat-datepicker-toggle>
-        <mat-datepicker #datePicker></mat-datepicker>
+        <mat-datepicker
+          [startView]="dateField().startView"
+          [startAt]="dateField().startAt"
+          (monthSelected)="dateField().monthSelected"
+          (yearSelected)="dateField().yearSelected"
+          #datePicker
+        ></mat-datepicker>
         <mat-error>
           <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
         </mat-error>
