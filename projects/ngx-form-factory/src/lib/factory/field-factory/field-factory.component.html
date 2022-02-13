@@ -138,8 +138,8 @@
         <mat-datepicker
           [startView]="dateField().startView"
           [startAt]="dateField().startAt"
-          (monthSelected)="dateField().monthSelected"
-          (yearSelected)="dateField().yearSelected"
+          (monthSelected)="dateField().monthSelected($event)"
+          (yearSelected)="dateField().yearSelected($event)"
           #datePicker
         ></mat-datepicker>
         <mat-error>
