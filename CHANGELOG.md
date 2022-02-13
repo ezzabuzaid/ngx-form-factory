@@ -1,3 +1,17 @@
+## [1.1.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.4...v1.1.0) (2022-02-13)
+
+
+### Features
+
+* add class property to mat-form-field ([36977e1](https://github.com/ezzabuzaid/ngx-form-factory/commit/36977e1331c59876265ebc8f97515d7ac5565670))
+
+
+### Bug Fixes
+
+* **DateField:** add startView, startAt, monthSelected, and yearSelected ([6f67375](https://github.com/ezzabuzaid/ngx-form-factory/commit/6f673754a38db6d1871dc3c270c24bdc1f7bb36c))
+* replace initialValue with value ([41bf84f](https://github.com/ezzabuzaid/ngx-form-factory/commit/41bf84fdf6a3a678a167f3baf6076b10243cd133))
+* some mat-hint were missing for some fields ([09e910b](https://github.com/ezzabuzaid/ngx-form-factory/commit/09e910beaa2096a0ac47642610cc204a2b3ce42a))
+
 ### [1.0.5](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.0.4...v1.0.5) (2022-02-06)
 
 
