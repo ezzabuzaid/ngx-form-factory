@@ -1,3 +1,10 @@
+### [1.1.2](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.1.1...v1.1.2) (2022-02-13)
+
+
+### Bug Fixes
+
+* **DateField:** pass DatePicker instance to monthSelected and yearSelected ([578c51f](https://github.com/ezzabuzaid/ngx-form-factory/commit/578c51fd05122c300ffbe7a96146ff02028525a4))
+
 ### [1.1.1](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.1.0...v1.1.1) (2022-02-13)
 
 
