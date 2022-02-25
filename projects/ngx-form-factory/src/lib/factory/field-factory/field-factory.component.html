@@ -129,6 +129,7 @@
           [min]="dateField().min"
           (focus)="datePicker.open()"
           [matDatepicker]="datePicker"
+          [matDatepickerFilter]="dateField().datepickerFilter"
           [formControl]="field"
         />
         <mat-datepicker-toggle

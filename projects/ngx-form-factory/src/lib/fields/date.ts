@@ -1,4 +1,4 @@
-import { MatDatepicker } from '@angular/material/datepicker';
+import { DateFilterFn, MatDatepicker } from '@angular/material/datepicker';
 import { MatDatepickerBase } from '@angular/material/datepicker/datepicker-base';
 import { Field, IFieldOptions } from './field';
 import { EFieldType } from './field_type';
@@ -10,6 +10,7 @@ export interface IDateField<PT> {
     startAt?: MatDatepickerBase<any, any, Date>['startAt'];
     yearSelected?: (date: Date, picker: MatDatepicker<PT>) => void;
     monthSelected?: (date: Date, picker: MatDatepicker<PT>) => void;
+    datepickerFilter?: DateFilterFn<PT>;
 }
 
 export interface IDateFieldOptions<PT> extends IFieldOptions<Date> {
@@ -17,6 +18,7 @@ export interface IDateFieldOptions<PT> extends IFieldOptions<Date> {
     startAt?: MatDatepickerBase<any, any, Date>['startAt'];
     yearSelected?: (date: Date, picker: MatDatepicker<PT>) => void;
     monthSelected?: (date: Date, picker: MatDatepicker<PT>) => void;
+    datepickerFilter?: DateFilterFn<PT>;
     /**
      * Minumum allowed date to enter
      *
@@ -37,6 +39,7 @@ export class DateField<PT = Date> extends Field<Date> implements IDateField<PT> 
     public startAt?: MatDatepickerBase<any, any, Date>['startAt'];
     public yearSelected?: (date: Date, picker: MatDatepicker<PT>) => void;
     public monthSelected?: (date: Date, picker: MatDatepicker<PT>) => void;
+    public datepickerFilter?: DateFilterFn<PT>;
     constructor(options?: IDateFieldOptions<PT>) {
         super(options);
         this.type = EFieldType.DATE;
@@ -46,5 +49,6 @@ export class DateField<PT = Date> extends Field<Date> implements IDateField<PT> 
         this.startView = options?.startView ?? 'month';
         this.yearSelected = options?.yearSelected ?? ((d, p) => { });
         this.monthSelected = options?.monthSelected ?? ((d, p) => { });
+        this.datepickerFilter = options?.datepickerFilter ?? ((d) => true);
     }
 }
