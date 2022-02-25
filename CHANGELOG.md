@@ -1,3 +1,10 @@
+### [1.1.3](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.1.2...v1.1.3) (2022-02-25)
+
+
+### Bug Fixes
+
+* **DateField:** add support for matDatepickerFilter ([4509a13](https://github.com/ezzabuzaid/ngx-form-factory/commit/4509a135dd5df1f10966330a90ef4afeb248c390))
+
 ### [1.1.2](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.1.1...v1.1.2) (2022-02-13)
 
 
