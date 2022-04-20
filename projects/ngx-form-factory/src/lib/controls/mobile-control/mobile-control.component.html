@@ -3,7 +3,7 @@
   <mat-hint>{{ field.hint }}</mat-hint>
   <input
     matInput
-    autocomplete="mobile"
+    [attr.autocomplete]="field.autocomplete"
     [formControl]="field"
     #phoneField
     [id]="field.id"
@@ -11,6 +11,7 @@
     [readonly]="field.readonly"
     (input)="updateModel()"
   />
+  <!-- FIXME Should be added by the user -->
   <mat-error *ngIf="field.hasError('not_associated')"
     >The number is not valid</mat-error
   >
