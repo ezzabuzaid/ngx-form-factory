@@ -1,408 +1,105 @@
-# Form Factory
 
-Don't forget to follow the project's author, [Ezz](https://github.com/ezzabuzaid), and consider starring the project to show your ❤️ and support
 
-Form factory is an extension of Reactive Form Group/Control that makes create beautiful dynamic strong typed [Material](https://material.angular.io) forms easy!
+# Scrapx
 
-## Motivation
+This project was generated using [Nx](https://nx.dev).
 
-After working on several Angular projects, i found myself copypasting the same forms over and over from project to another with minmal change to fields labels and names, and from here i decided to build a library that will make copypasting experiance easier ^^
+<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
-One upon time I worked on project that will draw the layout and the forms dynamically based on response from an API with the most smallest coupling.
+🔎 **Smart, Fast and Extensible Build System**
 
-I've been using the same exact same HTML declaration always with little css adjustment to make them form fields shape differently.
+## Quick Start & Documentation
 
-therefore, I started working on this library with a goal of easy defining forms and fields with much less HTML boilerplate.
+[Nx Documentation](https://nx.dev/angular)
 
-## Getting started
+[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
 
-1. run `npm install @ezzabuzaid/ngx-form-factory` in your workspace directory
-2. import `FormFactoryModule` in a feature module
-3. create an instance of `Form` in a component and define your fields
+[Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
 
-```typescript
-form = new Form({
-  name: new Field({
-    label: "Name",
-  }),
-  birthdate: new DateField({
-    label: "Birthdate",
-  }),
-});
-```
+## Adding capabilities to your workspace
 
-4. put the required markup
+Nx supports many plugins which add capabilities for developing different types of applications and different tools.
 
-```html
-<ngx-form-factory [formGroup]="form"></ngx-form-factory>
-```
+These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
 
-and here you go! all setup is done.
+Below are our core plugins:
 
-`ngx-form-factory` will loop over all defined form fields and create corresponding <mat-form-field> for each of them.
-those fields will be included in a <mat-card> component to give them nice look.
+- [Angular](https://angular.io)
+  - `ng add @nrwl/angular`
+- [React](https://reactjs.org)
+  - `ng add @nrwl/react`
+- Web (no framework frontends)
+  - `ng add @nrwl/web`
+- [Nest](https://nestjs.com)
+  - `ng add @nrwl/nest`
+- [Express](https://expressjs.com)
+  - `ng add @nrwl/express`
+- [Node](https://nodejs.org)
+  - `ng add @nrwl/node`
 
-| Property                 | Type       | Default                             | Description                                            |
-| ------------------------ | ---------- | ----------------------------------- | ------------------------------------------------------ |
-| formGroup                | @Input()   | undefined                           | Form instance                                          |
-| title                    | @Input()   | undefined                           | Form title that will be shown in <mat-card-title>      |
-| implicitFields           | @Input()   | true                                | whether you want auto create form                      |
-| submitButton             | @Input()   | true                                | whether to show submit button or not                   |
-| submitButtonDisableState | @Input()   | false                               | initial submit button disable state                    |
-| autoValidateSubmitButton | @Input()   | true                                | whether you want auto disable and enable submit button |
-| onSubmit                 | @Output()  | new EventEmitter< `SubmitEvent` >() | listen to submit button click                          |
-| [form-header]            | ng-content |                                     | project HTML in `<mat-card-subtitle>`                  |
+There are also many [community plugins](https://nx.dev/community) you could add.
 
-| [form-body] | ng-content | | project HTML in `<mat-card-content>` , handy when implicitFields is false so you can originize your fields as you need with `<ngx-form-field>`
+## Generate an application
 
-| [form-footer] | ng-content | | project HTML in `<mat-card-actions>`
+Run `ng g @nrwl/angular:app my-app` to generate an application.
 
-## API
+> You can use any of the plugins above to generate applications as well.
 
-The library has two important classes with additional options as argument
+When using Nx, you can create multiple applications and libraries in the same workspace.
 
-- `Form` extends `FormGroup` with additional instance methods, it take the same parameter as FormGroup class
+## Generate a library
 
-  1. `getControlValue(controlName, defaultValue)` returns the value of the specified control name and defaultValue if the value is null or undefined
+Run `ng g @nrwl/angular:lib my-lib` to generate a library.
 
-  2. `hasControlError(controlName, errorName)` checks if the specified control name
+> You can also use any of the plugins above to generate libraries as well.
 
-  has an error
+Libraries are shareable across libraries and applications. They can be imported from `@scrapx/mylib`.
 
-  3. `getName(controlName)` simple method that will return the same provided name, it mainly has been create to be used in HTML with `[formControlName]` directive, in case of name change the compiler will rise an error up
+## Development server
 
-  4. `get(controlName)` the same one in `FormGroup` , but with typing
+Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
-- `Field(options: IFieldOptions)` extends `FormControl` with additional instance methods
+## Code scaffolding
 
-  - `addValidator(validator)` add an array of Validator without lossing the existing ones
+Run `ng g component my-component --project=my-app` to generate a new component.
 
-  - `getElement()` return the asocciated element with that `Field`
+## Build
 
-  - `on(eventName)` the same as `element.addEventListener(eventName, handler)` but instead it will return an `Observable`.
+Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-  * constructor(options)
+## Running unit tests
 
-- `DateField(options: IDateFieldOptions)`
+Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
 
-- `SelectField(options: ISelectFieldOptions)`
+Run `nx affected:test` to execute the unit tests affected by a change.
 
-- `TimeField(options: ITimeFieldOptions)`
+## Running end-to-end tests
 
-- `RadioField(options: IRadioFieldOptions)`
+Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
 
-- `RawField(options: IRawFieldOptions)`
+Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
 
-  Special field type that takes a component to be used as field,
-  have two important attributes, inputs and output that maps to component inputs and outputs.
+## Understand your workspace
 
-  In case you have special or complex field you can utilize `RawField` to make it compatible with `Form` , it acts as Component Adaptar.
+Run `nx graph` to see a diagram of the dependencies of your projects.
 
-  Please see an example in `src/app/typeahead-field`
-
-Other field types that only can be used with `Field` class
-
-```typescript
-export enum EFieldType {
-  /**
-   * Textarea field
-   */
-  TEXTAREA,
-  /**
-   * Basic field type, equal to input[type="password"]
-   */
-  PASSWORD,
-  /**
-   * Basic field type, equal to input[type="email"]
-   */
-  EMAIL,
-  /**
-   * Material checkbox
-   */
-  CHECKBOX,
-  /**
-   * Material radio field
-   */
-  RADIO,
-  /**
-   * Basic field type, equal to input[type="number"]
-   */
-  NUMBER,
-  /**
-   * Field type that using "intl-tel-input" library with material design to display countries dial-number
-   */
-  TEL,
-  /**
-   * Field type that used "intl-tel-input" library with material design to display list of countries
-   */
-  COUNTRY,
-  /**
-   * Field that will be registerd in the Form group without being shown in the DOM
-   */
-  HIDDEN,
-}
-
-const field = new Field({
-  label: "Some Label",
-  type: EFieldType.TEXTAREA,
-});
-```
-
-Note: `COUNTRY` and `TEL` types are using `intl-tel-input` library, so make sure to install it if you want to use it
-
-## Example
-
-- Form
-
-```typescript
-import { Form, SubmitEvent } from  '@ezzabuzaid/ngx-form-factory';
-
-interface IUserInfo {
-	name: string;
-	age: number;
-}
-
-@Component({
-	template:"<ngx-form-factory (onSubmit)="onSubmit($event)" [formGroup]="form"></ngx-form-factory>"
-})
-export class DumpComponent {
-
-	public form = new Form<IUserInfo>({
-		name: new Field({label: 'Name'}),
-		age: new Field({label: 'Age', type: EFieldType.NUMBER})
-	});
-
-	onSubmit(event: SubmitEvent<IUserInfo>){
-		if(event.valid){
-			// call the server with event.value
-		}
-	}
-}
-```
-
-- Standalone Field
-
-You may want to create a field without Form at all, in this case all what you need is to create an instance of `Field`
-
-```typescript
-import {  Field } from  '@ezzabuzaid/ngx-form-factory';
-
-@Component({
-	template:"<ngx-form-field [field]="myField"></ngx-form-field>"
-})
-export class DumpComponent {
-
-	public myField = new Field({ label: 'My Label' });
-
-}
-```
-
-- RawField
-
-```typescript
-
-public form = new Form<IUserInfo>({
-	user: new RawField(
-		component: TypeaheadFieldComponent,
-		inputs: {
-			provider: of()
-		},
-		outputs:{}
-	),
-});
-
-```
-
-    Please check `src/app/typeahead-field` which contain detailed implemention of how you can consume and customize RawField as peer your need
-
-## Classes
-
-```typescript
-interface IBaseFieldOptions<T> {
-  /**
-   * Group fields by section name
-   *
-   * used to reflow the fields to shape together in the HTML as line of maximum 3 fields
-   */
-  section?: string;
-  /**
-   * Give the field unique id to locate it's element in the DOM
-   *
-   * generate uniquly, unless you want to give it specific one
-   */
-  id?: string;
-  /**
-   * HTMLInputElement autocomplete
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
-   */
-  autocomplete?: string;
-  /**
-   * @param validatorOrOpts A synchronous validator function, or an array of
-   * such functions, or an `AbstractControlOptions` object that contains validation functions
-   * and a validation trigger.
-   */
-  validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null;
-  /**
-   * @param asyncValidator A single async validator or array of async validator functions
-   * @note quoted from Angular docs
-   */
-  asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null;
-  /**
-   * @param formState Initializes the control with an initial value,
-   * or an object that defines the initial value and disabled state.
-   */
-  value?: T | { value: T; disabled: boolean };
-  /**
-   * type of the field that you want to
-   */
-  type?: EFieldType;
-  /**
-   * Object that represent the expected error names and the message for each of them to show
-   *
-   * {
-   *  "required": "please enter some info, this field is required",
-   *  "minlength": (value) => `${value.length} is less than the minumum length`,
-   * }
-   */
-  errors?: { [key: string]: string | ((value: any) => string) };
-}
-```
-
-```typescript
-export interface IFieldOptions<T> extends IBaseFieldOptions<T> {
-  /**
-   * Field placeholder
-   */
-  label?: string;
-  /**
-   * small text to show underneath the field
-   */
-  hint?: string;
-}
-```
-
-```typescript
-interface IDateFieldOptions extends IFieldOptions<Date> {
-  /**
-   * Minumum allowed date to enter
-   *
-   * by default material date picker will disable anydate the comes before it
-   */
-  min?: Date;
-  /**
-   * Maximum allowed date to enter
-   *
-   * by default material date picker will disable anydate the comes after it
-   */
-  max?: Date;
-}
-```
-
-```typescript
-export class SelectOption {
-  constructor(
-    /**
-     * The Label that will be shown in the select option
-     */
-    public value: string,
-    /**
-     * The value of the option that will be used as field value
-     */
-    public key?: string | number
-  ) {
-    if (isNullOrUndefined(this.key)) {
-      this.key = this.value;
-    }
-  }
-}
-
-interface ISelectFieldOptions<T> extends IFieldOptions<T> {
-  /**
-   * An Observable that will return List of SelectOption
-   *
-   * Observable made specifically for a use cases where the options will come from an API rather than hardcoded
-   */
-  options: Observable<SelectOption[]>;
-  /**
-   * Indicates if the select field is multiple select
-   */
-  multiple?: boolean;
-}
-```
-
-```typescript
-export interface ITimeFieldOptions extends IFieldOptions<string> {
-  /**
-   * Minumum allowed time to enter
-   *
-   * e.g: 10:02
-   */
-  min?: string;
-  /**
-     * Maximum allowed time to enter
-
-     * e.g: 10:02
-     */
-  max?: string;
-}
-```
-
-```typescript
-interface IRawFieldOptions<T> extends IBaseFieldOptions<T> {
-  /**
-   * the component which will act as field
-   */
-  component: Type<IRawFieldComponent<T>>;
-  /**
-   * Component inputs
-   */
-  inputs?: { [key: string]: any };
-  /**
-   * Component outputs
-   */
-  outputs?: {
-    [key: string]: (event: any) => any;
-  };
-}
-```
-
-```typescript
-interface IRadioFieldOptions<T> extends IFieldOptions<T> {
-  /**
-   * An Observable that will return List of SelectOption
-   *
-   * Observable made specifically for a use cases where the options will come from an API rather than hardcoded
-   */
-  options: Observable<SelectOption[]>;
-}
-```
-
-## Contributing
-
-Don't hesitate to open issues and make a pull request to help improve code
-
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-
-## Versioning
-
-This library will be maintained under the semantic versioning guidelines.
-Releases will be numbered with the following format:
-`<major>.<minor>.<patch>`
-
-For more information on SemVer, please visit http://semver.org.
-
-## Developer
-
-##### [Ezzabuzaid](mailto:ezzabuzaid@hotmail.com)
-
-- [GitHub](https://github.com/ezzabuzaid)
-- [Linkedin](https://www.linkedin.com/in/ezzabuzaid)
-
-## License
-
-##### The MIT License (MIT)
+## Further help
+
+Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+
+
+
+
+
+
+## ☁ Nx Cloud
+
+### Distributed Computation Caching & Distributed Task Execution
+
+<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
+
+Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
+
+Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
+
+Visit [Nx Cloud](https://nx.app/) to learn more.
