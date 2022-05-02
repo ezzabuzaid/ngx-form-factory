@@ -1,0 +1,24 @@
+<mat-form-field>
+  <mat-label>{{ field.label }}</mat-label>
+  <mat-hint>{{ field.hint }}</mat-hint>
+  <textarea
+    matInput
+    #autosize="cdkTextareaAutosize"
+    [cdkTextareaAutosize]="field.autosize"
+    [cdkAutosizeMinRows]="field.autosizeMinRows"
+    [cdkAutosizeMaxRows]="field.autosizeMaxRows"
+    [cols]="field.cols"
+    [rows]="field.rows"
+    [wrap]="field.wrap"
+    [autocomplete]="field.autocomplete"
+    [maxlength]="field.maxlength ?? ''"
+    [minlength]="field.minlength ?? ''"
+    [spellcheck]="field.spellcheck"
+    [attr.autofocus]="field.autofocus"
+    [spellcheck]="field.spellcheck"
+    [formControl]="field"
+  ></textarea>
+  <mat-error>
+    <ng-content></ng-content>
+  </mat-error>
+</mat-form-field>

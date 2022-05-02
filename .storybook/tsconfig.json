@@ -1,15 +1,14 @@
 {
-  "extends": "../projects/ngx-form-factory/tsconfig.lib.json",
-  "compilerOptions": {
-    "types": ["node"],
-    "jsx": "react-jsx",
-    "allowSyntheticDefaultImports": true
-  },
+  "extends": "../tsconfig.base.json",
   "exclude": [
-    "../src/test.ts",
-    "../src/**/*.spec.ts",
-    "../projects/**/*.spec.ts"
+    "../**/*.spec.js",
+    "../**/*.test.js",
+    "../**/*.spec.ts",
+    "../**/*.test.ts",
+    "../**/*.spec.tsx",
+    "../**/*.test.tsx",
+    "../**/*.spec.jsx",
+    "../**/*.test.jsx"
   ],
-  "include": ["../src/**/*", "../projects/**/*"],
-  "files": ["./typings.d.ts"]
+  "include": ["../**/*"]
 }

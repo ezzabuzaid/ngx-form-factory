@@ -1,0 +1,146 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  NgModule,
+  OnInit,
+} from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+
+import {
+  CountryControlComponentModule,
+  MaskComponentModule,
+  MobileControlComponentModule,
+  TextareaComponentModule,
+} from '../../controls';
+import {
+  EFieldType,
+  Field,
+  RawField,
+  SelectField,
+  TimeField,
+} from '../../fields';
+import { DateField } from '../../fields/date';
+import {
+  AbstractFieldFactoryComponent,
+  assertNotNullOrUndefined,
+  DynamicComponentDirectiveModule,
+  IdDirectiveModule,
+  MatInputDirectiveModule,
+  MatSelectDirectiveModule,
+  TogglePasswodDirectiveModule,
+} from '../../shared';
+import { MatFormFieldDirectiveModule } from '../../shared/mat-form-field.directive';
+
+@Component({
+  selector: 'ngx-field-factory',
+  templateUrl: './field-factory.component.html',
+  styleUrls: ['./field-factory.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: AbstractFieldFactoryComponent,
+      useExisting: forwardRef(() => FieldFactoryComponent),
+    },
+  ],
+})
+export class FieldFactoryComponent
+  extends AbstractFieldFactoryComponent<Field<any>>
+  implements OnInit
+{
+  types = EFieldType;
+
+  ngOnInit() {
+    assertNotNullOrUndefined(this.field, '@Input() field');
+
+    if (this.field.type === EFieldType.TIME && this.timeField()!.max) {
+      this.field.addValidators(maxTimeValidator(this.timeField()!.max!) as any);
+    }
+    if (this.field.type === EFieldType.TIME && this.timeField()!.min) {
+      this.field.addValidators(minTimeValidator(this.timeField()!.min!) as any);
+    }
+  }
+
+  normalField() {
+    return this.field instanceof Field ? this.field : null;
+  }
+
+  rawField() {
+    return this.field instanceof RawField ? this.field : null;
+  }
+
+  selectField() {
+    return this.field instanceof SelectField ? this.field : null;
+  }
+
+  dateField() {
+    return this.field instanceof DateField ? this.field : null;
+  }
+
+  timeField() {
+    return this.field instanceof TimeField ? this.field : null;
+  }
+
+  errors(): [string, () => string][] {
+    return Object.entries(this.field.errorsMessages ?? {}).map(
+      ([errorName, value]) => {
+        return [
+          errorName,
+          typeof value === 'function'
+            ? () => value(this.field.value)
+            : () => value,
+        ];
+      }
+    );
+  }
+
+  onRawFieldCreation(instance: any, rawField: RawField<any, any>) {
+    rawField.componentInstance = instance;
+  }
+}
+
+function maxTimeValidator(max: string) {
+  return (control: Field<string>) => {
+    return control.getElement()?.checkValidity() ? null : { max: true };
+  };
+}
+
+function minTimeValidator(min: string) {
+  return (control: Field<string>) => {
+    return control.getElement()?.checkValidity() ? null : { min: true };
+  };
+}
+
+@NgModule({
+  declarations: [FieldFactoryComponent],
+  imports: [
+    CommonModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatFormFieldDirectiveModule,
+    CountryControlComponentModule,
+    MobileControlComponentModule,
+    ReactiveFormsModule,
+    DynamicComponentDirectiveModule,
+    TogglePasswodDirectiveModule,
+    IdDirectiveModule,
+    MatInputDirectiveModule,
+    MatSelectDirectiveModule,
+    MaskComponentModule,
+    TextareaComponentModule,
+  ],
+  exports: [FieldFactoryComponent],
+})
+export class FieldFactoryComponentModule {}

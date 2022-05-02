@@ -1,0 +1,10 @@
+<mat-form-field>
+  <mat-label>{{ field.label }}</mat-label>
+  <mat-hint>{{ field.hint }}</mat-hint>
+  <input
+    matInput
+    [inputMask]="field.mask"
+    [autocomplete]="field.autocomplete"
+    [formControl]="field"
+  />
+</mat-form-field>
