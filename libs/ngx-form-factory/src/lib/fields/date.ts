@@ -1,7 +1,8 @@
 import { DateFilterFn, MatDatepicker } from '@angular/material/datepicker';
 import { MatDatepickerBase } from '@angular/material/datepicker/datepicker-base';
+import { MatFormFieldDefaultOptions } from '@angular/material/form-field';
 
-import { Field, IFieldOptions } from './field';
+import { Field, IFieldOptions, ITextOptions } from './field';
 import { EFieldType } from './field_type';
 
 export interface IDateField<PT> {
@@ -14,7 +15,10 @@ export interface IDateField<PT> {
   datepickerFilter?: DateFilterFn<PT>;
 }
 
-export interface IDateFieldOptions<PT> extends IFieldOptions<Date> {
+export interface IDateFieldOptions<PT>
+  extends IFieldOptions<Date>,
+    MatFormFieldDefaultOptions,
+    Omit<ITextOptions, 'readonly'> {
   startView?: MatDatepickerBase<any, any, Date>['startView'];
   startAt?: MatDatepickerBase<any, any, Date>['startAt'];
   yearSelected?: (date: Date | undefined, picker: MatDatepicker<PT>) => void;

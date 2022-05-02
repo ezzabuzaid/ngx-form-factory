@@ -162,7 +162,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="types.RADIO">
       <mat-label>{{ field.label }}</mat-label>
-      <mat-radio-group>
+      <mat-radio-group [class]="field.class">
         <mat-radio-button
           *ngFor="let option of selectField()?.options | async"
           [value]="option.value"

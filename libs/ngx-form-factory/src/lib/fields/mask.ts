@@ -1,9 +1,13 @@
+import { MatFormFieldDefaultOptions } from '@angular/material/form-field';
 import { createMask, InputmaskOptions } from '@ngneat/input-mask';
 
-import { Field, IField, IFieldOptions } from './field';
+import { Field, IField, IFieldOptions, ITextOptions } from './field';
 import { EFieldType } from './field_type';
 
-export interface IMaskFieldOptions<T> extends Omit<IFieldOptions<T>, 'type'> {
+export interface IMaskFieldOptions<T>
+  extends IFieldOptions<T>,
+    MatFormFieldDefaultOptions,
+    ITextOptions {
   mask?: InputmaskOptions<T>;
 }
 

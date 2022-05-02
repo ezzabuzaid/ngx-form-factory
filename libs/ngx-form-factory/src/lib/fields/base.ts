@@ -41,12 +41,6 @@ export interface IBaseFieldOptions<T> {
    */
   id?: string;
   /**
-   * HTMLInputElement autocomplete
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
-   */
-  autocomplete?: AutoComplete;
-  /**
    * @param validatorOrOpts A synchronous validator function, or an array of
    * such functions, or an `AbstractControlOptions` object that contains validation functions
    * and a validation trigger.
@@ -63,10 +57,6 @@ export interface IBaseFieldOptions<T> {
    */
   value?: T | { value: T; disabled: boolean };
   /**
-   * type of the field that you want to
-   */
-  type?: EFieldType;
-  /**
    * Object that represent the expected error names and the message for each of them to show
    *
    * {
@@ -81,8 +71,6 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
   public type!: EFieldType;
   public section: string;
   public id: string;
-  // FIXME should be moved to only field that supports it.
-  public autocomplete?: AutoComplete;
 
   /**
    * @internal
@@ -92,7 +80,6 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
   constructor(options?: IBaseFieldOptions<T>) {
     super(options?.value, options?.validatorOrOpts, options?.asyncValidator);
     this.id = options?.id ?? generateAlphabeticString(5);
-    this.autocomplete = options?.autocomplete;
     this.section = options?.section ?? generateAlphabeticString(5);
     this.errorsMessages = options?.errors;
   }

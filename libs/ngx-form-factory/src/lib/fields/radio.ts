@@ -4,7 +4,7 @@ import { Field, IFieldOptions } from './field';
 import { EFieldType } from './field_type';
 import { SelectOption } from './select_option';
 
-interface IRadioFieldOptions<T> extends Omit<IFieldOptions<T>, 'class'> {
+interface IRadioFieldOptions<T> extends IFieldOptions<T> {
   /**
    * An Observable that will return List of SelectOption
    *
