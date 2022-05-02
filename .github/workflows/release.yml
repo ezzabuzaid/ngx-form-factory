@@ -1,0 +1,49 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: Node.js Package
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build-publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup git
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+
+      - name: Setup package manager
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile --prefer-offline
+
+      - name: Set npm NPM_TOKEN
+        run: npm config set //registry.npmjs.org/:_authToken ${{secrets.NPM_TOKEN}}
+
+      - name: Version
+        shell: bash
+        run: npx nx affected --base=last-release --target=release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Tag last-release
+        shell: bash
+        run: git tag -f last-release
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          force: true
+          tags: true

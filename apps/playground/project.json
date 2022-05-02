@@ -85,7 +85,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/playground"],
       "options": {
-        "jestConfig": "apps/playground/jest.config.js",
+        "jestConfig": "apps/playground/jest.config.ts",
         "passWithNoTests": true
       }
     }
