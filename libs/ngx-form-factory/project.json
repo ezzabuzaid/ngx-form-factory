@@ -56,7 +56,10 @@
         "releaseAs": "prerelease",
         "preid": "beta",
         "push": true,
-        "postTargets": ["ngx-form-factory:github", "ngx-form-factory:publish"]
+        "postTargets": [
+          "ngx-form-factory:github",
+          "ngx-form-factory:beta-publish"
+        ]
       }
     },
     "github": {
@@ -71,6 +74,14 @@
       "options": {
         "access": "public",
         "buildTarget": "production"
+      }
+    },
+    "beta-publish": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public",
+        "buildTarget": "production",
+        "tag": "beta"
       }
     },
     "storybook": {
