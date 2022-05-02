@@ -26,9 +26,6 @@ jobs:
           cache: "yarn"
       - run: yarn install --frozen-lockfile --prefer-offline
 
-      - name: Set npm NPM_TOKEN
-        run: npm config set //registry.npmjs.org/:_authToken ${{secrets.NPM_TOKEN}}
-
       - name: Version
         shell: bash
         run: npx nx affected --base=last-release --target=release
