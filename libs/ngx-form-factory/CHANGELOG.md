@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+### [1.1.4-beta.2](https://github.com/ezzabuzaid/ngx-form-factory/compare/1.1.4-beta.1...1.1.4-beta.2) (2022-05-02)
+
 ### [1.1.4-beta.1](https://github.com/ezzabuzaid/ngx-form-factory/compare/1.1.4-beta.0...1.1.4-beta.1) (2022-05-02)
 
 
