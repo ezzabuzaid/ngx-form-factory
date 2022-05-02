@@ -1,3 +1,9 @@
+# Changelog
+
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+### [1.1.4-beta.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.1.3...v1.1.4-beta.0) (2022-05-02)
+
 ### 0.0.1-beta.0 (2022-04-20)
 
 ### [1.1.3](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.1.2...v1.1.3) (2022-02-25)
