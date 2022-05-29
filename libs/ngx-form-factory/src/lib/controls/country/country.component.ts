@@ -18,6 +18,7 @@ import {
 } from '../../shared';
 import flags from '../../shared/flags';
 import { MatInputDirectiveModule } from '../../shared/mat-input.directive';
+import { ProxyDirectiveModule } from '../../shared/proxy.directive';
 
 @Component({
   selector: 'ngx-country',
@@ -68,6 +69,13 @@ export class CountryComponent
   get value() {
     return this._value;
   }
+  public matOptionTextContent: PropertyDescriptor = {
+    get() {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      const self: HTMLElement = this as HTMLElement;
+      return self.getAttribute('aria-label');
+    },
+  };
 
   onChange!: (value: any) => void;
   onTouched!: () => void;
@@ -113,6 +121,7 @@ export class CountryComponent
     MatFormFieldDirectiveModule,
     MatInputDirectiveModule,
     MatSelectDirectiveModule,
+    ProxyDirectiveModule,
   ],
 })
 export class CountryComponentModule {}

@@ -12,7 +12,14 @@
         <p class="country-name">{{ currentCountry?.countryName }}</p>
       </div>
     </mat-select-trigger>
-    <mat-option *ngFor="let country of countries" [value]="country.iso2">
+    <mat-option
+      [attr.aria-label]="country.countryName"
+      ngxProxy
+      propertyName="textContent"
+      [propertyDescriptor]="matOptionTextContent"
+      *ngFor="let country of countries"
+      [value]="country.iso2"
+    >
       <div class="country-display">
         <span class="country-flag">{{ country.flag }}</span>
         <p class="country-name">{{ country.countryName }}</p>
