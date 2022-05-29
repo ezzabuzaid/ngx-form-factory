@@ -16,7 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
 import {
-  CountryControlComponentModule,
+  CountryComponentModule,
   MaskComponentModule,
   MobileControlComponentModule,
   TextareaComponentModule,
@@ -130,7 +130,7 @@ function minTimeValidator(min: string) {
     MatInputModule,
     MatFormFieldModule,
     MatFormFieldDirectiveModule,
-    CountryControlComponentModule,
+    CountryComponentModule,
     MobileControlComponentModule,
     ReactiveFormsModule,
     DynamicComponentDirectiveModule,

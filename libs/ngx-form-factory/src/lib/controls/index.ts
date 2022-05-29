@@ -1,4 +1,4 @@
-export * from './country-control/country-control.component';
+export * from './country/country.component';
 export * from './mask/mask.component';
 export * from './mobile-control/mobile-control.component';
 export * from './mobile-control/phonenumber.validator';

@@ -87,12 +87,7 @@
     "storybook": {
       "executor": "@nrwl/storybook:storybook",
       "options": {
-        "staticDir": [
-          "node_modules/flag-icons",
-          "node_modules/flag-icons/css",
-          "node_modules/intl-tel-input/build/js",
-          "node_modules/@angular/material/prebuilt-themes"
-        ],
+        "staticDir": ["node_modules/@angular/material/prebuilt-themes"],
         "uiFramework": "@storybook/angular",
         "port": 4400,
         "config": {
