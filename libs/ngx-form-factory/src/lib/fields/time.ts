@@ -40,7 +40,10 @@ export interface ITimeField {
   autocomplete?: 'on' | 'off';
 }
 
-export class TimeField extends Field<string> implements ITimeField {
+export class TimeField
+  extends Field<string, { autocomplete?: 'on' | 'off' }>
+  implements ITimeField
+{
   public min?: string;
   public max?: string;
   public override autocomplete?: 'on' | 'off';

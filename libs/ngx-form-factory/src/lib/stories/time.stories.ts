@@ -1,7 +1,7 @@
 import { MatCardModule } from "@angular/material/card";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ArgTypes, Meta, Story } from "@storybook/angular";
-import { TimeField, EFieldType } from "../fields";
+import { EFieldType, TimeField } from "../fields";
 import { FormFactoryModule } from "../ngx-form-factory.module";
 import { commonArgTypes, matInputArgType } from "./common_arg_types";
 import { ARGS, convertArgsToProps, FieldModelerComponent } from "./field_modeler_component";

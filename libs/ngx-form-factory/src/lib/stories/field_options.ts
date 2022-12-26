@@ -1,22 +1,22 @@
 import { Validators } from '@angular/forms';
 
-import { IFieldOptions } from '../fields';
+import { IFieldOnlyOptions } from '../fields';
 import { convertArgsToProps } from './field_modeler_component';
 
-export default (args: any): IFieldOptions<any> => {
+export default (args: any): IFieldOnlyOptions<any, any> => {
   const props = convertArgsToProps(args);
   return {
     appearance: args.appearance,
     floatLabel: args.floatLabel,
     hideRequiredMarker: args.hideRequiredMarker,
-    label: args.label,
     placeholder: args.placeholder,
     readonly: args.readonly,
-    class: args.class,
+    label: args.label,
     autocomplete: args.autocomplete,
+    hint: args.hint,
+    class: args.class,
     value: args.value,
     errors: props['errors'],
-    hint: args.hint,
     validatorOrOpts: {
       validators: [
         args.min && Validators.min(args.min),

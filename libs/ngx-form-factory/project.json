@@ -1,12 +1,13 @@
 {
+  "name": "ngx-form-factory",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "libs/ngx-form-factory",
   "sourceRoot": "libs/ngx-form-factory/src",
   "prefix": "ngx",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/ngx-form-factory"],
+      "outputs": ["{workspaceRoot}/dist/libs/ngx-form-factory"],
       "options": {
         "project": "libs/ngx-form-factory/ng-package.json"
       },
@@ -22,7 +23,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/ngx-form-factory"],
+      "outputs": ["{workspaceRoot}/coverage/libs/ngx-form-factory"],
       "options": {
         "jestConfig": "libs/ngx-form-factory/jest.config.ts",
         "passWithNoTests": true
@@ -85,15 +86,15 @@
       }
     },
     "storybook": {
-      "executor": "@nrwl/storybook:storybook",
+      "executor": "@storybook/angular:start-storybook",
       "options": {
-        "staticDir": ["node_modules/@angular/material/prebuilt-themes"],
-        "uiFramework": "@storybook/angular",
-        "port": 4400,
-        "config": {
-          "configFolder": "libs/ngx-form-factory/.storybook"
-        },
-        "projectBuildConfig": "ngx-form-factory:build-storybook"
+        "styles": [
+          "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+        ],
+        "port": 4401,
+        "configDir": "libs/ngx-form-factory/.storybook",
+        "browserTarget": "ngx-form-factory:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {
@@ -102,15 +103,13 @@
       }
     },
     "build-storybook": {
-      "executor": "@nrwl/storybook:build",
+      "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "uiFramework": "@storybook/angular",
-        "outputPath": "dist/storybook/ngx-form-factory",
-        "config": {
-          "configFolder": "libs/ngx-form-factory/.storybook"
-        },
-        "projectBuildConfig": "ngx-form-factory:build-storybook"
+        "outputDir": "dist/storybook/ngx-form-factory",
+        "configDir": "libs/ngx-form-factory/.storybook",
+        "browserTarget": "ngx-form-factory:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {

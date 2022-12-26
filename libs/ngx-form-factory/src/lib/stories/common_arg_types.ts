@@ -17,8 +17,7 @@ export const commonArgTypes: () => ArgTypes = () => ({
   },
   appearance: {
     name: 'appearance',
-    defaultValue: 'legacy',
-    options: ['legacy', 'standard', 'fill', 'outline'],
+    options: ['fill', 'outline'],
     control: { type: 'select' },
     description: '[Read More](https://shorturl.at/bjmF3)',
   },
