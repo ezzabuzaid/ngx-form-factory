@@ -2,6 +2,7 @@
   <mat-label>{{ field?.label }}</mat-label>
   <mat-hint>{{ field.hint }}</mat-hint>
   <mat-select
+    [placeholder]="field.placeholder!"
     [id]="field.id"
     [formControl]="field"
     (selectionChange)="updateModel($event?.value)"

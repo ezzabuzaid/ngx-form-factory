@@ -18,12 +18,11 @@ import {
 } from '../../shared';
 import flags from '../../shared/flags';
 import { MatInputDirectiveModule } from '../../shared/mat-input.directive';
-import { ProxyDirectiveModule } from '../../shared/proxy.directive';
+import { ProxyDirective } from '../../shared/proxy.directive';
 
 @Component({
   selector: 'ngx-country',
   templateUrl: './country.component.html',
-
   styles: [
     `
       .country-display {
@@ -121,7 +120,7 @@ export class CountryComponent
     MatFormFieldDirectiveModule,
     MatInputDirectiveModule,
     MatSelectDirectiveModule,
-    ProxyDirectiveModule,
+    ProxyDirective,
   ],
 })
 export class CountryComponentModule {}

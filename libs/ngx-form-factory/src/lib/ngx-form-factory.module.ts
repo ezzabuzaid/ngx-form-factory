@@ -15,4 +15,4 @@ export class FormFactoryModule {}
   imports: [FieldFactoryComponentModule, FormFactoryComponentModule],
   exports: [FieldFactoryComponentModule, FormFactoryComponentModule],
 })
-export class NgxFormFactoryModule extends FormFactoryModule {}
+export class NgxFormFactoryModule {}

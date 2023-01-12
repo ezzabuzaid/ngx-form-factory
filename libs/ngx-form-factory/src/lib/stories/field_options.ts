@@ -6,14 +6,7 @@ import { convertArgsToProps } from './field_modeler_component';
 export default (args: any): IFieldOnlyOptions<any, any> => {
   const props = convertArgsToProps(args);
   return {
-    appearance: args.appearance,
-    floatLabel: args.floatLabel,
-    hideRequiredMarker: args.hideRequiredMarker,
-    placeholder: args.placeholder,
-    readonly: args.readonly,
     label: args.label,
-    autocomplete: args.autocomplete,
-    hint: args.hint,
     class: args.class,
     value: args.value,
     errors: props['errors'],
@@ -28,5 +21,32 @@ export default (args: any): IFieldOnlyOptions<any, any> => {
         args.pattern && Validators.pattern(args.pattern),
       ].filter((v) => !!v),
     },
+  };
+};
+export const matFormFieldOptions = (args: any): IFieldOnlyOptions<any, any> => {
+  return {
+    readonly: args.readonly,
+    hint: args.hint,
+    placeholder: args.placeholder,
+    autocomplete: args.autocomplete,
+
+    subscriptSizing: args.subscriptSizing,
+    color: args.color,
+    hideRequiredMarker: args.hideRequiredMarker,
+    appearance: args.appearance,
+    floatLabel: args.floatLabel,
+  };
+};
+export const matSelectOptions = (args: any): IFieldOnlyOptions<any, any> => {
+  return {
+    readonly: args.readonly,
+    hint: args.hint,
+    placeholder: args.placeholder,
+
+    subscriptSizing: args.subscriptSizing,
+    color: args.color,
+    hideRequiredMarker: args.hideRequiredMarker,
+    appearance: args.appearance,
+    floatLabel: args.floatLabel,
   };
 };

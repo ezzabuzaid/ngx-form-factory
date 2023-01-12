@@ -10,6 +10,9 @@ import { EFieldType } from './field_type';
 import { ILengthOptions } from './length_options.interface';
 
 export interface IFieldOptions<T> extends IBaseFieldOptions<T> {
+  /**
+   * Field label
+   */
   label?: string;
   class?: string | string[];
 }
@@ -20,9 +23,6 @@ export interface ITextOptions {
    * Field placeholder
    */
   placeholder?: string;
-  /**
-   * Field label
-   */
   /**
    * Small text to show underneath the field
    */

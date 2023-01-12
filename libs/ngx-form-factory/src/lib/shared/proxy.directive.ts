@@ -1,15 +1,10 @@
-import {
-  AfterViewInit,
-  Directive,
-  ElementRef,
-  Input,
-  NgModule,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
 
 import { assertNotNullOrUndefined } from './utils';
 
 @Directive({
   selector: '[ngxProxy]',
+  standalone: true,
 })
 export class ProxyDirective implements AfterViewInit {
   @Input() public propertyName!: string;
@@ -27,8 +22,3 @@ export class ProxyDirective implements AfterViewInit {
     );
   }
 }
-@NgModule({
-  declarations: [ProxyDirective],
-  exports: [ProxyDirective],
-})
-export class ProxyDirectiveModule {}
