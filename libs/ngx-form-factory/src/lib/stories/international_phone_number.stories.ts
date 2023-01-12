@@ -1,20 +1,20 @@
 import { MatCardModule } from "@angular/material/card";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ArgTypes, Meta, Story } from "@storybook/angular";
-import { EFieldType, Field } from "../fields";
+import { InternationalPhoneNumberField } from "../fields/international_phone_number.field";
 import { NgxFormFactoryModule } from "../ngx-form-factory.module";
 import { commonArgTypes } from "./common_arg_types";
 import { ARGS, convertArgsToProps, FieldModelerComponent } from "./field_modeler_component";
-import field_options from "./field_options";
+import field_options, { matFormFieldOptions } from "./field_options";
 import { requiredArgType } from "./validation_arg_types";
 
-
+const {placeholder, _argTypes} = commonArgTypes()
  const argTypes: ArgTypes = {
     ...commonArgTypes()
 };
 
 export default {
-    title: "CountryField",
+    title: "PhonenumberField",
     component: FieldModelerComponent,
     argTypes: argTypes,
 } as Meta;
@@ -29,9 +29,10 @@ const Story: Story = (args, context) => ({
                 useValue: (() => {
                     const props = convertArgsToProps(args);
                     return {
-                        field: new Field({
-                          ...field_options(args),
-                          type:EFieldType.COUNTRY
+                      field: new InternationalPhoneNumberField({
+                        ...field_options(args),
+                        ...matFormFieldOptions(args),
+                        value: '+962792807794'
                         }),
                         ...props
                     }

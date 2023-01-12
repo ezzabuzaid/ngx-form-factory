@@ -1,0 +1,30 @@
+<mat-form-field>
+  <mat-label>{{ field?.label }}</mat-label>
+  <mat-hint>{{ field.hint }}</mat-hint>
+  <mat-select
+    [placeholder]="field.placeholder!"
+    [id]="field.id"
+    [formControl]="field"
+    (selectionChange)="updateModel($event?.value)"
+  >
+    <mat-select-trigger>
+      <div class="country-display">
+        <span class="country-flag">{{ currentCountry?.flag }}</span>
+        <p class="country-name">{{ currentCountry?.countryName }}</p>
+      </div>
+    </mat-select-trigger>
+    <mat-option
+      [attr.aria-label]="country.countryName"
+      ngxProxy
+      propertyName="textContent"
+      [propertyDescriptor]="matOptionTextContent"
+      *ngFor="let country of countries"
+      [value]="country.iso2"
+    >
+      <div class="country-display">
+        <span class="country-flag">{{ country.flag }}</span>
+        <p class="country-name">{{ country.countryName }}</p>
+      </div>
+    </mat-option>
+  </mat-select>
+</mat-form-field>

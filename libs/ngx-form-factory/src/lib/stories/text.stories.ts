@@ -1,10 +1,10 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ArgTypes, Meta, Story } from "@storybook/angular";
-import { Field, EFieldType } from "../fields";
+import { EFieldType, Field } from "../fields";
 import { NgxFormFactoryModule } from "../ngx-form-factory.module";
 import { commonArgTypes, matInputArgType } from "./common_arg_types";
-import { ARGS, convertArgsToProps, FieldModelerComponent,  FieldModelerComponentModule } from "./field_modeler_component";
-import field_options from "./field_options";
+import { ARGS, convertArgsToProps, FieldModelerComponent, FieldModelerComponentModule } from "./field_modeler_component";
+import field_options, { matFormFieldOptions } from "./field_options";
 import { typeControl } from "./type_control";
 import { maxLengthArgType, minLengthArgType, patternArgType, requiredArgType } from "./validation_arg_types";
 
@@ -20,7 +20,7 @@ export default {
   argTypes: argTypes,
 } as Meta;
 
-const Story: Story = (args, context) => ({
+const Story: Story = (args:any, context) => ({
   moduleMetadata: {
     imports: [
       BrowserAnimationsModule,
@@ -35,6 +35,7 @@ const Story: Story = (args, context) => ({
           return {
             field: new Field({
               ...field_options(args),
+              ...matFormFieldOptions(args),
               type: EFieldType.TEXT,
             }),
             ...props

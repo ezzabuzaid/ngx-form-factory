@@ -12,18 +12,3 @@
   </ng-container>
 </ng-container>
 <ng-content select="[form-body]"></ng-content>
-<div *ngIf="submitButtonOptions?.show" class="text-center">
-  <button
-    color="primary"
-    class="px-5 py-1"
-    [ngClass]="submitButtonOptions?.class ?? []"
-    (click)="submit()"
-    [disabled]="
-      (submitButtonOptions?.autoValidate && formGroup?.invalid) ||
-      submitButtonOptions?.disabled
-    "
-    mat-raised-button
-  >
-    Submit
-  </button>
-</div>

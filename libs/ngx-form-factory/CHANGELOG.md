@@ -4,17 +4,15 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ### [1.1.4](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.1.3...v1.1.4) (2022-05-02)
 
-
 ### Bug Fixes
 
-* restrict properties to their corresponding fields ([32b707a](https://github.com/ezzabuzaid/ngx-form-factory/commit/32b707aed8674fbde9c554993ee6d583add51c28))
+- restrict properties to their corresponding fields ([32b707a](https://github.com/ezzabuzaid/ngx-form-factory/commit/32b707aed8674fbde9c554993ee6d583add51c28))
 
 ### [1.1.4-beta.1](https://github.com/ezzabuzaid/ngx-form-factory/compare/1.1.4-beta.0...1.1.4-beta.1) (2022-05-02)
 
-
 ### Bug Fixes
 
-* restrict properties to their corresponding fields ([32b707a](https://github.com/ezzabuzaid/ngx-form-factory/commit/32b707aed8674fbde9c554993ee6d583add51c28))
+- restrict properties to their corresponding fields ([32b707a](https://github.com/ezzabuzaid/ngx-form-factory/commit/32b707aed8674fbde9c554993ee6d583add51c28))
 
 ### [1.1.4-beta.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.1.3...v1.1.4-beta.0) (2022-05-02)
 

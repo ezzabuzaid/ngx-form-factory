@@ -1,9 +1,6 @@
 {
   "extends": ["../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
-  "rules": {
-    "@typescript-eslint/no-non-null-assertion": "off"
-  },
   "overrides": [
     {
       "files": ["*.ts"],
@@ -12,6 +9,7 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@angular-eslint/no-host-metadata-property": "off",
         "@angular-eslint/no-output-on-prefix": "off",

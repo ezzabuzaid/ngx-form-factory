@@ -171,11 +171,11 @@
         </mat-radio-button>
       </mat-radio-group>
     </ng-container>
-    <ng-container *ngSwitchCase="types.TEL">
-      <ngx-mobile-control [field]="$any(field)"></ngx-mobile-control>
-    </ng-container>
+    <!-- <ng-container *ngSwitchCase="types.TEL">
+      <ngx-mobile [field]="$any(field)"></ngx-mobile>
+    </ng-container> -->
     <ng-container *ngSwitchCase="types.COUNTRY">
-      <ngx-country-control [field]="$any(field)"></ngx-country-control>
+      <ngx-country [field]="$any(field)"></ngx-country>
     </ng-container>
     <ng-container *ngSwitchCase="types.MASK">
       <ngx-mask [field]="$any(field)"></ngx-mask>

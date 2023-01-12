@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, forwardRef, NgModule, OnInit } from '@angular/core';
+import { Component, forwardRef, NgModule } from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
@@ -16,30 +16,48 @@ import {
   MatFormFieldDirectiveModule,
   MatSelectDirectiveModule,
 } from '../../shared';
+import flags from '../../shared/flags';
 import { MatInputDirectiveModule } from '../../shared/mat-input.directive';
+import { ProxyDirective } from '../../shared/proxy.directive';
 
 @Component({
-  selector: 'ngx-country-control',
-  templateUrl: './country-control.component.html',
+  selector: 'ngx-country',
+  templateUrl: './country.component.html',
+  styles: [
+    `
+      .country-display {
+        display: flex;
+        align-items: center;
+        justify-between: center;
+      }
+      .country-flag {
+        font-size: 2rem;
+      }
+      .country-name {
+        margin: 0 0.75rem;
+      }
+    `,
+  ],
   providers: [
     {
       provide: AbstractFieldFactoryComponent,
-      useExisting: forwardRef(() => CountryControlComponent),
+      useExisting: forwardRef(() => CountryComponent),
     },
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CountryControlComponent),
+      useExisting: forwardRef(() => CountryComponent),
       multi: true,
     },
   ],
 })
-export class CountryControlComponent
+export class CountryComponent
   extends AbstractFieldFactoryComponent<IField<string>>
-  implements OnInit, ControlValueAccessor
+  implements ControlValueAccessor
 {
   private _value?: string;
-  public countries: any[] = [];
   public currentCountry?: any;
+
+  public countries = flags;
 
   set value(value) {
     this._value = value;
@@ -50,6 +68,13 @@ export class CountryControlComponent
   get value() {
     return this._value;
   }
+  public matOptionTextContent: PropertyDescriptor = {
+    get() {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      const self: HTMLElement = this as HTMLElement;
+      return self.getAttribute('aria-label');
+    },
+  };
 
   onChange!: (value: any) => void;
   onTouched!: () => void;
@@ -58,10 +83,6 @@ export class CountryControlComponent
     if (this.onChange) {
       this.onChange(this.value);
     }
-  }
-
-  ngOnInit() {
-    this.countries = (window as any)['intlTelInputGlobals'].getCountryData();
   }
 
   public updateModel(value: string) {
@@ -87,8 +108,8 @@ export class CountryControlComponent
   }
 }
 @NgModule({
-  declarations: [CountryControlComponent],
-  exports: [CountryControlComponent],
+  declarations: [CountryComponent],
+  exports: [CountryComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -99,6 +120,7 @@ export class CountryControlComponent
     MatFormFieldDirectiveModule,
     MatInputDirectiveModule,
     MatSelectDirectiveModule,
+    ProxyDirective,
   ],
 })
-export class CountryControlComponentModule {}
+export class CountryComponentModule {}

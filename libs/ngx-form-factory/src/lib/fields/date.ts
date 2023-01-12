@@ -1,6 +1,8 @@
 import { DateFilterFn, MatDatepicker } from '@angular/material/datepicker';
-import { MatDatepickerBase } from '@angular/material/datepicker/datepicker-base';
-import { MatFormFieldDefaultOptions } from '@angular/material/form-field';
+import {
+  MatFormFieldDefaultOptions,
+  SubscriptSizing,
+} from '@angular/material/form-field';
 
 import { Field, IFieldOptions, ITextOptions } from './field';
 import { EFieldType } from './field_type';
@@ -8,19 +10,22 @@ import { EFieldType } from './field_type';
 export interface IDateField<PT> {
   min?: Date;
   max?: Date;
-  startView?: MatDatepickerBase<any, any, Date>['startView'];
-  startAt?: MatDatepickerBase<any, any, Date>['startAt'];
+  startView?: MatDatepicker<Date>['startView'];
+  startAt?: MatDatepicker<Date>['startAt'];
   yearSelected?: (date: Date, picker: MatDatepicker<PT>) => void;
   monthSelected?: (date: Date, picker: MatDatepicker<PT>) => void;
   datepickerFilter?: DateFilterFn<PT>;
+
+  /** Whether the form field should reserve space for one line by default. */
+  subscriptSizing?: SubscriptSizing;
 }
 
 export interface IDateFieldOptions<PT>
   extends IFieldOptions<Date>,
     MatFormFieldDefaultOptions,
     Omit<ITextOptions, 'readonly'> {
-  startView?: MatDatepickerBase<any, any, Date>['startView'];
-  startAt?: MatDatepickerBase<any, any, Date>['startAt'];
+  startView?: MatDatepicker<Date>['startView'];
+  startAt?: MatDatepicker<Date>['startAt'];
   yearSelected?: (date: Date | undefined, picker: MatDatepicker<PT>) => void;
   monthSelected?: (date: Date | undefined, picker: MatDatepicker<PT>) => void;
   datepickerFilter?: DateFilterFn<PT>;
@@ -43,8 +48,8 @@ export class DateField<PT = Date>
 {
   public min?: Date;
   public max?: Date;
-  public startView?: MatDatepickerBase<any, any, Date>['startView'];
-  public startAt?: MatDatepickerBase<any, any, Date>['startAt'];
+  public startView?: MatDatepicker<Date>['startView'];
+  public startAt?: MatDatepicker<Date>['startAt'];
   public yearSelected?: (
     date: Date | undefined,
     picker: MatDatepicker<PT>

@@ -16,9 +16,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
 import {
-  CountryControlComponentModule,
+  CountryComponentModule,
   MaskComponentModule,
-  MobileControlComponentModule,
   TextareaComponentModule,
 } from '../../controls';
 import {
@@ -78,14 +77,17 @@ export class FieldFactoryComponent
   }
 
   selectField() {
+    // Convert to rawfield
     return this.field instanceof SelectField ? this.field : null;
   }
 
   dateField() {
+    // Convert to rawfield
     return this.field instanceof DateField ? this.field : null;
   }
 
   timeField() {
+    // Convert to rawfield
     return this.field instanceof TimeField ? this.field : null;
   }
 
@@ -130,8 +132,7 @@ function minTimeValidator(min: string) {
     MatInputModule,
     MatFormFieldModule,
     MatFormFieldDirectiveModule,
-    CountryControlComponentModule,
-    MobileControlComponentModule,
+    CountryComponentModule,
     ReactiveFormsModule,
     DynamicComponentDirectiveModule,
     TogglePasswodDirectiveModule,

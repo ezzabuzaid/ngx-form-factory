@@ -4,7 +4,7 @@ import { UserInputs, UserOutputs } from '../shared';
 import { BaseField, IBaseFieldOptions } from './base';
 import { EFieldType } from './field_type';
 
-interface IRawFieldOptions<T> extends IBaseFieldOptions<T> {
+export interface IRawFieldOptions<T> extends IBaseFieldOptions<T> {
   /**
    * the component which will act as field
    */

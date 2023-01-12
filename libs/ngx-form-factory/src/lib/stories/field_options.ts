@@ -1,22 +1,15 @@
 import { Validators } from '@angular/forms';
 
-import { IFieldOptions } from '../fields';
+import { IFieldOnlyOptions } from '../fields';
 import { convertArgsToProps } from './field_modeler_component';
 
-export default (args: any): IFieldOptions<any> => {
+export default (args: any): IFieldOnlyOptions<any, any> => {
   const props = convertArgsToProps(args);
   return {
-    appearance: args.appearance,
-    floatLabel: args.floatLabel,
-    hideRequiredMarker: args.hideRequiredMarker,
     label: args.label,
-    placeholder: args.placeholder,
-    readonly: args.readonly,
     class: args.class,
-    autocomplete: args.autocomplete,
     value: args.value,
     errors: props['errors'],
-    hint: args.hint,
     validatorOrOpts: {
       validators: [
         args.min && Validators.min(args.min),
@@ -28,5 +21,32 @@ export default (args: any): IFieldOptions<any> => {
         args.pattern && Validators.pattern(args.pattern),
       ].filter((v) => !!v),
     },
+  };
+};
+export const matFormFieldOptions = (args: any): IFieldOnlyOptions<any, any> => {
+  return {
+    readonly: args.readonly,
+    hint: args.hint,
+    placeholder: args.placeholder,
+    autocomplete: args.autocomplete,
+
+    subscriptSizing: args.subscriptSizing,
+    color: args.color,
+    hideRequiredMarker: args.hideRequiredMarker,
+    appearance: args.appearance,
+    floatLabel: args.floatLabel,
+  };
+};
+export const matSelectOptions = (args: any): IFieldOnlyOptions<any, any> => {
+  return {
+    readonly: args.readonly,
+    hint: args.hint,
+    placeholder: args.placeholder,
+
+    subscriptSizing: args.subscriptSizing,
+    color: args.color,
+    hideRequiredMarker: args.hideRequiredMarker,
+    appearance: args.appearance,
+    floatLabel: args.floatLabel,
   };
 };

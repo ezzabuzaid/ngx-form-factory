@@ -10,6 +10,9 @@ import { EFieldType } from './field_type';
 import { ILengthOptions } from './length_options.interface';
 
 export interface IFieldOptions<T> extends IBaseFieldOptions<T> {
+  /**
+   * Field label
+   */
   label?: string;
   class?: string | string[];
 }
@@ -21,16 +24,15 @@ export interface ITextOptions {
    */
   placeholder?: string;
   /**
-   * Field label
-   */
-  /**
    * Small text to show underneath the field
    */
   hint?: string;
 }
 
-interface IFieldOnlyOptions<T>
-  extends IFieldOptions<T>,
+export interface IFieldOnlyOptions<
+  T,
+  O extends IConfigurableOptions = IConfigurableOptions
+> extends IFieldOptions<T>,
     ILengthOptions,
     MatFormFieldDefaultOptions,
     ITextOptions {
@@ -43,7 +45,7 @@ interface IFieldOnlyOptions<T>
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
    */
-  autocomplete?: AutoComplete;
+  autocomplete?: O['autocomplete'];
 }
 
 export interface IField<T> extends IBaseField<T>, MatFormFieldDefaultOptions {
@@ -56,7 +58,14 @@ export interface IField<T> extends IBaseField<T>, MatFormFieldDefaultOptions {
   class?: string | string[];
 }
 
-export class Field<T> extends BaseField<T> implements IField<T> {
+interface IConfigurableOptions {
+  autocomplete?: AutoComplete;
+}
+
+export class Field<T, O extends IConfigurableOptions = IConfigurableOptions>
+  extends BaseField<T>
+  implements IField<T>
+{
   public label?: string;
   public hint?: string;
   public appearance?: MatFormFieldAppearance;
@@ -67,7 +76,7 @@ export class Field<T> extends BaseField<T> implements IField<T> {
   public minlength?: number;
   public placeholder?: string;
   public class?: string | string[];
-  public autocomplete?: AutoComplete;
+  public autocomplete?: O['autocomplete'];
   constructor(options?: IFieldOnlyOptions<T>) {
     super(options);
     this.type = options?.type ?? EFieldType.TEXT;
