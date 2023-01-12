@@ -15,9 +15,9 @@ import {
 } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { BaseField, IRawFieldComponent } from '@ezzabuzaid/ngx-form-factory';
 import { WINDOW } from '@ng-web-apis/common';
 
+import { BaseField, IRawFieldComponent } from '../../fields';
 import { assertNotNullOrUndefined } from '../../shared';
 import { ProxyDirective } from '../../shared/proxy.directive';
 import { PhoneNumberAssociatedWithCountryValidator } from './phonenumber.validator';

@@ -12,9 +12,9 @@ import {
   MatFormFieldModule,
 } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { BaseField, IRawFieldComponent } from '@ezzabuzaid/ngx-form-factory';
 import { Subject, takeUntil } from 'rxjs';
 
+import { BaseField, IRawFieldComponent } from '../../fields';
 import { ProxyDirective } from '../../shared/proxy.directive';
 import flags from './flags';
 import { MatSelectFitContentDirective } from './mat-select-change-origin.directive';

@@ -16,15 +16,10 @@ import {
 } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import {
-  BaseField,
-  EFieldType,
-  Field,
-  IRawFieldComponent,
-} from '@ezzabuzaid/ngx-form-factory';
 import { WINDOW } from '@ng-web-apis/common';
 import { combineLatest, pipe, startWith, Subject, takeUntil } from 'rxjs';
 
+import { BaseField, EFieldType, Field, IRawFieldComponent } from '../../fields';
 import { ProxyDirective } from '../../shared/proxy.directive';
 import { PhoneNumberCodeFieldComponent } from './phone-number-code-field-component';
 import { PhoneNumberFieldComponent } from './phone-number-field-component';
