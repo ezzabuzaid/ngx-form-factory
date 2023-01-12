@@ -31,7 +31,7 @@ export interface ITextOptions {
 
 export interface IFieldOnlyOptions<
   T,
-  O extends IConfigurableOptions = IConfigurableOptions
+  O extends IConfigurableOptions = DefaultConfigurableOptions
 > extends IFieldOptions<T>,
     ILengthOptions,
     MatFormFieldDefaultOptions,
@@ -58,11 +58,15 @@ export interface IField<T> extends IBaseField<T>, MatFormFieldDefaultOptions {
   class?: string | string[];
 }
 
-interface IConfigurableOptions {
+export interface IConfigurableOptions {
   autocomplete?: AutoComplete;
 }
+type DefaultConfigurableOptions = IConfigurableOptions;
 
-export class Field<T, O extends IConfigurableOptions = IConfigurableOptions>
+export class Field<
+    T,
+    O extends IConfigurableOptions = DefaultConfigurableOptions
+  >
   extends BaseField<T>
   implements IField<T>
 {
