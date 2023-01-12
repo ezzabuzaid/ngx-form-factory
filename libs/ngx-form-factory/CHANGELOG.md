@@ -2,6 +2,28 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.1.4...v2.0.0) (2023-01-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* update angular and angular material to v15
+* **CountryField:** remove intl-tel-input dependency
+
+### Features
+
+* **CountryField:** remove intl-tel-input dependency ([f9dc8b5](https://github.com/ezzabuzaid/ngx-form-factory/commit/f9dc8b55c2f407dcbf7180861615b4270f906552))
+
+
+### Bug Fixes
+
+* **CountryField:** set country name as aria-label to activate keyboard search ([db840a3](https://github.com/ezzabuzaid/ngx-form-factory/commit/db840a3f4fe981f930d9439f5d298a9befc4f3d3))
+
+
+### Miscellaneous Chores
+
+* update angular and angular material to v15 ([bbc5dd9](https://github.com/ezzabuzaid/ngx-form-factory/commit/bbc5dd91b1d5eab211d6ab0b33a8628220b56637))
+
 ### [1.1.4](https://github.com/ezzabuzaid/ngx-form-factory/compare/v1.1.3...v1.1.4) (2022-05-02)
 
 ### Bug Fixes
