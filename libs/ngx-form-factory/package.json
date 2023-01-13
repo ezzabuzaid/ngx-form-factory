@@ -1,6 +1,6 @@
 {
   "name": "@ezzabuzaid/ngx-form-factory",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "dependencies": {
     "@ng-web-apis/common": "^2.1.0",
     "@ngneat/input-mask": "^6.0.0",
