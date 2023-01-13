@@ -20,6 +20,9 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
+      - name: Set npm NPM_TOKEN
+        run: npm config set //registry.npmjs.org/:_authToken ${{secrets.NPM_TOKEN}}
+
       - name: Setup package manager
         uses: actions/setup-node@v3
         with:
