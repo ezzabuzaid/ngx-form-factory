@@ -1,12 +1,11 @@
 {
   "name": "@ezzabuzaid/ngx-form-factory",
   "version": "2.0.2",
-  "peerDependencies": {
-    "@angular/common": "^13.3.0",
-    "@angular/core": "^13.3.0"
-  },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "@ng-web-apis/common": "^2.1.0",
+    "@ngneat/input-mask": "^6.0.0",
+    "inputmask": "^5.0.7",
+    "tslib": "^2.0.0"
   },
   "bugs": {
     "email": "ezzabuzaid@hotmail.com",
