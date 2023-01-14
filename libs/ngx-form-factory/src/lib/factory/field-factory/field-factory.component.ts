@@ -8,6 +8,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -141,6 +142,7 @@ function minTimeValidator(min: string) {
     MatSelectDirectiveModule,
     MaskComponentModule,
     TextareaComponentModule,
+    MatCheckboxModule,
   ],
   exports: [FieldFactoryComponent],
 })
