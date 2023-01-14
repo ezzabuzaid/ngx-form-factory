@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+### [2.0.6](https://github.com/ezzabuzaid/ngx-form-factory/compare/v2.0.5...v2.0.6) (2023-01-14)
+
+
+### Bug Fixes
+
+* **Checkbox:** add missing MatCheckboxModule ([2b01290](https://github.com/ezzabuzaid/ngx-form-factory/commit/2b01290021ea2173223936ad2f397d5b00d37ea6))
+* **mat-form-field:** add subscriptSizing option ([109b233](https://github.com/ezzabuzaid/ngx-form-factory/commit/109b2331906babb408c717d85952781a9d997e80))
+
 ### [2.0.5](https://github.com/ezzabuzaid/ngx-form-factory/compare/v2.0.4...v2.0.5) (2023-01-13)
 
 ### [2.0.4](https://github.com/ezzabuzaid/ngx-form-factory/compare/v2.0.3...v2.0.4) (2023-01-13)
