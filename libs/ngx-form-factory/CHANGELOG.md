@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.1.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v2.0.6...v2.1.0) (2023-01-21)
+
+
+### Features
+
+* **FieldFactory:** add prefix and suffix icons to fields ([6e69a61](https://github.com/ezzabuzaid/ngx-form-factory/commit/6e69a6175ad99f1903f382c56bbf4ab31f2b463a))
+
 ### [2.0.6](https://github.com/ezzabuzaid/ngx-form-factory/compare/v2.0.5...v2.0.6) (2023-01-14)
 
 
