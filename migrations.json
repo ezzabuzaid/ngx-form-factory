@@ -1,44 +1,28 @@
 {
   "migrations": [
     {
-      "version": "14.0.0-beta.0",
-      "description": "Changes the presets in nx.json to come from the nx package",
       "cli": "nx",
-      "implementation": "./src/migrations/update-14-0-0/change-nx-json-presets",
-      "package": "@nrwl/workspace",
-      "name": "14-0-0-change-nx-json-presets"
-    },
-    {
-      "version": "14.0.0-beta.0",
-      "description": "Migrates from @nrwl/workspace:run-script to nx:run-script",
-      "cli": "nx",
-      "implementation": "./src/migrations/update-14-0-0/change-npm-script-executor",
-      "package": "@nrwl/workspace",
-      "name": "14-0-0-change-npm-script-executor"
-    },
-    {
-      "cli": "nx",
-      "version": "14.0.0-beta.1",
-      "description": "Rename mfe.config.js to module-federation.config.js for consistent terminology.",
-      "factory": "./src/migrations/update-14-0-0/rename-mf-config",
+      "version": "15.5.0-beta.0",
+      "description": "Update the @angular/cli package version to ~15.1.0.",
+      "factory": "./src/migrations/update-15-5-0/update-angular-cli",
       "package": "@nrwl/angular",
-      "name": "rename-module-federation-config"
+      "name": "update-angular-cli-version-15-1-0"
     },
     {
-      "version": "14.0.0-beta.2",
       "cli": "nx",
-      "description": "Update move jest config files to .ts files.",
-      "factory": "./src/migrations/update-14-0-0/update-jest-config-ext",
-      "package": "@nrwl/jest",
-      "name": "update-jest-config-extensions"
+      "version": "15.5.0-beta.0",
+      "description": "Update to Cypress v12. Cypress 12 contains a handful of breaking changes that might causes tests to start failing that nx cannot directly fix. Read more Cypress 12 changes: https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-12-0.This migration will only run if you are already using Cypress v11.",
+      "factory": "./src/migrations/update-15-5-0/update-to-cypress-12",
+      "package": "@nrwl/cypress",
+      "name": "update-to-cypress-12"
     },
     {
-      "version": "14.0.0",
       "cli": "nx",
-      "description": "Migrate Storybook to v6",
-      "factory": "./src/migrations/update-14-0-0/migrate-to-storybook-6",
+      "version": "15.4.6-beta.0",
+      "description": "Refactor the Storybook target options",
+      "factory": "./src/migrations/update-15-4-6/refactor-executor-options",
       "package": "@nrwl/storybook",
-      "name": "update-14.0.0"
+      "name": "update-15.4.6"
     }
   ]
 }
