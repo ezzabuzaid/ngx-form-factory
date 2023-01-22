@@ -1,11 +1,11 @@
 <mat-form-field>
-  <mat-label>{{ field?.label }}</mat-label>
+  <mat-label>{{ field.label }}</mat-label>
   <mat-hint>{{ field.hint }}</mat-hint>
   <mat-select
     [placeholder]="field.placeholder!"
     [id]="field.id"
     [formControl]="field"
-    (selectionChange)="updateModel($event?.value)"
+    (selectionChange)="updateModel($event.value)"
   >
     <mat-select-trigger>
       <div class="country-display">

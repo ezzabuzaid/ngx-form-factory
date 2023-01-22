@@ -6,7 +6,7 @@ import {
 } from '@angular/material/form-field';
 
 import { AutoComplete } from '../shared/autocomplete.type';
-import { BaseField, IBaseField, IBaseFieldOptions } from './base';
+import { BaseField, IBaseFieldOptions } from './base';
 import { EFieldType } from './field_type';
 import { ILengthOptions } from './length_options.interface';
 
@@ -28,6 +28,9 @@ export interface ITextOptions {
    * Small text to show underneath the field
    */
   hint?: string;
+
+  suffix?: string;
+  prefix?: string;
 }
 
 export interface IFieldOnlyOptions<
@@ -49,14 +52,13 @@ export interface IFieldOnlyOptions<
   autocomplete?: O['autocomplete'];
 }
 
-export interface IField<T> extends IBaseField<T>, MatFormFieldDefaultOptions {
+export interface IField<T>
+  extends IBaseFieldOptions<T>,
+    MatFormFieldDefaultOptions,
+    IFieldOptions<T>,
+    ITextOptions {
   maxlength?: number;
   minlength?: number;
-  readonly?: boolean;
-  label?: string;
-  hint?: string;
-  placeholder?: string;
-  class?: string | string[];
 }
 
 export interface IConfigurableOptions {
@@ -81,6 +83,8 @@ export class Field<
   public maxlength?: number;
   public minlength?: number;
   public placeholder?: string;
+  public suffix?: string;
+  public prefix?: string;
   public class?: string | string[];
   public autocomplete?: O['autocomplete'];
   constructor(options?: IFieldOnlyOptions<T>) {
@@ -97,5 +101,7 @@ export class Field<
     this.maxlength = options?.maxlength;
     this.readonly = options?.readonly;
     this.class = options?.class;
+    this.prefix = options?.prefix;
+    this.suffix = options?.suffix;
   }
 }

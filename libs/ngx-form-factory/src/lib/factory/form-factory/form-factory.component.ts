@@ -13,7 +13,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { EnhancedForm, Form, IBaseField } from '../../fields/base';
+import { BaseField, EnhancedForm, Form } from '../../fields/base';
 import { assertNotNullOrUndefined } from '../../shared';
 import { FieldFactoryComponentModule } from '../field-factory/field-factory.component';
 import { FormFactoryManager } from '../form-factory.manager';
@@ -33,7 +33,7 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
   @HostBinding('class.loading') public loading = false;
 
   sectionsNames: string[] = [];
-  sections!: { [key: string]: IBaseField<any>[] };
+  sections!: { [key: string]: BaseField<any>[] };
 
   constructor(
     private readonly formWidgetManager: FormFactoryManager,
@@ -70,7 +70,7 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
     }, [] as any[]);
   }
 
-  private groupBySection(fields: IBaseField<any>[]) {
+  private groupBySection(fields: BaseField<any>[]) {
     return fields.reduce((acc, curr) => {
       const section = curr.section as unknown as string;
       if (!acc[section]) {

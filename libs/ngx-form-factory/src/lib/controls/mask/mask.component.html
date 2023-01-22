@@ -7,12 +7,6 @@
     [autocomplete]="field.autocomplete"
     [formControl]="field"
   />
-  <mat-icon
-    *ngIf="field.suffix"
-    matSuffix
-  >{{field.suffix}}</mat-icon>
-  <mat-icon
-    *ngIf="field.prefix"
-    matPrefix
-  >{{field.prefix}}</mat-icon>
+  <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
+  <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
 </mat-form-field>

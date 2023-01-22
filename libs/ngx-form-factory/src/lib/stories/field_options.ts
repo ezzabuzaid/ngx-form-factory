@@ -9,7 +9,7 @@ export default (args: any): IFieldOnlyOptions<any, any> => {
     label: args.label,
     class: args.class,
     value: args.value,
-    errors: props['errors'],
+    errorsMessages: props['errorsMessages'],
     validatorOrOpts: {
       validators: [
         args.min && Validators.min(args.min),
@@ -29,6 +29,7 @@ export const matFormFieldOptions = (args: any): IFieldOnlyOptions<any, any> => {
     hint: args.hint,
     placeholder: args.placeholder,
     autocomplete: args.autocomplete,
+
     suffix: args.suffix,
     prefix: args.prefix,
 
@@ -44,6 +45,9 @@ export const matSelectOptions = (args: any): IFieldOnlyOptions<any, any> => {
     readonly: args.readonly,
     hint: args.hint,
     placeholder: args.placeholder,
+
+    suffix: args.suffix,
+    prefix: args.prefix,
 
     subscriptSizing: args.subscriptSizing,
     color: args.color,

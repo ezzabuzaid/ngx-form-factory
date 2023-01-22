@@ -32,6 +32,14 @@ export const commonArgTypes: () => ArgTypes = () => ({
     type: 'string',
     description: '[Read More](https://shorturl.at/mnyCU)',
   },
+  prefix: {
+    name: 'prefix',
+    type: 'string',
+  },
+  suffix: {
+    name: 'suffix',
+    type: 'string',
+  },
   class: {
     name: 'class',
     type: 'string',

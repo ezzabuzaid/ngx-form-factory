@@ -39,7 +39,7 @@ const Story: Story = (args, context) => ({
                             ...matFormFieldOptions(args),
                             options: of(args['options'].map((option: any) => new SelectOption(option))),
                             multiple: props['multiple'],
-                            errors: props['errors'],
+                            errorsMessages: props['errorsMessages'],
                         }),
                         ...props
                     }

@@ -10,22 +10,15 @@ import {
 import { fromEvent } from 'rxjs';
 
 import { generateAlphabeticString } from '../shared';
-import { AutoComplete } from '../shared/autocomplete.type';
 import { EFieldType } from './field_type';
 
 export type FieldName<T> = keyof T extends string ? keyof T : never;
+
 export type FieldValue<T, name> = {
   [key in keyof T]: key extends name ? T[key] : never;
 }[keyof T];
-export declare type Constructor<T> = new (...args: any[]) => T;
 
-export interface IBaseField<T> extends FormControl {
-  id: string;
-  type?: EFieldType;
-  value: T | { value: T; disabled: boolean };
-  section?: string;
-  autocomplete?: AutoComplete;
-}
+export declare type Constructor<T> = new (...args: any[]) => T;
 
 export interface IBaseFieldOptions<T> {
   /**
@@ -64,10 +57,11 @@ export interface IBaseFieldOptions<T> {
    *  "minlength": (value) => `${value.length} is less than the minumum length`,
    * }
    */
-  errors?: Record<string, string | ((value: any) => string)>;
+  errorsMessages?: Record<string, string | ((value: any) => string)>;
+  type?: EFieldType;
 }
 
-export class BaseField<T> extends FormControl implements IBaseField<T> {
+export class BaseField<T> extends FormControl implements IBaseFieldOptions<T> {
   public type!: EFieldType;
   public section: string;
   public id: string;
@@ -81,7 +75,7 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
     super(options?.value, options?.validatorOrOpts, options?.asyncValidator);
     this.id = options?.id ?? generateAlphabeticString(5);
     this.section = options?.section ?? generateAlphabeticString(5);
-    this.errorsMessages = options?.errors;
+    this.errorsMessages = options?.errorsMessages;
   }
 
   /**
@@ -99,6 +93,7 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
     return fromEvent(this.getElement(), eventName);
   }
 }
+
 export type EnhancedForm<T> = {
   [key in keyof T]: BaseField<T[key]> | IForm<T[key]>;
 };

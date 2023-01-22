@@ -1,5 +1,5 @@
 <ng-container *ngIf="!rawField()">
-  <ng-container [ngSwitch]="field?.type">
+  <ng-container [ngSwitch]="field.type">
     <ng-container *ngSwitchCase="types.TEXT">
       <mat-form-field>
         <mat-label>{{ field.label }}</mat-label>
@@ -13,14 +13,8 @@
           [attr.autocomplete]="field.autocomplete"
           [formControl]="field"
         />
-        <mat-icon
-          *ngIf="field.suffix"
-          matSuffix
-        >{{field.suffix}}</mat-icon>
-        <mat-icon
-          *ngIf="field.prefix"
-          matPrefix
-        >{{field.prefix}}</mat-icon>
+        <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
+        <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
         <mat-error>
           <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
         </mat-error>
@@ -45,8 +39,7 @@
           [ngxTogglePasswod]="input"
         >
           lock
-        </mat-icon
-        >
+        </mat-icon>
         <mat-error>
           <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
         </mat-error>
@@ -69,14 +62,8 @@
           [attr.autocomplete]="field.autocomplete || 'email'"
           [formControl]="field"
         />
-        <mat-icon
-          *ngIf="field.suffix"
-          matSuffix
-        >{{field.suffix}}</mat-icon>
-        <mat-icon
-          *ngIf="field.prefix"
-          matPrefix
-        >{{field.prefix}}</mat-icon>
+        <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
+        <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
         <mat-error>
           <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
         </mat-error>
@@ -86,15 +73,9 @@
       <mat-form-field>
         <mat-label>{{ field.label }}</mat-label>
         <mat-hint>{{ field.hint }}</mat-hint>
-        <input matInput type="number" [formControl]="field"/>
-        <mat-icon
-          *ngIf="field.suffix"
-          matSuffix
-        >{{field.suffix}}</mat-icon>
-        <mat-icon
-          *ngIf="field.prefix"
-          matPrefix
-        >{{field.prefix}}</mat-icon>
+        <input matInput type="number" [formControl]="field" />
+        <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
+        <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
         <mat-error>
           <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
         </mat-error>
@@ -140,14 +121,8 @@
           [formControl]="field"
           type="time"
         />
-        <mat-icon
-          *ngIf="field.suffix"
-          matSuffix
-        >{{field.suffix}}</mat-icon>
-        <mat-icon
-          *ngIf="field.prefix"
-          matPrefix
-        >{{field.prefix}}</mat-icon>
+        <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
+        <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
         <mat-error>
           <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
         </mat-error>
@@ -164,14 +139,8 @@
           [formControl]="field"
           type="datetime-local"
         />
-        <mat-icon
-          *ngIf="field.suffix"
-          matSuffix
-        >{{field.suffix}}</mat-icon>
-        <mat-icon
-          *ngIf="field.prefix"
-          matPrefix
-        >{{field.prefix}}</mat-icon>
+        <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
+        <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
         <mat-error>
           <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
         </mat-error>
@@ -192,14 +161,8 @@
             {{ option.label }}
           </mat-option>
         </mat-select>
-        <mat-icon
-          *ngIf="field.suffix"
-          matSuffix
-        >{{field.suffix}}</mat-icon>
-        <mat-icon
-          *ngIf="field.prefix"
-          matPrefix
-        >{{field.prefix}}</mat-icon>
+        <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
+        <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
         <mat-error>
           <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
         </mat-error>

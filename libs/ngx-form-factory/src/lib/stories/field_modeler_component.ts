@@ -38,6 +38,8 @@ export class FieldModelerComponent {
       true
     );
     this.addLine('autocomplete', this.args.autocomplete);
+    this.addLine('prefix', this.args.prefix);
+    this.addLine('suffix', this.args.suffix);
     this.addLine('hideRequiredMarker', this.args.hideRequiredMarker, true);
     this.addLine('floatLabel', this.args.floatLabel);
     this.addLine('appearance', this.args.appearance);
@@ -85,7 +87,11 @@ export class FieldModelerComponent {
         errorMessages.push(`\t\t${key}: '${value}'`);
       }
     });
-    this.addLine('errors', `{\n${errorMessages.join(',\n')}\n\t}`, true);
+    this.addLine(
+      'errorsMessages',
+      `{\n${errorMessages.join(',\n')}\n\t}`,
+      true
+    );
   }
 
   private addLine(propName: string, propValue: any, withoutQuotations = false) {

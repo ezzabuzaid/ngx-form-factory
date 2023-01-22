@@ -9,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
-import { IField } from '../../fields';
+import { Field } from '../../fields';
 import {
   AbstractFieldFactoryComponent,
   IdDirectiveModule,
@@ -51,7 +51,7 @@ import { ProxyDirective } from '../../shared/proxy.directive';
   ],
 })
 export class CountryComponent
-  extends AbstractFieldFactoryComponent<IField<string>>
+  extends AbstractFieldFactoryComponent<Field<string>>
   implements ControlValueAccessor
 {
   private _value?: string;
