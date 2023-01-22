@@ -13,7 +13,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { Form, IBaseField, TFields } from '../../fields/base';
+import { EnhancedForm, Form, IBaseField } from '../../fields/base';
 import { assertNotNullOrUndefined } from '../../shared';
 import { FieldFactoryComponentModule } from '../field-factory/field-factory.component';
 import { FormFactoryManager } from '../form-factory.manager';
@@ -59,13 +59,9 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
     this.subscription.complete();
   }
 
-  form(field: any): field is Form<any> {
-    return field instanceof Form;
-  }
-
-  private flattenFields(controls: TFields<any>[0][]) {
+  private flattenFields(controls: EnhancedForm<any>[0][]) {
     return controls.reduce((acc, control) => {
-      if (this.form(control)) {
+      if (control instanceof Form) {
         acc.push(...this.flattenFields(values(control.fields)));
       } else {
         acc.push(control);
@@ -86,7 +82,7 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
   }
 }
 
-function values(fields: TFields<any>): TFields<any>[0][] {
+function values(fields: EnhancedForm<any>): EnhancedForm<any>[0][] {
   return Object.values(fields);
 }
 

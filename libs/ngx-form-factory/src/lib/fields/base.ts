@@ -99,16 +99,25 @@ export class BaseField<T> extends FormControl implements IBaseField<T> {
     return fromEvent(this.getElement(), eventName);
   }
 }
-export type TFields<T> = {
+export type EnhancedForm<T> = {
   [key in keyof T]: BaseField<T[key]> | IForm<T[key]>;
 };
+export type NativeForm<T> = {
+  [key in keyof T]: AbstractControl<T[key]>;
+};
+
 export interface IForm<T> extends AbstractControl {
-  fields: TFields<T>;
+  fields: NativeForm<T>;
   validation?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null;
 }
-export class Form<T> extends FormGroup implements IForm<T> {
+
+export class Form<
+  T extends {
+    [key in keyof T]: T[key];
+  }
+> extends FormGroup<NativeForm<T>> {
   constructor(
-    public fields: TFields<T>,
+    public fields: EnhancedForm<T>,
     validation?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null,
     asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null
   ) {
@@ -135,25 +144,63 @@ export class Form<T> extends FormGroup implements IForm<T> {
     return name;
   }
 
+  override addControl<Key extends keyof T>(
+    name: Key extends string ? Key : never,
+    control: BaseField<T[Key]>,
+    options?: { emitEvent?: boolean | undefined } | undefined
+  ) {
+    this.fields[name] = control;
+    return super.addControl(name, control, options);
+  }
+  override registerControl<Key extends keyof T>(
+    name: Key extends string ? Key : never,
+    control: BaseField<T[Key]>
+  ) {
+    this.fields[name] = control;
+    return super.registerControl(name, control);
+  }
+  override removeControl<Key extends keyof T>(
+    name: Key extends string ? Key : never,
+    options?: { emitEvent?: boolean | undefined } | undefined
+  ): void {
+    delete this.fields[name];
+    return super.removeControl(name as any, options);
+  }
+  override setControl<Key extends keyof T>(
+    name: Key extends string ? Key : never,
+    control: BaseField<T[Key]>,
+    options?: { emitEvent?: boolean | undefined } | undefined
+  ): void {
+    this.fields[name] = control;
+    return super.setControl(name, control, options);
+  }
   /**
    *
    * Reports whether the control with the given path has the error specified.
    *
    * @param name of the field control
    * @param errorName that will be used to check against
+   *
+   * @deprecated use native hasError
    */
-  hasControlError(name: keyof T, errorName: string) {
-    return this.get(name as any).hasError(errorName);
+  hasControlError<Key extends keyof T>(
+    name: Key extends string ? Key : never,
+    errorName: string
+  ) {
+    return this.get(name)?.hasError(errorName);
   }
 
-  /**
-   *
-   * Return the specified control typed value
-   *
-   * @param name of the field control
-   * @param defaultValue that will be used in case of null or undefined
-   */
-  getControlValue<key extends keyof T>(name: key, defaultValue?: T[key]) {
-    return this.get(name as any).value ?? defaultValue;
+  // /**
+  //  *
+  //  * Return the specified control typed value
+  //  *
+  //  * @param name of the field control
+  //  * @param defaultValue that will be used in case of null or undefined
+  //  */
+  getControlValue<Key extends keyof T>(
+    name: Key extends string ? Key : never,
+    defaultValue?: T[Key]
+  ) {
+    return this.get(name)?.value ?? defaultValue;
   }
 }
