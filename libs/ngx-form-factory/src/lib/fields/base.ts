@@ -93,18 +93,18 @@ export class BaseField<T> extends FormControl implements IBaseFieldOptions<T> {
     return fromEvent(this.getElement(), eventName);
   }
 }
+export interface IForm<T> extends AbstractControl<T> {
+  fields: NativeForm<T>;
+  validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null;
+}
 
 export type EnhancedForm<T> = {
   [key in keyof T]: BaseField<T[key]> | IForm<T[key]>;
 };
+
 export type NativeForm<T> = {
   [key in keyof T]: AbstractControl<T[key]>;
 };
-
-export interface IForm<T> extends AbstractControl {
-  fields: NativeForm<T>;
-  validation?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null;
-}
 
 export class Form<
   T extends {
@@ -113,10 +113,14 @@ export class Form<
 > extends FormGroup<NativeForm<T>> {
   constructor(
     public fields: EnhancedForm<T>,
-    validation?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null,
+    validatorOrOpts?:
+      | ValidatorFn
+      | ValidatorFn[]
+      | AbstractControlOptions
+      | null,
     asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null
   ) {
-    super(fields, validation, asyncValidator);
+    super(fields, validatorOrOpts, asyncValidator);
   }
 
   /**
@@ -128,15 +132,6 @@ export class Form<
     name: Key extends string ? Key : never
   ): BaseField<T[Key]> {
     return super.get(name as any) as any;
-  }
-
-  /**
-   * Simple method that will return the same provided name,
-   * perfect usage will be in HTML with `[formControlName]` directive,
-   * in case of name change the compiler will rise an error up
-   */
-  getName(name: keyof T) {
-    return name;
   }
 
   override addControl<Key extends keyof T>(
@@ -168,34 +163,5 @@ export class Form<
   ): void {
     this.fields[name] = control;
     return super.setControl(name, control, options);
-  }
-  /**
-   *
-   * Reports whether the control with the given path has the error specified.
-   *
-   * @param name of the field control
-   * @param errorName that will be used to check against
-   *
-   * @deprecated use native hasError
-   */
-  hasControlError<Key extends keyof T>(
-    name: Key extends string ? Key : never,
-    errorName: string
-  ) {
-    return this.get(name)?.hasError(errorName);
-  }
-
-  // /**
-  //  *
-  //  * Return the specified control typed value
-  //  *
-  //  * @param name of the field control
-  //  * @param defaultValue that will be used in case of null or undefined
-  //  */
-  getControlValue<Key extends keyof T>(
-    name: Key extends string ? Key : never,
-    defaultValue?: T[Key]
-  ) {
-    return this.get(name)?.value ?? defaultValue;
   }
 }

@@ -63,16 +63,6 @@ The library has two important classes with additional options as argument
 
 - `Form` extends `FormGroup` with additional instance methods, it take the same parameter as FormGroup class
 
-  1. `getControlValue(controlName, defaultValue)` returns the value of the specified control name and defaultValue if the value is null or undefined
-
-  2. `hasControlError(controlName, errorName)` checks if the specified control name
-
-  has an error
-
-  3. `getName(controlName)` simple method that will return the same provided name, it mainly has been create to be used in HTML with `[formControlName]` directive, in case of name change the compiler will rise an error up
-
-  4. `get(controlName)` the same one in `FormGroup` , but with typing
-
 - `Field(options: IFieldOptions)` extends `FormControl` with additional instance methods
 
   - `addValidator(validator)` add an array of Validator without lossing the existing ones
