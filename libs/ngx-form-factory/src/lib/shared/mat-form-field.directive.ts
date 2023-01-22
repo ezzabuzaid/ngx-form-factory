@@ -13,6 +13,7 @@ import {
   MatFormField,
   MatFormFieldAppearance,
   MatFormFieldDefaultOptions,
+  SubscriptSizing,
 } from '@angular/material/form-field';
 
 import { Field } from '../fields';
@@ -39,6 +40,10 @@ export class MatFormFieldDirective implements AfterViewInit {
 
     this._matFormField.appearance = (this._fieldFactory.field.appearance ??
       this._matFormFieldDefaultOptions?.appearance) as MatFormFieldAppearance;
+
+    this._matFormField.subscriptSizing = (this._fieldFactory.field
+      .subscriptSizing ??
+      this._matFormFieldDefaultOptions?.subscriptSizing) as SubscriptSizing;
 
     this._addClasses(
       this._fieldFactory.field.class

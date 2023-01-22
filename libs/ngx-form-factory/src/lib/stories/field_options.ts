@@ -29,6 +29,8 @@ export const matFormFieldOptions = (args: any): IFieldOnlyOptions<any, any> => {
     hint: args.hint,
     placeholder: args.placeholder,
     autocomplete: args.autocomplete,
+    suffix: args.suffix,
+    prefix: args.prefix,
 
     subscriptSizing: args.subscriptSizing,
     color: args.color,
