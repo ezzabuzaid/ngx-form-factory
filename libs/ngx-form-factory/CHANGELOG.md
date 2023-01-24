@@ -2,6 +2,24 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v2.1.0...v3.0.0) (2023-01-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Form:** remove helper method as they are obsolete with typed forms
+* **Field:** name errors to errorsMessages
+
+### Features
+
+* **Form:** add ability to manage control after init ([20e945b](https://github.com/ezzabuzaid/ngx-form-factory/commit/20e945bec37678c3280fd41ea311bee7c5226de1))
+
+
+### Code Refactoring
+
+* **Field:** name errors to errorsMessages ([8f214ab](https://github.com/ezzabuzaid/ngx-form-factory/commit/8f214abbde3770e273f8264488db34af1e05fd4d))
+* **Form:** remove helper method as they are obsolete with typed forms ([d66785b](https://github.com/ezzabuzaid/ngx-form-factory/commit/d66785b681b952f78ddd6f6b9881bad7240405f1))
+
 ## [2.1.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v2.0.6...v2.1.0) (2023-01-21)
 
 
