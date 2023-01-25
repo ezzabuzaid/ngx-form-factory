@@ -1,32 +1,30 @@
+import { MatCardModule } from "@angular/material/card";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ArgTypes, Meta, Story } from "@storybook/angular";
 import { EFieldType, Field } from "../fields";
 import { NgxFormFactoryModule } from "../ngx-form-factory.module";
-import { commonArgTypes, matInputArgType } from "./utils/common_arg_types";
-import { ARGS, convertArgsToProps, FieldModelerComponent, FieldModelerComponentModule } from "./utils/field_modeler_component";
-import field_options, { matFormFieldOptions } from "./utils/field_options";
-import { typeControl } from "./utils/type_control";
-import { maxLengthArgType, minLengthArgType, patternArgType, requiredArgType } from "./utils/validation_arg_types";
+import { emailArgType, maxLengthArgType, minLengthArgType, patternArgType } from "./utils/validation_arg_types";
 
+import { commonArgTypes, matInputArgType } from "./utils/common_arg_types";
+import { ARGS, convertArgsToProps, FieldModelerComponent } from "./utils/field_modeler_component";
+import field_options, { matFormFieldOptions } from "./utils/field_options";
+import { requiredArgType } from "./utils/validation_arg_types";
 
 const argTypes: ArgTypes = {
   ...commonArgTypes(),
-...matInputArgType
+  ...matInputArgType
 };
 
 export default {
-  title: "TextField",
-  component:FieldModelerComponent,
+  title: "PasswordField",
+  component: FieldModelerComponent,
   argTypes: argTypes,
 } as Meta;
 
-const Story: Story = (args:any, context) => ({
+const Story: Story = (args, context) => ({
   moduleMetadata: {
-    imports: [
-      BrowserAnimationsModule,
-      FieldModelerComponentModule,
-      NgxFormFactoryModule,
-    ],
+    declarations: [FieldModelerComponent],
+    imports: [BrowserAnimationsModule, NgxFormFactoryModule, MatCardModule],
     providers: [
       {
         provide: ARGS,
@@ -36,7 +34,7 @@ const Story: Story = (args:any, context) => ({
             field: new Field({
               ...field_options(args),
               ...matFormFieldOptions(args),
-              type: EFieldType.TEXT,
+              type: EFieldType.PASSWORD,
             }),
             ...props
           }
@@ -51,21 +49,19 @@ export const Default = Story.bind({});
 export const WithValidation = Story.bind({});
 
 Default.argTypes = {
-  ...typeControl()
 }
-
 Default.args = {
-  type: EFieldType.TEXT
+  type: EFieldType.EMAIL,
 }
-
 WithValidation.argTypes = {
   ...argTypes,
-  ...typeControl(),
   ...requiredArgType,
   ...maxLengthArgType,
   ...minLengthArgType,
+  ...emailArgType,
   ...patternArgType
 };
+
 WithValidation.args = {
-  type: EFieldType.TEXT
+  type: EFieldType.PASSWORD
 }

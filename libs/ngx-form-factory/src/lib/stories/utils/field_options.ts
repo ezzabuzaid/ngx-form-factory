@@ -1,6 +1,6 @@
 import { Validators } from '@angular/forms';
 
-import { IFieldOnlyOptions } from '../fields';
+import { IFieldOnlyOptions } from '../../fields';
 import { convertArgsToProps } from './field_modeler_component';
 
 export default (args: any): IFieldOnlyOptions<any, any> => {

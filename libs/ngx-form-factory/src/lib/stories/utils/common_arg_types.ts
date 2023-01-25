@@ -19,18 +19,15 @@ export const commonArgTypes: () => ArgTypes = () => ({
     name: 'appearance',
     options: ['fill', 'outline'],
     control: { type: 'select' },
-    description: '[Read More](https://shorturl.at/bjmF3)',
   },
   floatLabel: {
     name: 'float label',
     options: ['always', 'never', 'auto'],
     control: { type: 'select' },
-    description: '[Read More](https://shorturl.at/bkH28)',
   },
   hint: {
     name: 'hint',
     type: 'string',
-    description: '[Read More](https://shorturl.at/mnyCU)',
   },
   prefix: {
     name: 'prefix',
@@ -51,7 +48,7 @@ export const matInputArgType: ArgTypes = {
     name: 'autocomplete',
     type: 'string',
     description:
-      'a list of valid autocomplete properties can be found [here](https://shorturl.at/ehFR9)',
+      'a list of valid autocomplete properties can be found [here](add-link)',
   },
   readonly: {
     name: 'readonly',

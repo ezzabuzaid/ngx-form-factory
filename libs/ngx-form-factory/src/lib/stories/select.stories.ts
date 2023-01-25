@@ -4,10 +4,10 @@ import { ArgTypes, Meta, Story } from "@storybook/angular";
 import { of } from "rxjs";
 import { SelectField, SelectOption } from "../fields";
 import { FormFactoryModule } from "../ngx-form-factory.module";
-import { commonArgTypes } from "./common_arg_types";
-import { ARGS, convertArgsToProps, FieldModelerComponent } from "./field_modeler_component";
-import field_options, { matFormFieldOptions } from "./field_options";
-import { requiredArgType } from "./validation_arg_types";
+import { commonArgTypes } from "./utils/common_arg_types";
+import { ARGS, convertArgsToProps, FieldModelerComponent } from "./utils/field_modeler_component";
+import field_options, { matFormFieldOptions } from "./utils/field_options";
+import { requiredArgType } from "./utils/validation_arg_types";
 
 
 const argTypes: ArgTypes = {

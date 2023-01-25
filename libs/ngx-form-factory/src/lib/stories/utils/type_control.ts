@@ -1,6 +1,6 @@
 import { ArgTypes } from '@storybook/angular';
 
-import { EFieldType } from '../fields';
+import { EFieldType } from '../../fields';
 
 export const typeControl: () => ArgTypes = () => ({
   type: {

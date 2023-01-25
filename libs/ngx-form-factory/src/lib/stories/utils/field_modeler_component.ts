@@ -1,7 +1,7 @@
 import { Component, Inject, InjectionToken, NgModule } from '@angular/core';
 
-import { EFieldType } from '../fields';
-import { NgxFormFactoryModule } from '../ngx-form-factory.module';
+import { EFieldType } from '../../fields';
+import { NgxFormFactoryModule } from '../../ngx-form-factory.module';
 
 export const ARGS = new InjectionToken('ARGS');
 

@@ -2,6 +2,7 @@ export type Omit<T, P> = Pick<
   T,
   { [key in keyof T]: T[key] extends P ? never : key }[keyof T]
 >;
+
 export type Properties<T> = Omit<T, (...args: any[]) => any>;
 export type UserOutputs = Record<string, (event: any) => void>;
 export type UserInputs = Record<string, any>;
