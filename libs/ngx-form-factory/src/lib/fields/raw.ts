@@ -5,7 +5,7 @@ import { BaseField, IBaseFieldOptions } from './base';
 import { EFieldType } from './field_type';
 
 export interface IRawFieldOptions<T>
-  extends Omit<IBaseFieldOptions<T>, 'type'> {
+  extends Omit<IBaseFieldOptions<T>, 'type' | 'errorsMessages'> {
   /**
    * the component which will act as field
    */
