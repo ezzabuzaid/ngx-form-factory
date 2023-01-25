@@ -3,12 +3,12 @@ import {
   ElementRef,
   HostListener,
   Input,
-  NgModule,
   Renderer2,
 } from '@angular/core';
 
 @Directive({
   selector: '[ngxTogglePasswod]',
+  standalone: true,
 })
 export class TogglePasswodDirective {
   @Input() ngxTogglePasswod!: HTMLInputElement;
@@ -31,9 +31,3 @@ export class TogglePasswodDirective {
     }
   }
 }
-
-@NgModule({
-  declarations: [TogglePasswodDirective],
-  exports: [TogglePasswodDirective],
-})
-export class TogglePasswodDirectiveModule {}

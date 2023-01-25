@@ -1,13 +1,7 @@
 :host {
-    .password-lock-icon {
-        cursor: pointer;
-        color: #6c757d;
-        font-size: 20px;
-        position: relative;
-        bottom: 4px;
-    }
-    mat-radio-group {
-        display: flex;
-        flex-direction: column;
-    }
+  mat-radio-group {
+    // TODO: add an option to show it inline or verticaly
+    display: flex;
+    flex-direction: column;
+  }
 }

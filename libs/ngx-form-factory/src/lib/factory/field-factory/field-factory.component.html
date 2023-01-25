@@ -33,13 +33,7 @@
           [attr.autocomplete]="field.autocomplete"
           [formControl]="field"
         />
-        <mat-icon
-          class="password-lock-icon"
-          matSuffix
-          [ngxTogglePasswod]="input"
-        >
-          lock
-        </mat-icon>
+        <mat-icon matSuffix [ngxTogglePasswod]="input"> lock </mat-icon>
         <mat-error>
           <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
         </mat-error>

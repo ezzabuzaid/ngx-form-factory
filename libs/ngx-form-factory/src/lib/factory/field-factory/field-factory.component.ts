@@ -37,7 +37,7 @@ import {
   IdDirectiveModule,
   MatInputDirectiveModule,
   MatSelectDirectiveModule,
-  TogglePasswodDirectiveModule,
+  TogglePasswodDirective,
 } from '../../shared';
 import { MatFormFieldDirectiveModule } from '../../shared/mat-form-field.directive';
 
@@ -137,7 +137,7 @@ function minTimeValidator(min: string) {
     CountryComponentModule,
     ReactiveFormsModule,
     DynamicComponentDirectiveModule,
-    TogglePasswodDirectiveModule,
+    TogglePasswodDirective,
     IdDirectiveModule,
     MatInputDirectiveModule,
     MatSelectDirectiveModule,
