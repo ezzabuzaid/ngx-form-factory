@@ -2,6 +2,23 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.0.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v3.0.0...v4.0.0) (2023-01-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PasswordField:** remove custom styling, export PasswordDirective as standalone
+
+### Bug Fixes
+
+* **RawField:** remove 'errorsMessages' property ([89fe2ae](https://github.com/ezzabuzaid/ngx-form-factory/commit/89fe2ae73e4ca5df41709c1bcf6b24c109369c59))
+* remove 'type' property from RawField ([c880a22](https://github.com/ezzabuzaid/ngx-form-factory/commit/c880a22a3c8728cfb96ee38366e014f2f3efe0b2))
+
+
+### Code Refactoring
+
+* **PasswordField:** remove custom styling, export PasswordDirective as standalone ([746f188](https://github.com/ezzabuzaid/ngx-form-factory/commit/746f18824fcc867c5f63a36eaf46bebc2c57ede2))
+
 ## [3.0.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v2.1.0...v3.0.0) (2023-01-22)
 
 
