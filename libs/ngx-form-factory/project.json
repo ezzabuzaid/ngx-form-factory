@@ -2,6 +2,7 @@
   "name": "ngx-form-factory",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
+  "root": "libs/ngx-form-factory",
   "sourceRoot": "libs/ngx-form-factory/src",
   "prefix": "ngx",
   "targets": {
@@ -45,7 +46,7 @@
         "tagPrefix": "v",
         "baseBranch": "master",
         "push": true,
-        "postTargets": ["ngx-form-factory:github", "ngx-form-factory:publish"]
+        "postTargets": ["ngx-form-factory:publish", "ngx-form-factory:github"]
       }
     },
     "pre-release": {
