@@ -33,41 +33,41 @@ export const requiredArgType: ArgTypes = {
 };
 
 export const maxLengthArgType: ArgTypes = {
-  maxLength: {
+  maxlength: {
     name: 'max length',
     type: { required: false, name: 'number' },
     table: {
       category: 'validators',
-      subcategory: 'maxLength',
+      subcategory: 'maxlength',
     },
   },
-  'errorsMessages.maxLength': {
+  'errorsMessages.maxlength': {
     name: 'max length validation message',
     // defaultValue: "you've exceeded max length",
     type: 'string',
     table: {
       category: 'validators',
-      subcategory: 'maxLength',
+      subcategory: 'maxlength',
     },
   },
 };
 
 export const minLengthArgType: ArgTypes = {
-  minLength: {
-    name: 'min length',
+  minlength: {
+    name: 'minlength',
     type: { required: false, name: 'number' },
     table: {
       category: 'validators',
-      subcategory: 'minLength',
+      subcategory: 'minlength',
     },
   },
-  'errorsMessages.minLength': {
+  'errorsMessages.minlength': {
     name: 'min length validation message',
     // defaultValue: "you've to exceed min length",
     type: 'string',
     table: {
       category: 'validators',
-      subcategory: 'minLength',
+      subcategory: 'minlength',
     },
   },
 };

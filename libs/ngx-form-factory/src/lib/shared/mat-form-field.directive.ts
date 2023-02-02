@@ -3,7 +3,6 @@ import {
   AfterViewInit,
   Directive,
   Inject,
-  NgModule,
   Optional,
   Renderer2,
 } from '@angular/core';
@@ -19,8 +18,11 @@ import {
 import { Field } from '../fields';
 import { AbstractFieldFactoryComponent } from './field-factory.abstract';
 
-// eslint-disable-next-line @angular-eslint/directive-selector
-@Directive({ selector: 'mat-form-field' })
+@Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
+  selector: 'mat-form-field',
+  standalone: true,
+})
 export class MatFormFieldDirective implements AfterViewInit {
   constructor(
     private _matFormField: MatFormField,
@@ -61,9 +63,3 @@ export class MatFormFieldDirective implements AfterViewInit {
     }
   }
 }
-
-@NgModule({
-  declarations: [MatFormFieldDirective],
-  exports: [MatFormFieldDirective],
-})
-export class MatFormFieldDirectiveModule {}

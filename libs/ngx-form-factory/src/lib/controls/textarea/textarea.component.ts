@@ -8,10 +8,11 @@ import { MatInputModule } from '@angular/material/input';
 import { TextareaField } from '../../fields';
 import {
   AbstractFieldFactoryComponent,
-  IdDirectiveModule,
-  MatFormFieldDirectiveModule,
+  IdDirective,
+  MatFormFieldDirective,
 } from '../../shared';
-import { MatInputDirectiveModule } from '../../shared/mat-input.directive';
+import { ErrorsPipe } from '../../shared/errors.pipe';
+import { MatInputDirective } from '../../shared/mat-input.directive';
 
 @Component({
   selector: 'ngx-textarea',
@@ -34,9 +35,11 @@ export class TextareaComponent extends AbstractFieldFactoryComponent<TextareaFie
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatFormFieldDirectiveModule,
-    IdDirectiveModule,
-    MatInputDirectiveModule,
+    // Local Directives
+    MatFormFieldDirective,
+    IdDirective,
+    MatInputDirective,
+    ErrorsPipe,
   ],
 })
 export class TextareaComponentModule {}

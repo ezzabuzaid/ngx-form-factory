@@ -6,7 +6,6 @@ import {
   EventEmitter,
   Injector,
   Input,
-  NgModule,
   OnChanges,
   OnDestroy,
   Output,
@@ -25,6 +24,7 @@ type ComponentOutputs = ComponentFactory<any>['outputs'];
 
 @Directive({
   selector: '[ngxDynamicComponent]',
+  standalone: true,
 })
 export class DynamicComponentDirective implements OnDestroy, OnChanges {
   private subscription = new Subject();
@@ -203,9 +203,3 @@ export class DynamicComponentDirective implements OnDestroy, OnChanges {
     this.viewContainerRef.clear();
   }
 }
-
-@NgModule({
-  declarations: [DynamicComponentDirective],
-  exports: [DynamicComponentDirective],
-})
-export class DynamicComponentDirectiveModule {}

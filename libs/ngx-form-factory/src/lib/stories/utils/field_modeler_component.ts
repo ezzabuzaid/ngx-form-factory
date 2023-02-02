@@ -57,7 +57,7 @@ export class FieldModelerComponent {
       true
     );
     this.decorateValidators();
-    this.decorateErrors(args.errors);
+    this.decorateErrors(args.errorsMessages);
     this.code += '\n});';
   }
 
@@ -65,8 +65,8 @@ export class FieldModelerComponent {
     const validators = [
       this.args.min && `Validators.min('${this.args.min}'),`,
       this.args.max && `Validators.max('${this.args.max}'),`,
-      this.args.maxLength && `Validators.maxLength(${this.args.maxLength}),`,
-      this.args.minLength && `Validators.minLength(${this.args.minLength}),`,
+      this.args.maxlength && `Validators.maxLength(${this.args.maxlength}),`,
+      this.args.minlength && `Validators.minLength(${this.args.minlength}),`,
       this.args.email && `Validators.email,`,
       this.args.required && `Validators.required,`,
       this.args.pattern && `Validators.pattern(${this.args.pattern}),`,

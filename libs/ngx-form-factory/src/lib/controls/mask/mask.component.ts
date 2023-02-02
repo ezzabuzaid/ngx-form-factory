@@ -8,10 +8,11 @@ import { InputMaskModule } from '@ngneat/input-mask';
 import { MaskField } from '../../fields';
 import {
   AbstractFieldFactoryComponent,
-  IdDirectiveModule,
-  MatFormFieldDirectiveModule,
+  IdDirective,
+  MatFormFieldDirective,
 } from '../../shared';
-import { MatInputDirectiveModule } from '../../shared/mat-input.directive';
+import { ErrorsPipe } from '../../shared/errors.pipe';
+import { MatInputDirective } from '../../shared/mat-input.directive';
 
 @Component({
   selector: 'ngx-mask',
@@ -35,9 +36,13 @@ export class MaskComponent extends AbstractFieldFactoryComponent<
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatFormFieldDirectiveModule,
-    IdDirectiveModule,
-    MatInputDirectiveModule,
+
+    // Local Directives
+    MatFormFieldDirective,
+    IdDirective,
+    MatInputDirective,
+    ErrorsPipe,
+
     InputMaskModule.forRoot({
       inputSelector: 'input',
       isAsync: true,

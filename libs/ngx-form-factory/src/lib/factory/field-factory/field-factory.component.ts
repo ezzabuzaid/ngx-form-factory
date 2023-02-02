@@ -33,13 +33,14 @@ import { DateField } from '../../fields/date';
 import {
   AbstractFieldFactoryComponent,
   assertNotNullOrUndefined,
-  DynamicComponentDirectiveModule,
-  IdDirectiveModule,
-  MatInputDirectiveModule,
-  MatSelectDirectiveModule,
+  DynamicComponentDirective,
+  IdDirective,
+  MatInputDirective,
+  MatSelectDirective,
   TogglePasswodDirective,
 } from '../../shared';
-import { MatFormFieldDirectiveModule } from '../../shared/mat-form-field.directive';
+import { ErrorsPipe } from '../../shared/errors.pipe';
+import { MatFormFieldDirective } from '../../shared/mat-form-field.directive';
 
 @Component({
   selector: 'ngx-field-factory',
@@ -93,19 +94,6 @@ export class FieldFactoryComponent
     return this.field instanceof TimeField ? this.field : null;
   }
 
-  errors(): [string, () => string][] {
-    return Object.entries(this.field.errorsMessages ?? {}).map(
-      ([errorName, value]) => {
-        return [
-          errorName,
-          typeof value === 'function'
-            ? () => value(this.field.value)
-            : () => value,
-        ];
-      }
-    );
-  }
-
   onRawFieldCreation(instance: any, rawField: RawField<any, any>) {
     rawField.componentInstance = instance;
   }
@@ -133,18 +121,21 @@ function minTimeValidator(min: string) {
     MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
-    MatFormFieldDirectiveModule,
     CountryComponentModule,
     ReactiveFormsModule,
-    DynamicComponentDirectiveModule,
     TogglePasswodDirective,
-    IdDirectiveModule,
-    MatInputDirectiveModule,
-    MatSelectDirectiveModule,
     MaskComponentModule,
     TextareaComponentModule,
     MatCheckboxModule,
     MatIconModule,
+
+    // Local Directives
+    DynamicComponentDirective,
+    MatFormFieldDirective,
+    IdDirective,
+    MatInputDirective,
+    MatSelectDirective,
+    ErrorsPipe,
   ],
   exports: [FieldFactoryComponent],
 })

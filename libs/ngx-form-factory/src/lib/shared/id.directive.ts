@@ -1,16 +1,13 @@
-import {
-  AfterViewInit,
-  Directive,
-  ElementRef,
-  NgModule,
-  Renderer2,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Renderer2 } from '@angular/core';
 
 import { Field } from '../fields';
 import { AbstractFieldFactoryComponent } from './field-factory.abstract';
 
-// eslint-disable-next-line @angular-eslint/directive-selector
-@Directive({ selector: 'mat-select,[matInput],mat-checkbox,mat-radio-group' })
+@Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
+  selector: 'mat-select,[matInput],mat-checkbox,mat-radio-group',
+  standalone: true,
+})
 export class IdDirective implements AfterViewInit {
   constructor(
     private _fieldFactory: AbstractFieldFactoryComponent<Field<any>>,
@@ -26,9 +23,3 @@ export class IdDirective implements AfterViewInit {
     );
   }
 }
-
-@NgModule({
-  declarations: [IdDirective],
-  exports: [IdDirective],
-})
-export class IdDirectiveModule {}

@@ -15,9 +15,16 @@
         />
         <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
         <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
-        <mat-error>
-          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
-        </mat-error>
+        <ng-template
+          ngFor
+          let-error
+          [ngForOf]="field | errors"
+          ngProjectAs="mat-error"
+        >
+          <mat-error *ngIf="field.hasError(error[0])">{{
+            error[1]()
+          }}</mat-error>
+        </ng-template>
       </mat-form-field>
     </ng-container>
     <ng-container *ngSwitchCase="types.PASSWORD">
@@ -34,15 +41,20 @@
           [formControl]="field"
         />
         <mat-icon matSuffix [ngxTogglePasswod]="input"> lock </mat-icon>
-        <mat-error>
-          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
-        </mat-error>
+        <ng-template
+          ngFor
+          let-error
+          [ngForOf]="field | errors"
+          ngProjectAs="mat-error"
+        >
+          <mat-error *ngIf="field.hasError(error[0])">{{
+            error[1]()
+          }}</mat-error>
+        </ng-template>
       </mat-form-field>
     </ng-container>
     <ng-container *ngSwitchCase="types.TEXTAREA">
-      <ngx-textarea [field]="$any(field)">
-        <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
-      </ngx-textarea>
+      <ngx-textarea [field]="$any(field)"> </ngx-textarea>
     </ng-container>
     <ng-container *ngSwitchCase="types.EMAIL">
       <mat-form-field>
@@ -58,9 +70,16 @@
         />
         <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
         <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
-        <mat-error>
-          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
-        </mat-error>
+        <ng-template
+          ngFor
+          let-error
+          [ngForOf]="field | errors"
+          ngProjectAs="mat-error"
+        >
+          <mat-error *ngIf="field.hasError(error[0])">{{
+            error[1]()
+          }}</mat-error>
+        </ng-template>
       </mat-form-field>
     </ng-container>
     <ng-container *ngSwitchCase="types.NUMBER">
@@ -70,9 +89,16 @@
         <input matInput type="number" [formControl]="field" />
         <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
         <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
-        <mat-error>
-          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
-        </mat-error>
+        <ng-template
+          ngFor
+          let-error
+          [ngForOf]="field | errors"
+          ngProjectAs="mat-error"
+        >
+          <mat-error *ngIf="field.hasError(error[0])">{{
+            error[1]()
+          }}</mat-error>
+        </ng-template>
       </mat-form-field>
     </ng-container>
     <ng-container *ngSwitchCase="types.DATE">
@@ -99,9 +125,16 @@
           (monthSelected)="dateField()?.monthSelected($event, datePicker)"
           (yearSelected)="dateField()?.yearSelected($event, datePicker)"
         ></mat-datepicker>
-        <mat-error>
-          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
-        </mat-error>
+        <ng-template
+          ngFor
+          let-error
+          [ngForOf]="field | errors"
+          ngProjectAs="mat-error"
+        >
+          <mat-error *ngIf="field.hasError(error[0])">{{
+            error[1]()
+          }}</mat-error>
+        </ng-template>
       </mat-form-field>
     </ng-container>
     <ng-container *ngSwitchCase="types.TIME">
@@ -117,9 +150,16 @@
         />
         <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
         <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
-        <mat-error>
-          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
-        </mat-error>
+        <ng-template
+          ngFor
+          let-error
+          [ngForOf]="field | errors"
+          ngProjectAs="mat-error"
+        >
+          <mat-error *ngIf="field.hasError(error[0])">{{
+            error[1]()
+          }}</mat-error>
+        </ng-template>
       </mat-form-field>
     </ng-container>
     <ng-container *ngSwitchCase="types.DATETIME">
@@ -135,9 +175,16 @@
         />
         <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
         <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
-        <mat-error>
-          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
-        </mat-error>
+        <ng-template
+          ngFor
+          let-error
+          [ngForOf]="field | errors"
+          ngProjectAs="mat-error"
+        >
+          <mat-error *ngIf="field.hasError(error[0])">{{
+            error[1]()
+          }}</mat-error>
+        </ng-template>
       </mat-form-field>
     </ng-container>
     <ng-container *ngSwitchCase="types.CHECKBOX">
@@ -157,9 +204,16 @@
         </mat-select>
         <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
         <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
-        <mat-error>
-          <ng-container [ngTemplateOutlet]="errorTemplate"></ng-container>
-        </mat-error>
+        <ng-template
+          ngFor
+          let-error
+          [ngForOf]="field | errors"
+          ngProjectAs="mat-error"
+        >
+          <mat-error *ngIf="field.hasError(error[0])">{{
+            error[1]()
+          }}</mat-error>
+        </ng-template>
       </mat-form-field>
     </ng-container>
     <ng-container *ngSwitchCase="types.RADIO">
@@ -180,7 +234,7 @@
       <ngx-country [field]="$any(field)"></ngx-country>
     </ng-container>
     <ng-container *ngSwitchCase="types.MASK">
-      <ngx-mask [field]="$any(field)"></ngx-mask>
+      <ngx-mask [field]="$any(field)"> </ngx-mask>
     </ng-container>
   </ng-container>
 </ng-container>
@@ -194,9 +248,3 @@
     (create)="onRawFieldCreation($event, _rawField)"
   ></ng-container>
 </ng-container>
-
-<ng-template #errorTemplate>
-  <mat-error *ngFor="let error of errors()">
-    <span *ngIf="field.hasError(error[0])">{{ error[1]() }}</span>
-  </mat-error>
-</ng-template>

@@ -3,10 +3,19 @@
   <mat-hint>{{ field.hint }}</mat-hint>
   <input
     matInput
+    [placeholder]="field.placeholder!"
     [inputMask]="field.mask"
     [autocomplete]="field.autocomplete"
     [formControl]="field"
   />
   <mat-icon *ngIf="field.suffix" matSuffix>{{ field.suffix }}</mat-icon>
   <mat-icon *ngIf="field.prefix" matPrefix>{{ field.prefix }}</mat-icon>
+  <ng-template
+    ngFor
+    let-error
+    [ngForOf]="field | errors"
+    ngProjectAs="mat-error"
+  >
+    <mat-error *ngIf="field.hasError(error[0])">{{ error[1]() }}</mat-error>
+  </ng-template>
 </mat-form-field>

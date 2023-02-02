@@ -12,12 +12,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { Field } from '../../fields';
 import {
   AbstractFieldFactoryComponent,
-  IdDirectiveModule,
-  MatFormFieldDirectiveModule,
-  MatSelectDirectiveModule,
+  IdDirective,
+  MatFormFieldDirective,
+  MatSelectDirective,
 } from '../../shared';
 import flags from '../../shared/flags';
-import { MatInputDirectiveModule } from '../../shared/mat-input.directive';
+import { MatInputDirective } from '../../shared/mat-input.directive';
 import { ProxyDirective } from '../../shared/proxy.directive';
 
 @Component({
@@ -116,11 +116,13 @@ export class CountryComponent
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    IdDirectiveModule,
-    MatFormFieldDirectiveModule,
-    MatInputDirectiveModule,
-    MatSelectDirectiveModule,
     ProxyDirective,
+
+    // Local Directives
+    MatSelectDirective,
+    MatFormFieldDirective,
+    IdDirective,
+    MatInputDirective,
   ],
 })
 export class CountryComponentModule {}

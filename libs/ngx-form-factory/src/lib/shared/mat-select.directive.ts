@@ -1,12 +1,11 @@
-import { AfterViewInit, Directive, NgModule, Optional } from '@angular/core';
-import { MatInput } from '@angular/material/input';
+import { AfterViewInit, Directive } from '@angular/core';
 import { MatSelect } from '@angular/material/select';
 
-import { Field, SelectField } from '../fields';
+import { SelectField } from '../fields';
 import { AbstractFieldFactoryComponent } from './field-factory.abstract';
 
 // eslint-disable-next-line @angular-eslint/directive-selector
-@Directive({ selector: 'mat-select' })
+@Directive({ selector: 'mat-select', standalone: true })
 export class MatSelectDirective implements AfterViewInit {
   constructor(
     private _fieldFactory: AbstractFieldFactoryComponent<SelectField<any>>,
@@ -20,9 +19,3 @@ export class MatSelectDirective implements AfterViewInit {
     }
   }
 }
-
-@NgModule({
-  declarations: [MatSelectDirective],
-  exports: [MatSelectDirective],
-})
-export class MatSelectDirectiveModule {}

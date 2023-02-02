@@ -14,8 +14,8 @@ export default (args: any): IFieldOnlyOptions<any, any> => {
       validators: [
         args.min && Validators.min(args.min),
         args.max && Validators.max(args.max),
-        args.maxLength && Validators.maxLength(args.maxLength),
-        args.minLength && Validators.minLength(args.minLength),
+        args.maxlength && Validators.maxLength(args.maxlength),
+        args.minlength && Validators.minLength(args.minlength),
         args.email && Validators.email,
         args.required && Validators.required,
         args.pattern && Validators.pattern(args.pattern),

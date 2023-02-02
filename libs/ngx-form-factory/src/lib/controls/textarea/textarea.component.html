@@ -18,7 +18,20 @@
     [spellcheck]="field.spellcheck"
     [formControl]="field"
   ></textarea>
-  <mat-error>
-    <ng-content></ng-content>
-  </mat-error>
+  <ng-template
+    ngFor
+    let-error
+    [ngForOf]="field | errors"
+    ngProjectAs="mat-error"
+  >
+  </ng-template>
+
+  <ng-template
+    ngFor
+    let-error
+    [ngForOf]="field | errors"
+    ngProjectAs="mat-error"
+  >
+    <mat-error *ngIf="field.hasError(error[0])">{{ error[1]() }}</mat-error>
+  </ng-template>
 </mat-form-field>
