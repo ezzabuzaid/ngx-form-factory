@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "projects": {
-    "ngx-form-factory": "libs/ngx-form-factory",
-    "playground": "apps/playground"
-  }
-}
