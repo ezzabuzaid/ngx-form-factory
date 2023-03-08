@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+### [4.0.2](https://github.com/ezzabuzaid/ngx-form-factory/compare/v4.0.1...v4.0.2) (2023-02-02)
+
+
+### Bug Fixes
+
+* **MaskField:** remove default value for mask ([bca8c60](https://github.com/ezzabuzaid/ngx-form-factory/commit/bca8c60ccd0dc0ca339427ad1293ad30bfc67639))
+
 ### [4.0.1](https://github.com/ezzabuzaid/ngx-form-factory/compare/v4.0.0...v4.0.1) (2023-01-26)
 
 ## [4.0.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v3.0.0...v4.0.0) (2023-01-25)
