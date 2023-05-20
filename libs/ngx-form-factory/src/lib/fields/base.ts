@@ -20,7 +20,7 @@ export type FieldValue<T, name> = {
 
 export declare type Constructor<T> = new (...args: any[]) => T;
 
-export interface IBaseFieldOptions<T> {
+export interface IBaseFieldOptions<T> extends FormControlOptions {
   /**
    * Group fields by section name
    *
@@ -33,17 +33,6 @@ export interface IBaseFieldOptions<T> {
    * It'll be generated uniquly, unless you want to give it specific one
    */
   id?: string;
-  /**
-   * @param validatorOrOpts A synchronous validator function, or an array of
-   * such functions, or an `AbstractControlOptions` object that contains validation functions
-   * and a validation trigger.
-   */
-  validatorOrOpts?: ValidatorFn | ValidatorFn[] | FormControlOptions | null;
-  /**
-   * @param asyncValidator A single async validator or array of async validator functions
-   * @note quoted from Angular docs
-   */
-  asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null;
   /**
    * @param formState Initializes the control with an initial value,
    * or an object that defines the initial value and disabled state.
@@ -60,7 +49,6 @@ export interface IBaseFieldOptions<T> {
   errorsMessages?: Record<string, string | ((value: any) => string)>;
   type?: EFieldType;
 }
-
 export class BaseField<T> extends FormControl implements IBaseFieldOptions<T> {
   public type!: EFieldType;
   public section: string;
@@ -72,22 +60,21 @@ export class BaseField<T> extends FormControl implements IBaseFieldOptions<T> {
   public errorsMessages?: Record<string, string | ((value: any) => string)>;
 
   constructor(options?: IBaseFieldOptions<T>) {
-    super(options?.value, options?.validatorOrOpts, options?.asyncValidator);
+    super(options?.value, options);
     this.id = options?.id ?? generateAlphabeticString(5);
     this.section = options?.section ?? generateAlphabeticString(5);
     this.errorsMessages = options?.errorsMessages;
   }
 
   /**
-   * return the input element
+   * Get the input element from the DOM
    */
   getElement<T extends HTMLInputElement>() {
     return document.getElementById(this.id) as T;
   }
 
   /**
-   * Attach an event handler to the field input element
-   *
+   * Attach event listener to the input element
    */
   on(eventName: keyof HTMLElementEventMap) {
     return fromEvent(this.getElement(), eventName);
@@ -95,7 +82,6 @@ export class BaseField<T> extends FormControl implements IBaseFieldOptions<T> {
 }
 export interface IForm<T> extends AbstractControl<T> {
   fields: NativeForm<T>;
-  validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null;
 }
 
 export type EnhancedForm<T> = {

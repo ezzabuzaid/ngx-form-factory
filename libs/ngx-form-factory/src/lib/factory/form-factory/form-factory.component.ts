@@ -13,6 +13,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+import { EFieldType } from '../../fields';
 import { BaseField, EnhancedForm, Form } from '../../fields/base';
 import { assertNotNullOrUndefined } from '../../shared';
 import { FieldFactoryComponentModule } from '../field-factory/field-factory.component';
@@ -49,7 +50,9 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
         this.loading = show;
       });
 
-    const fields = this.flattenFields(values(this.formGroup.fields));
+    const fields = this.flattenFields(values(this.formGroup.fields)).filter(
+      (it) => it.type !== EFieldType.HIDDEN
+    );
     this.sectionsNames = [...new Set(fields.map((field) => field.section))];
     this.sections = this.groupBySection(fields);
   }
@@ -59,15 +62,15 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
     this.subscription.complete();
   }
 
-  private flattenFields(controls: EnhancedForm<any>[0][]) {
-    return controls.reduce((acc, control) => {
+  private flattenFields(controls: EnhancedForm<any>[string][]) {
+    return controls.reduce<BaseField<any>[]>((acc, control) => {
       if (control instanceof Form) {
         acc.push(...this.flattenFields(values(control.fields)));
       } else {
-        acc.push(control);
+        acc.push(control as any);
       }
       return acc;
-    }, [] as any[]);
+    }, []);
   }
 
   private groupBySection(fields: BaseField<any>[]) {
