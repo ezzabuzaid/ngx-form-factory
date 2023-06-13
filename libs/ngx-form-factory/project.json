@@ -2,12 +2,11 @@
   "name": "ngx-form-factory",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "libs/ngx-form-factory",
   "sourceRoot": "libs/ngx-form-factory/src",
   "prefix": "ngx",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
+      "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/ngx-form-factory"],
       "options": {
         "project": "libs/ngx-form-factory/ng-package.json"
@@ -23,7 +22,7 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/ngx-form-factory"],
       "options": {
         "jestConfig": "libs/ngx-form-factory/jest.config.ts",
@@ -31,7 +30,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/ngx-form-factory/src/**/*.ts",

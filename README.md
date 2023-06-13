@@ -343,7 +343,7 @@ interface IRawFieldOptions<T> extends IBaseFieldOptions<T> {
   /**
    * the component which will act as field
    */
-  component: Type<IRawFieldComponent<T>>;
+  component: Type<ControlValueAccessor>;
   /**
    * Component inputs
    */
