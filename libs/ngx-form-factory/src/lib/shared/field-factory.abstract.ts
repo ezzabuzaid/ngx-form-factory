@@ -6,5 +6,5 @@ import { BaseField } from '../fields';
 export abstract class AbstractFieldFactoryComponent<
   TField extends BaseField<any>
 > {
-  @Input() field!: TField;
+  @Input({ required: true }) field!: TField;
 }
