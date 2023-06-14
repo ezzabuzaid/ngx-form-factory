@@ -2,6 +2,23 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.0.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v4.0.4...v5.0.0) (2023-06-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **RawField:** replace IRawField with ControlValueAccessor
+* **angular:** upgrade to angular 16
+
+### Features
+
+* **RawField:** replace IRawField with ControlValueAccessor ([61da36f](https://github.com/ezzabuzaid/ngx-form-factory/commit/61da36f26dbc6ba0b9a88b8fc80cbbb090d852d9))
+
+
+### Miscellaneous Chores
+
+* **angular:** upgrade to angular 16 ([649a195](https://github.com/ezzabuzaid/ngx-form-factory/commit/649a195e62b629b4ed6453766614b82ac727cdd6))
+
 ### [4.0.4](https://github.com/ezzabuzaid/ngx-form-factory/compare/v4.0.3...v4.0.4) (2023-05-20)
 
 
