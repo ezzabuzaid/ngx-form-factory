@@ -29,7 +29,7 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
   public readonly progressListener = this.formWidgetManager.watch();
   private readonly subscription = new Subject();
 
-  @Input() formGroup!: Form<any>;
+  @Input({ required: true }) formGroup!: Form<any>;
   @Input() implicitFields = true;
   @HostBinding('class.loading') public loading = false;
 
@@ -50,9 +50,10 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
         this.loading = show;
       });
 
-    const fields = this.flattenFields(values(this.formGroup.fields)).filter(
-      (it) => it.type !== EFieldType.HIDDEN
-    );
+    const fields = this.flattenFields(
+      Object.values(this.formGroup.fields)
+    ).filter((it) => it.type !== EFieldType.HIDDEN);
+
     this.sectionsNames = [...new Set(fields.map((field) => field.section))];
     this.sections = this.groupBySection(fields);
   }
@@ -64,10 +65,10 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
 
   private flattenFields(controls: EnhancedForm<any>[string][]) {
     return controls.reduce<BaseField<any>[]>((acc, control) => {
-      if (control instanceof Form) {
-        acc.push(...this.flattenFields(values(control.fields)));
+      if (control instanceof BaseField) {
+        acc.push(control);
       } else {
-        acc.push(control as any);
+        acc.push(...this.flattenFields(Object.values(control.fields)));
       }
       return acc;
     }, []);
@@ -83,10 +84,6 @@ export class FormFactoryComponent implements OnInit, OnDestroy {
       return acc;
     }, {} as Record<string, any[]>);
   }
-}
-
-function values(fields: EnhancedForm<any>): EnhancedForm<any>[0][] {
-  return Object.values(fields);
 }
 
 @NgModule({

@@ -89,7 +89,7 @@ export type EnhancedForm<T> = {
 };
 
 export type NativeForm<T> = {
-  [key in keyof T]: AbstractControl<T[key]>;
+  [key in keyof T]: BaseField<T[key]> | IForm<T[key]>;
 };
 
 export class Form<

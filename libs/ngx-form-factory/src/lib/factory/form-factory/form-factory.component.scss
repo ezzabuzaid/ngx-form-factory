@@ -2,7 +2,7 @@
   display: block;
   position: relative;
   &::before {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     width: 100%;
@@ -23,7 +23,7 @@
     flex-wrap: wrap;
     ngx-field-factory {
       &:nth-child(even) {
-        padding: 0 0.5rem;
+        gap: 0 0.5rem;
       }
       min-width: calc(100% / 3);
       flex-grow: 1;

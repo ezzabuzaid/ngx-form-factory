@@ -1,4 +1,5 @@
 import { Component, Inject, InjectionToken } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { EFieldType } from '../../fields';
 import { NgxFormFactoryModule } from '../../ngx-form-factory.module';
@@ -19,7 +20,7 @@ export const ARGS = new InjectionToken('ARGS');
     `,
   ],
   template: `
-    <ngx-field-factory [field]="args.field"></ngx-field-factory>
+    <ngx-field-factory [field]="args.field" />
     <pre>
         <code [innerHTML]="code"></code>
     </pre>
@@ -101,6 +102,25 @@ export class FieldModelerComponent {
       this.code += `\n\t${propName}: ${value},`;
     }
   }
+}
+
+@Component({
+  standalone: true,
+  imports: [NgxFormFactoryModule, ReactiveFormsModule],
+  styles: [
+    `
+      pre code {
+        background-color: #eee;
+        border: 1px solid #999;
+        display: block;
+        padding: 20px;
+      }
+    `,
+  ],
+  template: ` <ngx-form-factory [formGroup]="args.form" />`,
+})
+export class FormModelerComponent {
+  constructor(@Inject(ARGS) public args: any) {}
 }
 
 export function convertArgsToProps(

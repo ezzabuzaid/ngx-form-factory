@@ -6,7 +6,7 @@
   <ng-container *ngFor="let section of sectionsNames">
     <div class="fields-wrapper">
       <ng-container *ngFor="let field of sections[section]">
-        <ngx-field-factory [field]="$any(field)"></ngx-field-factory>
+        <ngx-field-factory [field]="field" />
       </ng-container>
     </div>
   </ng-container>
