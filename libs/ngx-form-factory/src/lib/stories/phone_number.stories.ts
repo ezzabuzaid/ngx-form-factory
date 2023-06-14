@@ -1,9 +1,9 @@
 import { ArgTypes, Meta, StoryObj } from '@storybook/angular';
 
 import {
-  IInternationalPhoneNumberFieldOptions,
-  InternationalPhoneNumberField,
-} from '../fields/international_phone_number.field';
+  IPhoneNumberFieldOptions,
+  PhoneNumberField,
+} from '../fields/phone_number.field';
 import { commonArgTypes } from './utils/common_arg_types';
 import {
   ARGS,
@@ -13,13 +13,12 @@ import {
 import field_options, { matFormFieldOptions } from './utils/field_options';
 import { requiredArgType } from './utils/validation_arg_types';
 
-const { placeholder, _argTypes } = commonArgTypes();
 const argTypes: ArgTypes = {
   ...commonArgTypes(),
 };
 
 export default {
-  title: 'InternationalPhoneNumberField',
+  title: 'PhoneNumberField',
   component: FieldModelerComponent,
   argTypes: argTypes,
   render: (args, context) => ({
@@ -30,10 +29,9 @@ export default {
           useValue: (() => {
             const props = convertArgsToProps(args);
             return {
-              field: new InternationalPhoneNumberField({
+              field: new PhoneNumberField({
                 ...field_options(args),
                 ...matFormFieldOptions(args),
-                value: '0792807794',
               }),
               ...props,
             };
@@ -46,8 +44,16 @@ export default {
     },
   }),
 } as Meta<FieldModelerComponent>;
-export const Default: StoryObj<IInternationalPhoneNumberFieldOptions> = {};
-export const WithValidation: StoryObj<IInternationalPhoneNumberFieldOptions> = {
+
+export const Default: StoryObj<IPhoneNumberFieldOptions> = {
+  args: {
+    value: '0792807794',
+  },
+};
+export const WithValidation: StoryObj<IPhoneNumberFieldOptions> = {
+  args: {
+    value: '0792807794',
+  },
   argTypes: {
     ...argTypes,
     ...requiredArgType,

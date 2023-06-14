@@ -1,7 +1,7 @@
 import { Directive, inject } from '@angular/core';
 import { MatSelect } from '@angular/material/select';
 
-import InternationalPhoneNumberFieldComponent from './international-phone-number-field-component';
+import { InternationalPhoneNumberFieldComponent } from './international-phone-number-field-component';
 
 @Directive({
   standalone: true,

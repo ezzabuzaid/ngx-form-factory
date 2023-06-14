@@ -4,11 +4,15 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  Inject,
+  inject,
   Input,
   ViewChild,
 } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormControl,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import {
   MatFormFieldDefaultOptions,
   MatFormFieldModule,
@@ -17,22 +21,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { WINDOW } from '@ng-web-apis/common';
 
-import { BaseField, IRawFieldComponent } from '../../fields';
 import { assertNotNullOrUndefined } from '../../shared';
 import { ProxyDirective } from '../../shared/proxy.directive';
 import { PhoneNumberAssociatedWithCountryValidator } from './phonenumber.validator';
 
 @Component({
   selector: 'ngx-phonenumber-field',
+  standalone: true,
   imports: [
     CommonModule,
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule,
     ProxyDirective,
+    ReactiveFormsModule,
   ],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mat-form-field
@@ -45,15 +48,15 @@ import { PhoneNumberAssociatedWithCountryValidator } from './phonenumber.validat
       <mat-label *ngIf="label">{{ label }}</mat-label>
       <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
       <input
-        [id]="formControl.id"
+        [id]="id!"
         [placeholder]="placeholder!"
         [readonly]="readonly"
-        [formControl]="formControl"
         type="tel"
         matInput
         #intlTelInput
+        [formControl]="control"
       />
-      <mat-error *ngIf="formControl.hasError('notAssociated')"
+      <mat-error *ngIf="control.hasError('notAssociated')"
         >The phone number format is not aligned with the selected
         country.</mat-error
       >
@@ -61,10 +64,12 @@ import { PhoneNumberAssociatedWithCountryValidator } from './phonenumber.validat
   `,
 })
 export class PhoneNumberFieldComponent
-  implements IRawFieldComponent<string>, AfterViewInit
+  implements ControlValueAccessor, AfterViewInit
 {
-  @ViewChild('intlTelInput') public intlTelInput?: ElementRef<HTMLInputElement>;
+  @ViewChild('intlTelInput', { static: true })
+  public intlTelInput?: ElementRef<HTMLInputElement>;
 
+  @Input() id?: string;
   @Input() class?: string;
   @Input() hint?: string;
   @Input() readonly?: boolean;
@@ -77,18 +82,33 @@ export class PhoneNumberFieldComponent
   @Input() color?: MatFormFieldDefaultOptions['color'];
   @Input() floatLabel?: MatFormFieldDefaultOptions['floatLabel'];
   @Input() subscriptSizing?: MatFormFieldDefaultOptions['subscriptSizing'];
+  control = new FormControl();
 
-  @Input('control') public formControl!: BaseField<string>;
-  constructor(@Inject(WINDOW) private _window: Window) {}
+  private _window = inject(WINDOW);
 
+  #onChange = (value: any) => {
+    //
+  };
+  registerOnChange(fn: any): void {
+    this.#onChange = fn;
+  }
+  writeValue(obj: any): void {
+    this.control.setValue(obj);
+  }
+  registerOnTouched(fn: any): void {
+    // TODO
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    // TODO
+  }
   public ngAfterViewInit(): void {
     assertNotNullOrUndefined(this.intlTelInput);
-    this.formControl.addValidators(
-      PhoneNumberAssociatedWithCountryValidator(this.formControl.id)
-    );
-    (this._window as any).intlTelInput(this.formControl.getElement(), {
+    (this._window as any).intlTelInput(this.intlTelInput.nativeElement, {
       nationalMode: true,
       allowDropdown: false,
     });
+    this.control.addValidators(
+      PhoneNumberAssociatedWithCountryValidator(this.intlTelInput.nativeElement)
+    );
   }
 }

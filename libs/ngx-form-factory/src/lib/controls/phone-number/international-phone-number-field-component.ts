@@ -9,7 +9,11 @@ import {
   Input,
   OnDestroy,
 } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import {
   MatFormFieldDefaultOptions,
   MatFormFieldModule,
@@ -17,9 +21,9 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { WINDOW } from '@ng-web-apis/common';
-import { combineLatest, pipe, startWith, Subject, takeUntil } from 'rxjs';
+import { combineLatest, Subject, takeUntil } from 'rxjs';
 
-import { BaseField, EFieldType, Field, IRawFieldComponent } from '../../fields';
+import { EFieldType, Field } from '../../fields';
 import { ProxyDirective } from '../../shared/proxy.directive';
 import { PhoneNumberCodeFieldComponent } from './phone-number-code-field-component';
 import { PhoneNumberFieldComponent } from './phone-number-field-component';
@@ -58,7 +62,7 @@ import { PhoneNumberFieldComponent } from './phone-number-field-component';
       [floatLabel]="floatLabel"
       [subscriptSizing]="subscriptSizing"
       [color]="color"
-      [control]="formControlPhonenumberCode"
+      [formControl]="formControlPhonenumberCode"
     ></ngx-phonenumber-code-field>
     <ngx-phonenumber-field
       [appearance]="appearance"
@@ -70,13 +74,13 @@ import { PhoneNumberFieldComponent } from './phone-number-field-component';
       [class]="class"
       [label]="label"
       [placeholder]="placeholder"
-      [control]="formControlPhonenumber"
+      [formControl]="formControlPhonenumber"
     ></ngx-phonenumber-field>
   `,
 })
-export default class InternationalPhoneNumberFieldComponent
+export class InternationalPhoneNumberFieldComponent
   implements
-    IRawFieldComponent<string>,
+    ControlValueAccessor,
     AfterViewInit,
     OnDestroy,
     MatFormFieldDefaultOptions
@@ -99,7 +103,6 @@ export default class InternationalPhoneNumberFieldComponent
   @HostBinding('class.inline')
   inline?: boolean;
 
-  public formControl!: BaseField<string>;
   public formControlPhonenumberCode = new Field({
     type: EFieldType.TEXT,
   });
@@ -107,11 +110,39 @@ export default class InternationalPhoneNumberFieldComponent
     type: EFieldType.TEXT,
   });
   private _subscription = new Subject();
-
+  #onChange = (value: any) => {
+    //
+  };
   constructor(
     @Inject(WINDOW) private _window: Window,
     public elementRef: ElementRef
   ) {}
+
+  writeValue(value: any): void {
+    const intlTelInput = (this._window as any).intlTelInputGlobals.getInstance(
+      this.formControlPhonenumber.getElement()
+    );
+    intlTelInput.setNumber(value);
+    const { dialCode } = intlTelInput.getSelectedCountryData() ?? {};
+
+    console.log('dialCode', dialCode);
+
+    // this.formControlPhonenumber.setValue(value, {
+    //   emitEvent: false,
+    // });
+    this.formControlPhonenumberCode.setValue(dialCode);
+  }
+  registerOnChange(fn: any): void {
+    this.#onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    // TODO: implement
+  }
+
+  setDisabledState?(isDisabled: boolean): void {
+    // TODO: implement
+  }
 
   ngAfterViewInit(): void {
     combineLatest([
@@ -121,33 +152,7 @@ export default class InternationalPhoneNumberFieldComponent
       .pipe(takeUntil(this._subscription))
       .subscribe(([phonenumber, code]) => {
         console.log('code', code);
-        this.formControl.setValue(`${code}${phonenumber}`, {
-          emitEvent: false,
-        });
-      });
-
-    const start = this.formControl.value
-      ? pipe(startWith(this.formControl.value))
-      : pipe();
-    this.formControl.valueChanges
-      .pipe(start, takeUntil(this._subscription))
-      .subscribe((value) => {
-        const intlTelInput = (
-          this._window as any
-        ).intlTelInputGlobals.getInstance(
-          this.formControlPhonenumber.getElement()
-        );
-        intlTelInput.setNumber(value);
-        const { dialCode } = intlTelInput.getSelectedCountryData() ?? {};
-
-        console.log('dialCode', dialCode);
-
-        // this.formControlPhonenumber.setValue(value, {
-        //   emitEvent: false,
-        // });
-        this.formControlPhonenumberCode.setValue(dialCode);
-
-        this.formControl.setValue(value);
+        this.#onChange(`${code}${phonenumber}`);
       });
   }
 

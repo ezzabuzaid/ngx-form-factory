@@ -17,11 +17,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
-import {
-  CountryComponentModule,
-  MaskComponentModule,
-  TextareaComponentModule,
-} from '../../controls';
+import { CountryComponentModule } from '../../controls/country/country.component';
+import { MaskComponentModule } from '../../controls/mask/mask.component';
+import { TextareaComponentModule } from '../../controls/textarea/textarea.component';
 import {
   EFieldType,
   Field,
@@ -38,6 +36,7 @@ import {
   MatInputDirective,
   MatSelectDirective,
   TogglePasswodDirective,
+  ValueAccessorDirective,
 } from '../../shared';
 import { ErrorsPipe } from '../../shared/errors.pipe';
 import { MatFormFieldDirective } from '../../shared/mat-form-field.directive';
@@ -130,6 +129,7 @@ function minTimeValidator(min: string) {
     MatIconModule,
 
     // Local Directives
+    ValueAccessorDirective,
     DynamicComponentDirective,
     MatFormFieldDirective,
     IdDirective,

@@ -10,17 +10,15 @@ export default (args: any): IFieldOnlyOptions<any, any> => {
     class: args.class,
     value: args.value,
     errorsMessages: props['errorsMessages'],
-    validatorOrOpts: {
-      validators: [
-        args.min && Validators.min(args.min),
-        args.max && Validators.max(args.max),
-        args.maxlength && Validators.maxLength(args.maxlength),
-        args.minlength && Validators.minLength(args.minlength),
-        args.email && Validators.email,
-        args.required && Validators.required,
-        args.pattern && Validators.pattern(args.pattern),
-      ].filter((v) => !!v),
-    },
+    validators: [
+      args.min && Validators.min(args.min),
+      args.max && Validators.max(args.max),
+      args.maxlength && Validators.maxLength(args.maxlength),
+      args.minlength && Validators.minLength(args.minlength),
+      args.email && Validators.email,
+      args.required && Validators.required,
+      args.pattern && Validators.pattern(args.pattern),
+    ].filter(Boolean),
   };
 };
 export const matFormFieldOptions = (args: any): IFieldOnlyOptions<any, any> => {

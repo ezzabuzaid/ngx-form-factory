@@ -1,9 +1,8 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ArgTypes, Meta, Story } from "@storybook/angular";
 import { MaskField } from "../fields";
-import { NgxFormFactoryModule } from "../ngx-form-factory.module";
 import { commonArgTypes, matInputArgType } from "./utils/common_arg_types";
-import { ARGS, convertArgsToProps, FieldModelerComponent, FieldModelerComponentModule } from "./utils/field_modeler_component";
+import { ARGS, FieldModelerComponent, convertArgsToProps } from "./utils/field_modeler_component";
 import field_options, { matFormFieldOptions } from "./utils/field_options";
 import { typeControl } from "./utils/type_control";
 import { maxLengthArgType, minLengthArgType, patternArgType, requiredArgType } from "./utils/validation_arg_types";
@@ -24,8 +23,6 @@ const Story: Story = (args:any, context) => ({
   moduleMetadata: {
     imports: [
       BrowserAnimationsModule,
-      FieldModelerComponentModule,
-      NgxFormFactoryModule,
     ],
     providers: [
       {
@@ -34,6 +31,9 @@ const Story: Story = (args:any, context) => ({
           const props = convertArgsToProps(args);
           return {
             field: new MaskField({
+              mask: {
+
+              },
               ...field_options(args),
               ...matFormFieldOptions(args),
             }),

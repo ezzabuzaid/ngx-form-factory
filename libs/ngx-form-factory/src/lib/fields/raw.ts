@@ -1,4 +1,5 @@
 import { Type } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
 
 import { UserInputs, UserOutputs } from '../shared';
 import { BaseField, IBaseFieldOptions } from './base';
@@ -9,7 +10,7 @@ export interface IRawFieldOptions<T>
   /**
    * the component which will act as field
    */
-  component: Type<IRawFieldComponent<T>>;
+  component: Type<ControlValueAccessor>;
   /**
    * Component inputs
    */
@@ -23,7 +24,7 @@ export interface IRawFieldOptions<T>
 }
 
 export class RawField<T, C> extends BaseField<T> {
-  component: Type<IRawFieldComponent<T>>;
+  component: Type<ControlValueAccessor>;
   inputs?: UserInputs;
   outputs?: UserOutputs;
   componentInstance!: C;
@@ -34,8 +35,4 @@ export class RawField<T, C> extends BaseField<T> {
     this.inputs = options?.inputs;
     this.outputs = options?.outputs;
   }
-}
-
-export interface IRawFieldComponent<T> {
-  formControl: BaseField<T>;
 }

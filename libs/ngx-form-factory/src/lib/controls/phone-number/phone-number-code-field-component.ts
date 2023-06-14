@@ -6,15 +6,15 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ControlValueAccessor, ReactiveFormsModule } from '@angular/forms';
 import {
   MatFormFieldDefaultOptions,
   MatFormFieldModule,
 } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
 
-import { BaseField, IRawFieldComponent } from '../../fields';
+import { BaseField } from '../../fields';
 import { ProxyDirective } from '../../shared/proxy.directive';
 import flags from './flags';
 import { MatSelectFitContentDirective } from './mat-select-change-origin.directive';
@@ -88,7 +88,7 @@ import { MatSelectFitContentDirective } from './mat-select-change-origin.directi
   `,
 })
 export class PhoneNumberCodeFieldComponent
-  implements IRawFieldComponent<string>, OnInit, OnDestroy
+  implements ControlValueAccessor, OnInit, OnDestroy
 {
   @Input() appearance?: MatFormFieldDefaultOptions['appearance'];
   @Input()
@@ -111,18 +111,26 @@ export class PhoneNumberCodeFieldComponent
       return self.getAttribute('aria-label');
     },
   };
-
+  #onChange = (value: any) => {
+    //
+  };
   public getCountry() {
     return this.countries.find((el) => el.iso2 === this.formControl.value);
   }
-
+  writeValue(obj: any): void {
+    this.currentCountry = this.getCountry();
+  }
+  registerOnChange(fn: any): void {
+    this.#onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    // TODO
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    // TODO
+  }
   ngOnInit() {
     this.countries = (window as any)['intlTelInputGlobals'].getCountryData();
-    this.formControl.valueChanges
-      .pipe(takeUntil(this._subscription))
-      .subscribe((value) => {
-        this.currentCountry = this.getCountry();
-      });
   }
 
   public setSelectedCountry(dialCode: string): void {

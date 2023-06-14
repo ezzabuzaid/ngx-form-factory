@@ -1,71 +1,73 @@
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ArgTypes, Meta, Story } from "@storybook/angular";
-import { EFieldType, Field } from "../fields";
-import { NgxFormFactoryModule } from "../ngx-form-factory.module";
-import { commonArgTypes, matInputArgType } from "./utils/common_arg_types";
-import { ARGS, convertArgsToProps, FieldModelerComponent, FieldModelerComponentModule } from "./utils/field_modeler_component";
-import field_options, { matFormFieldOptions } from "./utils/field_options";
-import { typeControl } from "./utils/type_control";
-import { maxLengthArgType, minLengthArgType, patternArgType, requiredArgType } from "./utils/validation_arg_types";
+import { ArgTypes, Meta, StoryObj } from '@storybook/angular';
 
+import { EFieldType, Field, IBaseFieldOptions } from '../fields';
+import { commonArgTypes, matInputArgType } from './utils/common_arg_types';
+import {
+  ARGS,
+  convertArgsToProps,
+  FieldModelerComponent,
+} from './utils/field_modeler_component';
+import field_options, { matFormFieldOptions } from './utils/field_options';
+import { typeControl } from './utils/type_control';
+import {
+  maxLengthArgType,
+  minLengthArgType,
+  patternArgType,
+  requiredArgType,
+} from './utils/validation_arg_types';
 
 const argTypes: ArgTypes = {
   ...commonArgTypes(),
-...matInputArgType
+  ...matInputArgType,
 };
 
 export default {
-  title: "TextField",
-  component:FieldModelerComponent,
+  title: 'TextField',
+  component: FieldModelerComponent,
   argTypes: argTypes,
-} as Meta;
+  render: (args, context) => ({
+    applicationConfig: {
+      providers: [
+        {
+          provide: ARGS,
+          useValue: (() => {
+            const props = convertArgsToProps(args);
+            return {
+              field: new Field({
+                ...field_options(args),
+                ...matFormFieldOptions(args),
+                type: EFieldType.TEXT,
+              }),
+              ...props,
+            };
+          })(),
+        },
+      ],
+    },
+    props: {
+      ...args,
+    },
+  }),
+} as Meta<FieldModelerComponent>;
 
-const Story: Story = (args:any, context) => ({
-  moduleMetadata: {
-    imports: [
-      BrowserAnimationsModule,
-      FieldModelerComponentModule,
-      NgxFormFactoryModule,
-    ],
-    providers: [
-      {
-        provide: ARGS,
-        useValue: (() => {
-          const props = convertArgsToProps(args);
-          return {
-            field: new Field({
-              ...field_options(args),
-              ...matFormFieldOptions(args),
-              type: EFieldType.TEXT,
-            }),
-            ...props
-          }
-        })()
-      }
-    ],
+export const Default: StoryObj<IBaseFieldOptions<any>> = {
+  args: {
+    type: EFieldType.TEXT,
   },
-  props: args,
-});
-
-export const Default = Story.bind({});
-export const WithValidation = Story.bind({});
-
-Default.argTypes = {
-  ...typeControl()
-}
-
-Default.args = {
-  type: EFieldType.TEXT
-}
-
-WithValidation.argTypes = {
-  ...argTypes,
-  ...typeControl(),
-  ...requiredArgType,
-  ...maxLengthArgType,
-  ...minLengthArgType,
-  ...patternArgType
+  argTypes: {
+    ...typeControl(),
+  },
 };
-WithValidation.args = {
-  type: EFieldType.TEXT
-}
+export const WithValidation: StoryObj<IBaseFieldOptions<any>> = {
+  args: {
+    type: EFieldType.TEXT,
+  },
+  argTypes: {
+    ...argTypes,
+    ...typeControl(),
+    ...requiredArgType,
+    ...maxLengthArgType,
+    ...minLengthArgType,
+    ...patternArgType,
+  },
+};

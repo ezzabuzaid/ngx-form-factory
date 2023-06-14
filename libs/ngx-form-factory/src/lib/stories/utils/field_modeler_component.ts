@@ -1,4 +1,4 @@
-import { Component, Inject, InjectionToken, NgModule } from '@angular/core';
+import { Component, Inject, InjectionToken } from '@angular/core';
 
 import { EFieldType } from '../../fields';
 import { NgxFormFactoryModule } from '../../ngx-form-factory.module';
@@ -6,6 +6,8 @@ import { NgxFormFactoryModule } from '../../ngx-form-factory.module';
 export const ARGS = new InjectionToken('ARGS');
 
 @Component({
+  standalone: true,
+  imports: [NgxFormFactoryModule],
   styles: [
     `
       pre code {
@@ -20,13 +22,12 @@ export const ARGS = new InjectionToken('ARGS');
     <ngx-field-factory [field]="args.field"></ngx-field-factory>
     <pre>
         <code [innerHTML]="code"></code>
-        </pre>
+    </pre>
   `,
 })
 export class FieldModelerComponent {
   code: string;
   constructor(@Inject(ARGS) public args: any) {
-    console.log(args);
     this.code = `new ${args.field.constructor.name}({`;
     this.addLine('label', this.args.label);
     this.addLine('placeholder', this.args.placeholder);
@@ -102,12 +103,6 @@ export class FieldModelerComponent {
   }
 }
 
-@NgModule({
-  declarations: [FieldModelerComponent],
-  imports: [NgxFormFactoryModule],
-  exports: [FieldModelerComponent],
-})
-export class FieldModelerComponentModule {}
 export function convertArgsToProps(
   props: Record<string, any>
 ): Record<string, any> {

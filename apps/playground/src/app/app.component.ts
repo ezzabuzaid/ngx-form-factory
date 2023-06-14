@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { InternationalPhoneNumberField } from '@ezzabuzaid/ngx-form-factory';
+import { PhoneNumberField } from '@ezzabuzaid/ngx-form-factory';
 
 @Component({
   selector: 'scrapx-root',
@@ -8,14 +8,5 @@ import { InternationalPhoneNumberField } from '@ezzabuzaid/ngx-form-factory';
 })
 export class AppComponent {
   title = 'playground';
-  n = new InternationalPhoneNumberField({
-    appearance: 'fill',
-    value: '+962792807794',
-  });
-
-  constructor() {
-    this.n.valueChanges.subscribe(() => {
-      console.log(this.n);
-    });
-  }
+  n = new PhoneNumberField({});
 }
