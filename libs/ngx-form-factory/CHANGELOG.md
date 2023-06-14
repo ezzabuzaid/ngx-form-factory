@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+### [4.0.4](https://github.com/ezzabuzaid/ngx-form-factory/compare/v4.0.3...v4.0.4) (2023-05-20)
+
+
+### Bug Fixes
+
+* **FormFactory:** don't render HIDDEN fields ([e9eeaad](https://github.com/ezzabuzaid/ngx-form-factory/commit/e9eeaad29c8d8c10aa332c3e98c8316fdbc6981f))
+
 ### [4.0.3](https://github.com/ezzabuzaid/ngx-form-factory/compare/v4.0.2...v4.0.3) (2023-03-08)
 
 ### [4.0.2](https://github.com/ezzabuzaid/ngx-form-factory/compare/v4.0.1...v4.0.2) (2023-02-02)
