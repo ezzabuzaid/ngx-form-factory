@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+### [5.0.1](https://github.com/ezzabuzaid/ngx-form-factory/compare/v5.0.0...v5.0.1) (2023-06-14)
+
+
+### Bug Fixes
+
+* **RawField:** replay all the events from the wrapper value accessor to the raw field ([eaa182c](https://github.com/ezzabuzaid/ngx-form-factory/commit/eaa182c58bb96b467014c5b3ddadcefa7c83d65c))
+
 ## [5.0.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v4.0.4...v5.0.0) (2023-06-14)
 
 
