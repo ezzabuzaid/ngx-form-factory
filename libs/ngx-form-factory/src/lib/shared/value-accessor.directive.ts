@@ -12,13 +12,14 @@ import {
   NG_VALUE_ACCESSOR,
   NgControl,
 } from '@angular/forms';
-import { ReplaySubject } from 'rxjs';
+import { AsyncSubject, BehaviorSubject, take } from 'rxjs';
 
 import { assertNotNullOrUndefined } from './utils';
 
 @Directive({
   selector: '[ngxValueAccessor]',
   standalone: true,
+  exportAs: 'ngxValueAccessor',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -28,13 +29,14 @@ import { assertNotNullOrUndefined } from './utils';
   ],
 })
 export class ValueAccessorDirective implements OnChanges, ControlValueAccessor {
-  #injector = inject(Injector);
+  readonly #injector = inject(Injector);
   @Input('ngxValueAccessor') valueAccessor: ControlValueAccessor | null = null;
 
-  #writeValue = new ReplaySubject<any>();
-  #registerOnChange = new ReplaySubject<any>();
-  #registerOnTouched = new ReplaySubject<any>();
-  #setDisabledState = new ReplaySubject<any>();
+  readonly #values = new BehaviorSubject<any[]>([]);
+  readonly #disabledStates = new BehaviorSubject<any[]>([]);
+
+  readonly #onChange = new AsyncSubject();
+  readonly #onTouched = new AsyncSubject();
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('valueAccessor' in changes && this.valueAccessor) {
@@ -42,39 +44,47 @@ export class ValueAccessorDirective implements OnChanges, ControlValueAccessor {
       control.valueAccessor = this.valueAccessor;
       const valueAccessor = control.valueAccessor;
       assertNotNullOrUndefined(valueAccessor, 'valueAccessor');
-      this.#registerOnChange.subscribe((fn) => {
-        valueAccessor.registerOnChange(fn);
-      });
-      this.#writeValue.subscribe((value) => {
-        valueAccessor.writeValue(value);
-      });
-      this.#registerOnTouched.subscribe((fn) => {
-        valueAccessor.registerOnTouched(fn);
-      });
-      this.#setDisabledState.subscribe((isDisabled) => {
-        valueAccessor.setDisabledState?.(isDisabled);
+      this.#values.pipe(take(1)).subscribe((values) => {
+        values.forEach((value) => {
+          valueAccessor.writeValue(value);
+        });
+        this.#values.complete();
       });
 
-      this.#writeValue.complete();
-      this.#registerOnChange.complete();
-      this.#registerOnTouched.complete();
-      this.#setDisabledState.complete();
+      this.#disabledStates.pipe(take(1)).subscribe((values) => {
+        values.forEach((value) => {
+          valueAccessor.setDisabledState?.(value);
+        });
+
+        this.#disabledStates.complete();
+      });
+
+      this.#onChange.subscribe((fn) => {
+        valueAccessor.registerOnChange(fn);
+      });
+      this.#onTouched.subscribe((fn) => {
+        valueAccessor.registerOnTouched(fn);
+      });
     }
   }
 
   writeValue(obj: any): void {
-    this.#writeValue.next(obj);
+    this.#values.next(this.#values.getValue().concat(obj));
   }
 
   registerOnChange(fn: any): void {
-    this.#registerOnChange.next(fn);
+    this.#onChange.next(fn);
+    this.#onChange.complete();
   }
 
   registerOnTouched(fn: any): void {
-    this.#registerOnTouched.next(fn);
+    this.#onTouched.next(fn);
+    this.#onTouched.complete();
   }
 
   setDisabledState?(isDisabled: boolean): void {
-    this.#setDisabledState.next(isDisabled);
+    this.#disabledStates.next(
+      this.#disabledStates.getValue().concat(isDisabled)
+    );
   }
 }

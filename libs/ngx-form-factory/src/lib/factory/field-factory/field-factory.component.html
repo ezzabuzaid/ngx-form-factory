@@ -241,11 +241,13 @@
 
 <ng-container *ngIf="rawField() as _rawField">
   <ng-container
+    #dynamicComponent="ngxDynamicComponent"
+    #valueAccessor="ngxValueAccessor"
     [formControl]="_rawField"
     [ngxDynamicComponent]="_rawField.component"
     [inputs]="_rawField.inputs"
     [outputs]="_rawField.outputs"
-    [ngxValueAccessor]="_rawField.componentInstance"
-    (create)="onRawFieldCreation($event, _rawField)"
+    [ngxValueAccessor]="dynamicComponent.create|async"
+    (create)="onRawFieldCreation($event, _rawField);"
   />
 </ng-container>

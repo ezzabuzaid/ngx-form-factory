@@ -28,6 +28,7 @@ import { PhoneNumberAssociatedWithCountryValidator } from './phonenumber.validat
 @Component({
   selector: 'ngx-phonenumber-field',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     MatSelectModule,
@@ -36,7 +37,6 @@ import { PhoneNumberAssociatedWithCountryValidator } from './phonenumber.validat
     ProxyDirective,
     ReactiveFormsModule,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mat-form-field
       [appearance]="appearance!"

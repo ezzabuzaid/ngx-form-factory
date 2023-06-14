@@ -25,6 +25,7 @@ type ComponentOutputs = ComponentFactory<any>['outputs'];
 @Directive({
   selector: '[ngxDynamicComponent]',
   standalone: true,
+  exportAs: 'ngxDynamicComponent',
 })
 export class DynamicComponentDirective implements OnDestroy, OnChanges {
   private subscription = new Subject();
