@@ -1,11 +1,8 @@
 import {
   AbstractControl,
-  AbstractControlOptions,
-  AsyncValidatorFn,
   FormControl,
   FormControlOptions,
   FormGroup,
-  ValidatorFn,
 } from '@angular/forms';
 import { fromEvent } from 'rxjs';
 
@@ -80,16 +77,20 @@ export class BaseField<T> extends FormControl implements IBaseFieldOptions<T> {
     return fromEvent(this.getElement(), eventName);
   }
 }
-export interface IForm<T> extends AbstractControl<T> {
-  fields: NativeForm<T>;
-}
+// export interface IForm<T> extends AbstractControl<T> {
+//   fields: NativeForm<T>;
+// }
 
-export type EnhancedForm<T> = {
-  [key in keyof T]: BaseField<T[key]> | IForm<T[key]>;
-};
+// export type EnhancedForm<T> = {
+//   [key in keyof T]: BaseField<T[key]> | IForm<T[key]>;
+// };
 
 export type NativeForm<T> = {
-  [key in keyof T]: BaseField<T[key]> | IForm<T[key]>;
+  [key in keyof T]:
+    | BaseField<T[key]>
+    | (AbstractControl<T[key]> & {
+        controls: NativeForm<T[key]>;
+      });
 };
 
 export class Form<
@@ -97,18 +98,6 @@ export class Form<
     [key in keyof T]: T[key];
   }
 > extends FormGroup<NativeForm<T>> {
-  constructor(
-    public fields: EnhancedForm<T>,
-    validatorOrOpts?:
-      | ValidatorFn
-      | ValidatorFn[]
-      | AbstractControlOptions
-      | null,
-    asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null
-  ) {
-    super(fields, validatorOrOpts, asyncValidator);
-  }
-
   /**
    * Retrieves a child control given the control's name.
    *
@@ -119,35 +108,34 @@ export class Form<
   ): BaseField<T[Key]> {
     return super.get(name as any) as any;
   }
-
-  override addControl<Key extends keyof T>(
-    name: Key extends string ? Key : never,
-    control: BaseField<T[Key]>,
-    options?: { emitEvent?: boolean | undefined } | undefined
-  ) {
-    this.fields[name] = control;
-    return super.addControl(name, control, options);
-  }
-  override registerControl<Key extends keyof T>(
-    name: Key extends string ? Key : never,
-    control: BaseField<T[Key]>
-  ) {
-    this.fields[name] = control;
-    return super.registerControl(name, control);
-  }
-  override removeControl<Key extends keyof T>(
-    name: Key extends string ? Key : never,
-    options?: { emitEvent?: boolean | undefined } | undefined
-  ): void {
-    delete this.fields[name];
-    return super.removeControl(name as any, options);
-  }
-  override setControl<Key extends keyof T>(
-    name: Key extends string ? Key : never,
-    control: BaseField<T[Key]>,
-    options?: { emitEvent?: boolean | undefined } | undefined
-  ): void {
-    this.fields[name] = control;
-    return super.setControl(name, control, options);
-  }
+  // override addControl<Key extends keyof T>(
+  //   name: Key extends string ? Key : never,
+  //   control: BaseField<T[Key]>,
+  //   options?: { emitEvent?: boolean | undefined } | undefined
+  // ) {
+  //   this.fields[name] = control;
+  //   return super.addControl(name, control, options);
+  // }
+  // override registerControl<Key extends keyof T>(
+  //   name: Key extends string ? Key : never,
+  //   control: BaseField<T[Key]>
+  // ) {
+  //   this.fields[name] = control;
+  //   return super.registerControl(name, control);
+  // }
+  // override removeControl<Key extends keyof T>(
+  //   name: Key extends string ? Key : never,
+  //   options?: { emitEvent?: boolean | undefined } | undefined
+  // ): void {
+  //   delete this.fields[name];
+  //   return super.removeControl(name as any, options);
+  // }
+  // override setControl<Key extends keyof T>(
+  //   name: Key extends string ? Key : never,
+  //   control: BaseField<T[Key]>,
+  //   options?: { emitEvent?: boolean | undefined } | undefined
+  // ): void {
+  //   this.fields[name] = control;
+  //   return super.setControl(name, control, options);
+  // }
 }

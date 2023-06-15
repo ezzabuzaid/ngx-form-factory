@@ -1,6 +1,7 @@
+import { FormGroup } from '@angular/forms';
 import { Meta, StoryObj } from '@storybook/angular';
 
-import { EFieldType, Field, Form, IBaseFieldOptions } from '../fields';
+import { EFieldType, Field, IBaseFieldOptions } from '../fields';
 import {
   ARGS,
   convertArgsToProps,
@@ -19,7 +20,7 @@ export default {
           useValue: (() => {
             const props = convertArgsToProps(args);
             return {
-              form: new Form({
+              form: new FormGroup({
                 input: new Field({
                   label: 'Input',
                   section: 'input',
@@ -28,7 +29,7 @@ export default {
                   label: 'Operator',
                   section: 'input',
                 }),
-                data: new Form({
+                data: new FormGroup({
                   kind: new Field({
                     label: 'kind',
                   }),

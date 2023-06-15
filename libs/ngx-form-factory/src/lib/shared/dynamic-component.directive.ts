@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   ComponentFactory,
   ComponentFactoryResolver,
   ComponentRef,
@@ -40,7 +41,8 @@ export class DynamicComponentDirective implements OnDestroy, OnChanges {
 
   constructor(
     private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private cdf: ChangeDetectorRef
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -123,7 +125,8 @@ export class DynamicComponentDirective implements OnDestroy, OnChanges {
       this.injector
     );
     Object.assign(this.componentRef.instance, this.properties ?? {});
-    this.create.emit(this.componentRef.instance);
+    this.create.emit(this.componentRef!.instance);
+    this.cdf.detectChanges();
   }
 
   private bindOutputs(

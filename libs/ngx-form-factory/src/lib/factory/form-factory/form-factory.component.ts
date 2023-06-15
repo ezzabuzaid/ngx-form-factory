@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { EFieldType } from '../../fields';
-import { BaseField, EnhancedForm, Form } from '../../fields/base';
+import { BaseField, Form, NativeForm } from '../../fields/base';
 import { assertNotNullOrUndefined } from '../../shared';
 import { FieldFactoryComponentModule } from '../field-factory/field-factory.component';
 
@@ -28,7 +28,7 @@ export class FormFactoryComponent implements OnInit {
   ngOnInit() {
     assertNotNullOrUndefined(this.formGroup);
 
-    const fields = flattenFields(Object.values(this.formGroup.fields)).filter(
+    const fields = flattenFields(Object.values(this.formGroup.controls)).filter(
       (it) => it.type !== EFieldType.HIDDEN
     );
 
@@ -37,17 +37,16 @@ export class FormFactoryComponent implements OnInit {
   }
 }
 
-export function flattenFields(controls: EnhancedForm<any>[string][]) {
+export function flattenFields(controls: NativeForm<any>[string][]) {
   return controls.reduce<BaseField<any>[]>((acc, control) => {
-    if (control instanceof BaseField) {
-      acc.push(control);
+    if ('controls' in control) {
+      acc.push(...flattenFields(Object.values(control.controls)));
     } else {
-      acc.push(...flattenFields(Object.values(control.fields)));
+      acc.push(control);
     }
     return acc;
   }, []);
 }
-
 export function groupBySection(fields: BaseField<any>[]) {
   return fields.reduce((acc, curr) => {
     const section = curr.section as unknown as string;
