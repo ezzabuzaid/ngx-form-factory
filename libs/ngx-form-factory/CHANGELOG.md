@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.2.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v5.1.0...v5.2.0) (2023-06-15)
+
+
+### Features
+
+* **FormFactory:** add support for dynamically added fields ([fef4dfc](https://github.com/ezzabuzaid/ngx-form-factory/commit/fef4dfc48f6e0f3ce0786558d655b2dfaa994d4d))
+* **Form:** use angular controls instead of fields ([cf415db](https://github.com/ezzabuzaid/ngx-form-factory/commit/cf415db9373bfee306b1c2b29e6c6e61ef10f03a))
+
 ## [5.1.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v5.0.1...v5.1.0) (2023-06-14)
 
 
