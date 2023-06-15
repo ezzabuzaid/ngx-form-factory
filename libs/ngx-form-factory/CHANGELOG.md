@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.1.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v5.0.1...v5.1.0) (2023-06-14)
+
+
+### Features
+
+* **FormFactory:** make formGroup required ([ba0c938](https://github.com/ezzabuzaid/ngx-form-factory/commit/ba0c938b64db12d3526c4ebb723e6f15556fb27b))
+
 ### [5.0.1](https://github.com/ezzabuzaid/ngx-form-factory/compare/v5.0.0...v5.0.1) (2023-06-14)
 
 
