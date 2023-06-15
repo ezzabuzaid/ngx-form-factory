@@ -1,7 +1,7 @@
-<ng-container *ngIf="implicitFields">
-  <ng-container *ngFor="let section of sectionsNames">
+<ng-container *ngIf="implicitFields && formGroup">
+  <ng-container *ngFor="let section of formGroup|sectionizeFields:(formGroup.statusChanges|async)|keyvalue">
     <div class="fields-wrapper">
-      <ng-container *ngFor="let field of sections[section]">
+      <ng-container *ngFor="let field of section.value;trackBy:trackBy">
         <ngx-field-factory [field]="field" />
       </ng-container>
     </div>
