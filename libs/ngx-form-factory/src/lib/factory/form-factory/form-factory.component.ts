@@ -15,14 +15,17 @@ import { FieldFactoryComponentModule } from '../field-factory/field-factory.comp
 @Pipe({
   name: 'sectionizeFields',
   standalone: true,
-  pure: false,
 })
 export class SectionizeFieldsPipe implements PipeTransform {
-  transform(form: Form<any>, state: any) {
+  transform(form: Form<any>, ...args: any[]) {
     const fields = flattenFields(Object.values(form.controls)).filter(
       (it) => it.type !== EFieldType.HIDDEN
     );
-    return groupBySection(fields);
+
+    return {
+      sections: [...new Set(fields.map((field) => field.section))],
+      groups: groupBySection(fields),
+    };
   }
 }
 
@@ -55,12 +58,12 @@ export function flattenFields(controls: NativeForm<any>[string][]) {
 export function groupBySection(fields: BaseField<any>[]) {
   return fields.reduce((acc, curr) => {
     const section = curr.section as unknown as string;
-    if (!acc.has(section)) {
-      acc.set(section, []);
+    if (!acc[section]) {
+      acc[section] = [];
     }
-    acc.get(section)?.push(curr);
+    acc[section].push(curr);
     return acc;
-  }, new Map<string, BaseField<any>[]>());
+  }, {} as Record<string, BaseField<any>[]>);
 }
 @NgModule({
   declarations: [FormFactoryComponent],

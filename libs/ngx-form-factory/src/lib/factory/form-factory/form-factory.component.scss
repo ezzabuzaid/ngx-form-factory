@@ -5,10 +5,8 @@
   .fields-wrapper {
     display: flex;
     flex-wrap: wrap;
+    gap: 0.5rem;
     ngx-field-factory {
-      &:nth-child(even) {
-        gap: 0 0.5rem;
-      }
       min-width: calc(100% / 3);
       flex-grow: 1;
       @media (max-width: 1200px) {
