@@ -247,6 +247,7 @@
     [ngxDynamicComponent]="_rawField.component"
     [inputs]="_rawField.inputs"
     [outputs]="_rawField.outputs"
+    [injector]="_rawField.injector"
     [ngxValueAccessor]="dynamicComponent.create|async"
     (create)="onRawFieldCreation($event, _rawField);"
   />
