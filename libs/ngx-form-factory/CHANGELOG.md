@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.3.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v5.2.0...v5.3.0) (2023-06-17)
+
+
+### Features
+
+* **RawField:** add ability to pass injector ([202dc3f](https://github.com/ezzabuzaid/ngx-form-factory/commit/202dc3f61997ab10ec6961955db93ea2b1e3ea6c))
+
+
+### Bug Fixes
+
+* **FormFactory:** ensure field order as defined ([6853012](https://github.com/ezzabuzaid/ngx-form-factory/commit/6853012d985281e46be76a68edfb12df1e2ac4d4))
+
 ## [5.2.0](https://github.com/ezzabuzaid/ngx-form-factory/compare/v5.1.0...v5.2.0) (2023-06-15)
 
 
